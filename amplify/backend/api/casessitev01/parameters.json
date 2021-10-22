@@ -1,0 +1,11 @@
+{
+    "AppSyncApiName": "casessitev01",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authcasessitev01b4fd67c8",
+            "Outputs.UserPoolId"
+        ]
+    }
+}

@@ -1,0 +1,30 @@
+{
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-casessitev01-prod-143127-authRole",
+      "UnauthRoleArn": "arn:aws:iam::406700237853:role/amplify-casessitev01-prod-143127-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::406700237853:role/amplify-casessitev01-prod-143127-authRole",
+      "Region": "ap-southeast-2",
+      "DeploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
+      "UnauthRoleName": "amplify-casessitev01-prod-143127-unauthRole",
+      "StackName": "amplify-casessitev01-prod-143127",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:406700237853:stack/amplify-casessitev01-prod-143127/90275120-32e8-11ec-b8b5-0a49f891e1a0",
+      "AmplifyAppId": "d3rj62os1it8fc"
+    },
+    "categories": {
+      "auth": {
+        "casessitev01b4fd67c8": {}
+      },
+      "function": {
+        "CreateOrder": {
+          "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
+          "s3Key": "amplify-builds/CreateOrder-7856474a337465637a42-build.zip"
+        },
+        "ProcessOrderPayment": {
+          "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
+          "s3Key": "amplify-builds/ProcessOrderPayment-774c4c71435477326b39-build.zip"
+        }
+      }
+    }
+  }
+}
