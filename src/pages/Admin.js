@@ -78,16 +78,25 @@ const Admin = () => {
                             </div>
                             <div className="category-form">
                                 <p><label htmlFor="category">category</label></p>
-                                <p><input
+                                <p><select
                                     name="category"
-                                    type="title"
-                                    placeholder="Type the category"
+                                    
                                     onChange={(e) => setBookDetails({ ...bookDetails, category: e.target.value })}
                                     required
                                 >
-                                                           
-                                
-                                </input>
+                                   <option value="iphone11">iphone11</option>
+                                    <option value="iphone11pro">iphone11 pro</option>
+                                    <option value="iphone11promax">iphone11 pro Max</option>
+                                    <option value="iphone12">iphone12</option>                            
+                                    <option value="iphone12mini">iphone12 mini</option>                            
+                                    <option value="iphone12pro">iphone12 pro</option>                            
+                                    <option value="iphone12promax">iphone12 pro Max</option>                            
+                                    <option value="iphone13">iphone13</option>                            
+                                    <option value="iphone13mini">iphone13 mini</option>                            
+                                    <option value="iphone13pro">iphone13 pro</option>                            
+                                    <option value="iphone13promax">iphone13 pro Max</option>                            
+
+                                </select>
                                 </p>
                             </div>
                             <div className="quantity-form">
