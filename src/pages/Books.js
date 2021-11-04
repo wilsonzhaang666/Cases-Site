@@ -13,7 +13,7 @@ const Books = () => {
         setCategory(event.target.value);
 
       };
-    // general input change handler
+    // general input change
       const handleSubmit = (event) => {
         event.preventDefault();
     
@@ -27,10 +27,10 @@ const Books = () => {
     return (
         <div>
       <form onSubmit={handleSubmit}>
-      <div className="form-group row">
+      <div class="form-group">
         <div className="col-md-4">
-          <label htmlFor="phonetype" className="control-label">Your Phone Type</label>
-          <select id="phonetype"   onChange={handleInputChange} >
+          <label htmlFor="phonetype">Your Phone Type</label>
+          <select class="form-control"   onChange={handleInputChange} >
                <option value="iphone11">iphone11</option>
              <option value="iphone11pro">iphone11 pro</option>
                  <option value="iphone11promax">iphone11 pro Max</option>

@@ -197,6 +197,10 @@ background-size: 1800% 1800%;
   min-height: 10vh;
   height: 18vh;
 }
+select {
+  width: 150px;
+  height: 50px;
+}
 
 /* Book Details Section */
 
