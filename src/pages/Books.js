@@ -13,7 +13,7 @@ const Books = () => {
         setCategory(event.target.value);
 
       };
-    
+    // general input change handler
       const handleSubmit = (event) => {
         event.preventDefault();
     
@@ -31,17 +31,17 @@ const Books = () => {
         <div className="col-md-4">
           <label htmlFor="phonetype" className="control-label">Your Phone Type</label>
           <select id="phonetype"   onChange={handleInputChange} >
-                                   <option value="iphone11">iphone11</option>
-                                    <option value="iphone11pro">iphone11 pro</option>
-                                    <option value="iphone11promax">iphone11 pro Max</option>
-                                    <option value="iphone12">iphone12</option>                            
-                                    <option value="iphone12mini">iphone12 mini</option>                            
-                                    <option value="iphone12pro">iphone12 pro</option>                            
-                                    <option value="iphone12promax">iphone12 pro Max</option>                            
-                                    <option value="iphone13">iphone13</option>                            
-                                    <option value="iphone13mini">iphone13 mini</option>                            
-                                    <option value="iphone13pro">iphone13 pro</option>                            
-                                    <option value="iphone13promax">iphone13 pro Max</option>       
+               <option value="iphone11">iphone11</option>
+             <option value="iphone11pro">iphone11 pro</option>
+                 <option value="iphone11promax">iphone11 pro Max</option>
+               <option value="iphone12">iphone12</option>                            
+                 <option value="iphone12mini">iphone12 mini</option>                            
+                <option value="iphone12pro">iphone12 pro</option>                            
+                 <option value="iphone12promax">iphone12 pro Max</option>                            
+                 <option value="iphone13">iphone13</option>                            
+                 <option value="iphone13mini">iphone13 mini</option>                            
+                <option value="iphone13pro">iphone13 pro</option>                            
+                <option value="iphone13promax">iphone13 pro Max</option>       
             </select>
 
         </div>
