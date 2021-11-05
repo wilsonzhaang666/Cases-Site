@@ -14,14 +14,14 @@ const {
 
 const Admin = () => {
     const [image, setImage] = useState(null);
-    const [bookDetails, setBookDetails] = useState({ title: "", image: "",category: "", price: "" });
+    const [bookDetails, setBookDetails] = useState({id:"", title: "", image: "",category: "iphone11", price: "" });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             if (!bookDetails.title || !bookDetails.price) return
             await API.graphql(graphqlOperation(createBook, { input: bookDetails }))
-            setBookDetails({title: "", image: "",category: "", price: "" })
+            setBookDetails({id:"",title: "", image: "",category:"", price: "" })
         } catch (err) {
             console.log('error creating todo:', err)
         }
@@ -65,6 +65,7 @@ const Admin = () => {
                                 onChange={(e) => handleImageUpload(e)} />}
 
                         </div>
+                        
                         <div className="form-fields">
                             <div className="title-form">
                                 <p><label htmlFor="title">Title</label></p>
@@ -76,13 +77,23 @@ const Admin = () => {
                                     required
                                 /></p>
                             </div>
+                            <div className="id-form">
+                                <p><label htmlFor="id">ID</label></p>
+                                <p><input
+                                    name="id"
+                                    type="title"
+                                    placeholder="id"
+                                    onChange={(e) => setBookDetails({ ...bookDetails, id: e.target.value })}
+                                    required
+                                /></p>
+                            </div>
                             <div className="category-form">
                                 <p><label htmlFor="category">category</label></p>
                                 <p><select
                                     name="category"
                                     
                                     onChange={(e) => setBookDetails({ ...bookDetails, category: e.target.value })}
-                                    required
+                                    
                                 >
                                    <option value="iphone11">iphone11</option>
                                     <option value="iphone11pro">iphone11 pro</option>

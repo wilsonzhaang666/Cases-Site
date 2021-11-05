@@ -54,7 +54,7 @@ const Books = () => {
             .map(({ image: image, id, title }) => (
                 <article key={id} className="book">
                     <div className="book-image">
-                        <img src={image} alt={title} />
+                        <img src={image} style={{maxWidth:"150px",maxHeight:"120px",width:"auto",height:"auto"}}   alt={title} />
                     </div>
                     <Link to={`cases/${id}`} className="btn book-link">details</Link>
                 </article>
