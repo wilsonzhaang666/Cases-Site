@@ -37,7 +37,7 @@
 			"Properties": {
 				"Code": {
 					"S3Bucket": "amplify-casessitev01-prod-143127-deployment",
-					"S3Key": "amplify-builds/ProcessOrderPayment-774c4c71435477326b39-build.zip"
+					"S3Key": "amplify-builds/ProcessOrderPayment-78494767502f5075744d-build.zip"
 				},
 				"Handler": "index.handler",
 				"FunctionName": {

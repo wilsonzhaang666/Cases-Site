@@ -29,7 +29,7 @@ exports.handler = async (event) => {
 
     await stripe.charges.create({
       amount: total * 100,
-      currency: "usd",
+      currency: "aud",
       source: token,
       description: `Order ${new Date()} by ${username} with ${email} `
     });
