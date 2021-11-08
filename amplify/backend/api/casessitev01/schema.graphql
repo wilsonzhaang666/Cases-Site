@@ -70,6 +70,9 @@ input CartItem {
   image: String
   price: Float
   amount: Int
+  category: String
+  quantity: Int
+  featured: Boolean
 }
 
 input ProcessOrderInput {
@@ -77,11 +80,12 @@ input ProcessOrderInput {
   cart: [CartItem]
   total: Float!
   token: String!
-  address: String
+  address: String!
+  phoneNum: Int!
 }
 
 type Mutation {
   processOrder(input: ProcessOrderInput!): OrderStatus
     @function(name: "ProcessOrderPayment-${env}")
-    @function(name: "createOrder-${env}")
+    @function(name: "CreateOrder-${env}")
 }

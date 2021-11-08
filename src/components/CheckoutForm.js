@@ -25,7 +25,7 @@ const CARD_ELEMENT_OPTIONS = {
 const CheckoutForm = () => {
   const { cart, total, clearCart } = useContext(CartContext);
   const { checkout } = useContext(BookContext);
-  const [orderDetails, setOrderDetails] = useState({ cart, total, address: null, token: null });
+  const [orderDetails, setOrderDetails] = useState({ cart, total, address: null,phoneNum:null, token: null });
   const [error, setError] = useState(null);
   const stripe = useStripe();
   const elements = useElements();
@@ -34,8 +34,7 @@ const CheckoutForm = () => {
   useEffect(() => {
     if (orderDetails.token) {
       checkout(orderDetails);
-      //clearCart();
-      //history.push("/");
+      clearCart();
     }
   }, [orderDetails]);
 
@@ -56,11 +55,14 @@ const CheckoutForm = () => {
     if (result.error) {
       // Inform the user if there was an error.
       setError(result.error.message);
+      return;
     } else {
       setError(null);
       // Send the token to your server.
       const token = result.token;
       setOrderDetails({ ...orderDetails, token: token.id });
+      console.log(orderDetails)
+      history.push('/')
     }
   };
 
@@ -77,6 +79,13 @@ const CheckoutForm = () => {
           <label htmlFor="stripe-element"> Credit or debit card </label>
           <CardElement id="stripe-element" options={CARD_ELEMENT_OPTIONS} onChange={handleChange} />
         </div>
+        <label htmlFor="phone-number">Phone Number</label>
+        <input
+          id="phone-number"
+          type="number" required
+          onChange={(e) => setOrderDetails({ ...orderDetails, phoneNum: e.target.value })
+          }
+        />
         <div className="card-errors" role="alert">
           {error}
         </div>

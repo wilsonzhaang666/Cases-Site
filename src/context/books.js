@@ -23,8 +23,10 @@ const BookProvider = ({ children }) => {
     try {
       await API.graphql(graphqlOperation(processOrder, { input: payload }));
       console.log("Order is successful");
+
     } catch (err) {
       console.log(err);
+      alert("There is something happen with the payment");
     }
   };
 

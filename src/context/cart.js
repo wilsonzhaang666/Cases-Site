@@ -31,14 +31,14 @@ const CartProvider = ({ children }) => {
     }
     setCart(updatedCart);
   };
-
+//change the title and quantity
   const addToCart = (book) => {
-    const { id, title, price, image } = book;
+    const { id, title, price, image,quantity,category,featured} = book;
     const cartItem = [...cart].find((item) => item.id === id);
     if (cartItem) {
       increaseAmount(id);
     } else {
-      const cartItems = [...cart, { id, title, image, price, amount: 1 }];
+      const cartItems = [...cart, { id, title, image,quantity,category,featured, price, amount: 1 }];
       setCart(cartItems);
     }
   };

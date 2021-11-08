@@ -15,11 +15,13 @@ export const getOrder = /* GraphQL */ `
           order_id
           createdAt
           updatedAt
+          customer
         }
         nextToken
       }
       createdAt
       updatedAt
+      customer
     }
   }
 `;
@@ -40,8 +42,35 @@ export const listOrders = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        customer
       }
       nextToken
+    }
+  }
+`;
+export const getBook = /* GraphQL */ `
+  query GetBook($id: ID!) {
+    getBook(id: $id) {
+      id
+      title
+      category
+      image
+      quantity
+      featured
+      price
+      orders {
+        items {
+          id
+          book_id
+          order_id
+          createdAt
+          updatedAt
+          customer
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -67,31 +96,6 @@ export const listBooks = /* GraphQL */ `
         updatedAt
       }
       nextToken
-    }
-  }
-`;
-export const getBook = /* GraphQL */ `
-  query GetBook($id: ID!) {
-    getBook(id: $id) {
-      id
-      title
-      category
-      image
-      quantity
-      featured
-      price
-      orders {
-        items {
-          id
-          book_id
-          order_id
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
     }
   }
 `;
