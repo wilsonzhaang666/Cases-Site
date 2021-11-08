@@ -18,7 +18,7 @@
       "function": {
         "CreateOrder": {
           "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
-          "s3Key": "amplify-builds/CreateOrder-67315771347562673158-build.zip"
+          "s3Key": "amplify-builds/CreateOrder-695534567047354b7750-build.zip"
         },
         "ProcessOrderPayment": {
           "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",

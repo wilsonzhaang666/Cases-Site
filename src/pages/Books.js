@@ -50,7 +50,7 @@ const Books = () => {
     </form>
         <section className="books">
             {books
-            .filter(book=>book.category===Category)
+            .filter(book=>book.category===Category &&book.quantity!==0)
             .map(({ image: image, id, title }) => (
                 <article key={id} className="book">
                     <div className="book-image">

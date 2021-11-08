@@ -17,7 +17,9 @@ const Home = () => {
                     <h3>Latest Updated</h3>
                 </header>
                 <div className="books featured-list">
-                    {featured.map(({ id, image, title }) => (
+                    {featured
+                    .filter(book => book.quantity!==0)
+                    .map(({ id, image, title }) => (
                         <article key={id} className="book featured-book">
                             <div className="book-image">
                                 <img src={image} alt={title} />

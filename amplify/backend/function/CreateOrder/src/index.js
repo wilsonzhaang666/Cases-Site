@@ -57,20 +57,28 @@ const ChangeCasesStatus = async (payload) => {
   let bookOrders = [];
   for (i = 0; i < payload.cart.length; i++) {
     const cartItem = payload.cart[i];
-    bookOrders.push({
-      PutRequest: {
-        Item: {
-          id: cartItem.id,
-          __typename: "Book",
-          image:cartItem.image,
-          featured: cartItem.featured,
-          category: cartItem.category,
-          quantity: cartItem.quantity-cartItem.amount,
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString()
+    if(cartItem.quantity>cartItem.amount||cartItem.quantity==cartItem.amount){
+      bookOrders.push({
+        PutRequest: {
+          Item: {
+            id: cartItem.id,
+            __typename: "Book",
+            image:cartItem.image,
+            featured: cartItem.featured,
+            title: cartItem.title,
+            price:cartItem.price,
+            category: cartItem.category,
+            quantity: cartItem.quantity-cartItem.amount,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+          }
         }
-      }
-    });
+      });
+    }else{
+      return "NOT SUCCESS DUE TO THE STOCK ISSUE";
+    }
+    
+    
   }
   let params = {
     RequestItems: {}

@@ -40,6 +40,7 @@ const CartProvider = ({ children }) => {
     } else {
       const cartItems = [...cart, { id, title, image,quantity,category,featured, price, amount: 1 }];
       setCart(cartItems);
+      console.log(cart)
     }
   };
 
