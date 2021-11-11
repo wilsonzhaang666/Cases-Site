@@ -38,6 +38,7 @@ const Cart = () => {
         <h3>Total: $ {total}</h3>
       </div>
       <div>
+        {/* Try to put attribute if the checkout going to use apple pay. */}
         <button className="btn" onClick={() => history.push("/checkout")}>Checkout</button>
       </div>
     </section>
