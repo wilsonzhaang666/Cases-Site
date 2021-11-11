@@ -107,11 +107,13 @@ const ContainerForProduct = styled.div`
   return (
     <Container>
 
-      <Title>Dresses</Title>
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
-          <select >
+          <select onChange={handleInputChange} >
+          <Option disabled selected>
+              Case Type
+            </Option>
            <Option value="iphone11">iPhone11</Option>
          <Option value="iphone11pro">iPhone11 pro</Option>
             <Option value="iphone11promax">iPhone11 pro Max</Option>
@@ -135,8 +137,10 @@ const ContainerForProduct = styled.div`
           </Select>
         </Filter>
       </FilterContainer>
-      <ContainerForProduct>
+      <Title>Case For {Category}:</Title>
 
+      <ContainerForProduct>
+      
       {books
              .filter(book=>book.category===Category &&book.quantity!==0)
              .map(({ image: image, id, title }) => (
