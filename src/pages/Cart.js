@@ -201,9 +201,7 @@ const Button = styled.button`
         
         <Title>YOUR BAG</Title>
         <Top>
-        <Link to={`cases`}>
-          <TopButton >CONTINUE SHOPPING</TopButton>
-          </Link>
+          <TopButton onClick={() => history.push("/cases")}>CONTINUE SHOPPING</TopButton>
 
           <TopTexts>
             <TopText>Shopping Bag</TopText>
