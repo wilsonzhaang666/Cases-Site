@@ -7,7 +7,6 @@ import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { IconButton } from '@material-ui/core';
-
 import { mobile } from "../responsive";
 const Cart = () => {
   const Container = styled.div``;
