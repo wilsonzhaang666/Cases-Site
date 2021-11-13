@@ -18,11 +18,11 @@
       "function": {
         "CreateOrder": {
           "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
-          "s3Key": "amplify-builds/CreateOrder-695534567047354b7750-build.zip"
+          "s3Key": "amplify-builds/CreateOrder-334543597a51416a6b48-build.zip"
         },
         "ProcessOrderPayment": {
           "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
-          "s3Key": "amplify-builds/ProcessOrderPayment-34464643704a6f785739-build.zip"
+          "s3Key": "amplify-builds/ProcessOrderPayment-6c336a5961433045762b-build.zip"
         }
       }
     }

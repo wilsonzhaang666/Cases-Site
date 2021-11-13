@@ -82,6 +82,8 @@ input ProcessOrderInput {
   token: String!
   address: String!
   phoneNum: Int!
+  DeliverDate: String
+  PickUpDate: String
 }
 
 type Mutation {

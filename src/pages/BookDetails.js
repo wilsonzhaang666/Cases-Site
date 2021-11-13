@@ -2,13 +2,21 @@ import React, { useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { BookContext } from "../context/books";
 import { CartContext } from "../context/cart";
+import { mobile } from "../responsive";
+import styled from "styled-components";
 
 const BookDetails = () => {
   const { id } = useParams();
   const history = useHistory();
   const { books } = useContext(BookContext);
   const { addToCart } = useContext(CartContext);
-
+  const Button = styled.button`
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+`;
   const book = books.find((book) => {
     return book.id === id;
   });
@@ -28,7 +36,8 @@ const BookDetails = () => {
         <p>{category}</p>
         <h3>{quantity}</h3>
         <h4>Price - $ {price}</h4>
-        <button
+        <Button
+          
           className="btn"
           onClick={() => {
             addToCart({ ...book, id });
@@ -36,7 +45,7 @@ const BookDetails = () => {
           }}
         >
           Add to Cart
-        </button>
+        </Button>
       </div>
     </section>
   );

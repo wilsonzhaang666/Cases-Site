@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
+import moment from "moment";
 import { BookContext } from "../context/books";
 import { CartContext } from "../context/cart";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-
+import DatePicker from "react-datepicker";  
+  
+import "react-datepicker/dist/react-datepicker.css";  
 const CARD_ELEMENT_OPTIONS = {
   style: {
     base: {
@@ -25,16 +28,32 @@ const CARD_ELEMENT_OPTIONS = {
 const CheckoutForm = () => {
   const { cart, total, clearCart } = useContext(CartContext);
   const { checkout } = useContext(BookContext);
-  const [orderDetails, setOrderDetails] = useState({ cart, total, address: null,phoneNum:null, token: null });
+
+  const [orderDetails, setOrderDetails] = useState({ cart, total, address: null,phoneNum:null, PickUpDate:null,DeliverDate:null,token: null });
   const [error, setError] = useState(null);
   const stripe = useStripe();
   const elements = useElements();
   const history = useHistory();
+  const [dateRange, setDateRange] = useState({
+    startDate: new Date(moment().startOf("isoweek").utc()),
+    endDate: new Date(moment().endOf("week").utc())
+});  
+const [startDate, setStartDate] = useState(null);
 
-  useEffect(() => {
+const filterPassedTime = (time) => {
+  const currentDate = new Date();
+  const selectedDate = new Date(time);
+
+  return currentDate.getTime() < selectedDate.getTime();
+};
+  const [deliverOption,setDeliverOption] = useState(null);
+console.log(startDate)
+
+useEffect(() => {
     if (orderDetails.token) {
       checkout(orderDetails);
       clearCart();
+      
     }
   }, [orderDetails]);
 
@@ -47,9 +66,14 @@ const CheckoutForm = () => {
     }
   };
 
+
   // Handle form submission.
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if(orderDetails.DeliverDate==null&&orderDetails.PickUpDate==null){
+      setError("You need to choose a Pick Up time or Delivery time");
+      return;
+    }
     const card = elements.getElement(CardElement);
     const result = await stripe.createToken(card);
     if (result.error) {
@@ -64,8 +88,32 @@ const CheckoutForm = () => {
       console.log(orderDetails)
       history.push('/')
     }
-  };
 
+  };
+  const twoCalls = (e)=> {
+    setDateRange({ ...dateRange, startDate: e })
+    setOrderDetails({ ...orderDetails, DeliverDate: e.getDate()+"/"+e.getMonth()+"/"+e.getFullYear() })
+
+  }
+  const TwoCallsForPU = (e)=> {
+    setStartDate(e)
+    setOrderDetails({ ...orderDetails, PickUpDate: e.getDate()+"/"+e.getMonth()+"/"+e.getFullYear()+"Time="+e.getHours()+":"+e.getMinutes()  })
+
+  }
+
+  const loadPickUpTime =()=> {
+    setDeliverOption("pickup")
+    setOrderDetails({ ...orderDetails, DeliverDate:null  })
+
+    
+  }
+  const loadDeliver =()=> {
+    setDeliverOption("deliver")
+    setOrderDetails({ ...orderDetails, PickUpDate:null  })
+
+  }
+  console.log(orderDetails)
+  console.log(deliverOption)
   return (
     <form onSubmit={handleSubmit}>
       <div className="checkout-form">
@@ -86,6 +134,57 @@ const CheckoutForm = () => {
           onChange={(e) => setOrderDetails({ ...orderDetails, phoneNum: e.target.value })
           }
         />
+        <br/>
+        <label htmlFor="choose">Would you like to pick up or deliver</label>
+      <button type="button" onClick={() =>loadPickUpTime()}>
+        Pick Up
+      </button>
+      <button type="button" onClick={() =>loadDeliver()}>
+        Delivery
+      </button>
+      {(() => {
+        if (deliverOption===null) {
+          return (
+            null
+          )
+        } else if (deliverOption==="pickup") {
+          return (
+            <div>
+            <h1>Pick Time</h1>
+            <h3>Monday-Sunday 10:30-5:30</h3>
+            <p>Please pick a day:</p>
+      <DatePicker
+      
+      showTimeSelect
+      selected={startDate}
+      onChange={(date) => TwoCallsForPU(date)}
+      placeholderText="Select a time"
+    />
+            </div>
+          )
+        } else if(deliverOption==="deliver"){
+          return (
+            <div>
+                      <label htmlFor="date">Date</label>
+    <div>
+      <p>Please pick a day:</p>
+      <DatePicker
+      
+      selected={new Date(dateRange.startDate)}
+      onChange={(date) => twoCalls(date)}
+      name="startDate"
+      filterDate={(date) => date.getDay() === 0||date.getDay() ===6}
+      placeholderText="Select a Monday"
+    />
+    </div>
+            </div>
+          )
+        }
+      })()}
+
+
+
+
         <div className="card-errors" role="alert">
           {error}
         </div>
