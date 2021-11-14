@@ -13,6 +13,7 @@ import BookDetails from "./pages/BookDetails";
 import Admin from './pages/Admin';
 // Components
 import Header from "./components/Header"
+import ReturnPolicy from "./pages/ReturnPolicy";
 
 // Amplify Configurations
 import awsExports from "./aws-exports";
@@ -32,6 +33,9 @@ const App = () => {
         </Route>
         <Route path="/checkout">
           <Checkout />
+        </Route>
+        <Route path="/returnpolicy">
+          <ReturnPolicy />
         </Route>
         <Route exact path="/cases">
           <Books />
