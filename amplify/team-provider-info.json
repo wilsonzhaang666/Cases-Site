@@ -18,11 +18,16 @@
       "function": {
         "CreateOrder": {
           "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
-          "s3Key": "amplify-builds/CreateOrder-334543597a51416a6b48-build.zip"
+          "s3Key": "amplify-builds/CreateOrder-6634353937716152414c-build.zip"
         },
         "ProcessOrderPayment": {
           "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
           "s3Key": "amplify-builds/ProcessOrderPayment-6c336a5961433045762b-build.zip"
+        },
+        "SendEmailToUser": {
+          "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
+          "s3Key": "amplify-builds/SendEmailToUser-716c344d31497a2b3747-build.zip",
+          "sesEmail": "casessite01@gmail.com"
         }
       }
     }

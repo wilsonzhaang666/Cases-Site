@@ -112,7 +112,7 @@ exports.handler = async (event) => {
     await ChangeCasesStatus(payload);
     // Note - You may add another function to email the invoice to the user
 
-    return "SUCCESS";
+    return { id, cart, total, address,phoneNum, username,DeliverDate, email ,PickUpDate};
   } catch (err) {
     console.log(err);
     return new Error(err);

@@ -90,4 +90,6 @@ type Mutation {
   processOrder(input: ProcessOrderInput!): OrderStatus
     @function(name: "ProcessOrderPayment-${env}")
     @function(name: "CreateOrder-${env}")
+    @function(name: "SendEmailToUser-prod")
+
 }
