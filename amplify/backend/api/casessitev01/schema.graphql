@@ -91,5 +91,6 @@ type Mutation {
     @function(name: "ProcessOrderPayment-${env}")
     @function(name: "CreateOrder-${env}")
     @function(name: "SendEmailToUser-prod")
+    @function(name: "SendEmailToAdmin-prod")
 
 }

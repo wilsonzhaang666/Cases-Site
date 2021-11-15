@@ -22,6 +22,7 @@ const Header = () => {
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
+
         <Link className="nav-link" to="/" style={{ fontSize:"18px",margin:"10px"}}> Home</Link>
       <Link className="nav-link" to="/cases" style={{ fontSize:"18px",margin:"10px"}}> Cases</Link>
       <Link className="nav-link"to="/cart"style={{ fontSize:"18px",margin:"10px"}}>Cart</Link>
