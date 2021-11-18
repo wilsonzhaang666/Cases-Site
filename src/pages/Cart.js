@@ -82,6 +82,7 @@ const Details = styled.div`
 
 const ProductName = styled.span``;
 
+
 const ProductId = styled.span``;
 
 const ProductColor = styled.div`
@@ -187,12 +188,15 @@ const Button = styled.button`
                 <Image src={image} />
                 <Details>
                   <ProductName>
-                    <b>Product:</b> {title}
+                    <b style={{fontSize:"22px"}}>{title}</b> 
                   </ProductName>
                   <ProductId>
-                    <b>ID:</b> {id}
+
+
                   </ProductId>
+                  
                   <ProductSize>
+                  <b>Product ID:</b> {id}<br/>
                     <b>Category:</b> {category}
                   </ProductSize>
                 </Details>
