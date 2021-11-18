@@ -26,6 +26,8 @@ const Header = () => {
         <Link className="nav-link" to="/" style={{ fontSize:"18px",margin:"10px"}}> Home</Link>
       <Link className="nav-link" to="/cases" style={{ fontSize:"18px",margin:"10px"}}> Cases</Link>
       <Link className="nav-link"to="/cart"style={{ fontSize:"18px",margin:"10px"}}>Cart</Link>
+      <Link className="nav-link"to="/order"style={{ fontSize:"18px",margin:"10px"}}>Order History</Link>
+
       <Link className="nav-link" style={{ fontSize:"18px",margin:"10px"}}>Delivery Infomation</Link>
       <Link className="nav-link"to="/returnpolicy" style={{ fontSize:"18px",margin:"10px"}}>Return Policy</Link>
       <Link className="nav-link" style={{ fontSize:"18px",margin:"10px"}}>Contact Us</Link>

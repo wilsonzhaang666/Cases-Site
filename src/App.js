@@ -12,6 +12,7 @@ import Checkout from "./pages/Checkout";
 import BookDetails from "./pages/BookDetails";
 import Admin from './pages/Admin';
 import OrderDetail from './pages/OrderDetail';
+import BookOrderDetail from './pages/BookOrderDetail';
 // Components
 import Header from "./components/Header"
 import ReturnPolicy from "./pages/ReturnPolicy";
@@ -48,7 +49,10 @@ const App = () => {
           path="/cases/:id"
           children={<BookDetails></BookDetails>}>
         </Route>
-
+        <Route
+          path="/order/:id"
+          children={<BookOrderDetail></BookOrderDetail>}>
+        </Route>
         <Route path="/admin">
           <Admin />
         </Route>

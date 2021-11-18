@@ -38,7 +38,7 @@ const OrderDetail = () => {
       let orderslist = orders.filter(function(item){
         return item.user == user;
      })
-      console.log(bookorders.at(0))
+      console.log(bookorders)
 
     if (!orderslist.length) {
         return <h3>Haven't order anything, go get one!</h3>
@@ -158,7 +158,8 @@ const Hr = styled.hr`
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
-                  <ProductAmount>Detail</ProductAmount>
+                  <ProductAmount><Link to={`order/${id}`} style={{color:'black'}}>Order Details</Link>
+                  </ProductAmount>
 
                 </ProductAmountContainer>
               </PriceDetail>
