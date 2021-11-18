@@ -11,6 +11,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import BookDetails from "./pages/BookDetails";
 import Admin from './pages/Admin';
+import OrderDetail from './pages/OrderDetail';
 // Components
 import Header from "./components/Header"
 import ReturnPolicy from "./pages/ReturnPolicy";
@@ -27,6 +28,9 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route exact path="/order">
+          <OrderDetail />
         </Route>
         <Route path="/cart">
           <Cart />

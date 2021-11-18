@@ -29,7 +29,7 @@ const { id, cart, total, address,phoneNum, token,DeliverDate,PickUpDate } = even
   const msg = {
     to:email,
     from: "casessite01@gmail.com",
-    subject: "Your Order Is Complete!",
+    subject: "Congrat! Your Order Is Completed.",
     text:"text Hello",
   html: "<p>Dear Customer </p>"+"<br/>"+"<p>Your Order is Successful </p>"+"<br/>"+
   "<p>Here is Your Order Details:</p>"+"<br/>"+

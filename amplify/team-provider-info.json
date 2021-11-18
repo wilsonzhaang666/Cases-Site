@@ -26,7 +26,7 @@
         },
         "SendEmailToUser": {
           "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
-          "s3Key": "amplify-builds/SendEmailToUser-476959785066717a4d43-build.zip",
+          "s3Key": "amplify-builds/SendEmailToUser-384a56555133592f4a33-build.zip",
           "sesEmail": "casessite01@gmail.com"
         },
         "SendEmailToAdmin": {
