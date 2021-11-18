@@ -171,7 +171,7 @@ const Button = styled.button`
         
         <Title>YOUR BAG</Title>
         <Top>
-          <TopButton onClick={() => history.push("/cases")}>CONTINUE SHOPPING</TopButton>
+          <TopButton>CONTINUE SHOPPING</TopButton>
 
           <TopTexts>
             <TopText>Shopping Bag</TopText>
