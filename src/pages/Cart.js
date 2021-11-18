@@ -32,6 +32,8 @@ const TopButton = styled.button`
       text-decoration: none;
       color: inherit;
   padding: 10px;
+  border: 1px solid ;
+
   font-weight: 600;
   cursor: pointer;
   background-color:transparent;
