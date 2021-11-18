@@ -29,17 +29,24 @@ const Top = styled.div`
 `;
 
 const TopButton = styled.button`
-text-decoration: none;
-color: inherit;
+      text-decoration: none;
+      color: inherit;
   padding: 10px;
   font-weight: 600;
   cursor: pointer;
-  border: ${(props) => props.type === "filled" && "none"};
-  background-color: ${(props) =>
-    props.type === "filled" ? "black" : "transparent"};
-  color: ${(props) => props.type === "filled" && "white"};
+  background-color:transparent;
 `;
 
+const TopButton1 = styled.button`
+      text-decoration: none;
+      color: inherit;
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border:none;
+  background-color:black};
+  color:white;
+`;
 const TopTexts = styled.div`
   ${mobile({ display: "none" })}
 `;
@@ -179,7 +186,7 @@ const Button = styled.button`
           <TopTexts>
             <TopText>Shopping Bag</TopText>
           </TopTexts>
-          <TopButton type="filled"onClick={() => history.push("/checkout")}>CHECKOUT NOW</TopButton>
+          <TopButton1 type="filled"onClick={() => history.push("/checkout")}>CHECKOUT NOW</TopButton1>
         </Top>
         <Bottom>
           <Info>
