@@ -29,6 +29,8 @@ const Top = styled.div`
 `;
 
 const TopButton = styled.button`
+text-decoration: none;
+color: inherit;
   padding: 10px;
   font-weight: 600;
   cursor: pointer;
@@ -165,13 +167,14 @@ const Button = styled.button`
   }
  
   return (
+    <>
     <Container>
 
       <Wrapper>
         
         <Title>YOUR BAG</Title>
         <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
+          <TopButton onClick={() => history.push("/cases")}>CONTINUE SHOPPING</TopButton>
 
           <TopTexts>
             <TopText>Shopping Bag</TopText>
@@ -236,6 +239,7 @@ const Button = styled.button`
       </Wrapper>
 
     </Container>
+    </>
   );
 };
 
