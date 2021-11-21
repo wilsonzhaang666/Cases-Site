@@ -32,7 +32,7 @@ const BookDetails = () => {
         <img src={url} style={{maxWidth:"400px",maxHeight:"500px",width:"auto",height:"auto"}}alt="10x Rule" />
       </div>
       <div className="detail-description">
-        <h2>{title}</h2>
+        <h3>{title}</h3>
         <p>{category}</p>
         <h3>{quantity}</h3>
         <h4>Price - $ {price}</h4>

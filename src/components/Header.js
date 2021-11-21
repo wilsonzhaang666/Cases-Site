@@ -25,13 +25,12 @@ const Header = () => {
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
     <LinkContainer to="/" style={{fontSize:"18px",margin:"10px"}} activeStyle={{ backgroundColor: "white",color:"black" }}>
-
     <NavDropdown.Item>Home</NavDropdown.Item>
     </LinkContainer>
     <LinkContainer to="/cases" style={{fontSize:"18px",margin:"10px"}} activeStyle={{ backgroundColor: "white",color:"black" }}>
 
     <NavDropdown.Item>Cases</NavDropdown.Item>
-    </LinkContainer>
+    </LinkContainer >
     <LinkContainer to="/cart" style={{fontSize:"18px",margin:"10px"}} activeStyle={{ backgroundColor: "white",color:"black" }}>
 
 <NavDropdown.Item>Cart</NavDropdown.Item>
