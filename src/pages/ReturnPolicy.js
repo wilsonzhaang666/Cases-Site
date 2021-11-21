@@ -14,7 +14,7 @@ const ReturnPolicy = () => {
      <p style={{fontSize:"14px",color:"Red"}}>*The quality issue need to be reported to customer service to check the eligibility of returning. </p>
     <p>Unable to return because of changing of mind  and self-caused damage and other reasons except for the quality </p>
         <div style={{margin:"20%",marginTop:"20%"}}>
-        <b style={{textAlign:"center"}}>Please contact customer service first if you have any questions </b>
+        <b style={{fontSize:"20px",textAlign:"center"}}>Please contact customer service first if you have any questions </b>
 
             </div>
         </div>
