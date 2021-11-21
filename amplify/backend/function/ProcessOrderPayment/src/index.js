@@ -2,7 +2,7 @@ const { CognitoIdentityServiceProvider } = require("aws-sdk");
 const cognitoIdentityServiceProvider = new CognitoIdentityServiceProvider();
 const USER_POOL_ID = "ap-southeast-2_nWSYfmxen";
  
-const stripe = require('stripe')('sk_test_51JmIKpHLMDgfJmh8riUTbAeTEi3uqiAKXonWDpn0K699hDMAv9U9HpAhga8dbSRN2LVjzaVReb8MX3YVaeCAFQyO00VUL1He3Z');
+const stripe = require('stripe')('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');
 
 const getUserEmail = async (event) => {
   const params = {
