@@ -6,11 +6,12 @@ import Product from "../components/Product";
 
 import { mobile } from "../responsive";
 const Books = () => {
-    console.log(BookContext)
     const [Category, setCategory] = useState("iphone11");
     const [field, setField] =  useState("iphone11");
 
     const { books } = useContext(BookContext);
+    console.log(books)
+
     const handleInputChange = (event) => {
         setField(event.target.value);
         setCategory(event.target.value);
