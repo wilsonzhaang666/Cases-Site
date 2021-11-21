@@ -232,11 +232,11 @@ const Button = styled.button`
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>${(total*0.9).toFixed(2)}</SummaryItemPrice>
+              <SummaryItemPrice>${(total).toFixed(2)}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Tax</SummaryItemText>
-              <SummaryItemPrice>${(total*0.1).toFixed(2)}</SummaryItemPrice>
+              <SummaryItemPrice>$0</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
