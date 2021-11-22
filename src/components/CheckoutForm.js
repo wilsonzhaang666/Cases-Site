@@ -139,7 +139,8 @@ useEffect(() => {
 
 
 
-            <br/> <span class="text-muted" style={{fontSize:"8px"}}>We only provide service to Victoria at the moment</span>
+            <br/> <span class="text-muted" style={{fontSize:"8px"}}>We only provide 15KM free delivery service from Carlton Victoria at the moment
+            <br/> DM in instagram Or Facebook for people that over 15KM</span>
             <div class="col-12">
               <label for="address" class="form-label">Address</label>
               <input type="text" class="form-control" id="address" placeholder="1234 Main St" required
