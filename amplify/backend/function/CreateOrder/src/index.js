@@ -8,7 +8,7 @@ const BOOK_ORDER_TABLE = "BookOrder-hjfzxqw62rgpdb4jgpf27ueacu-prod";
 const BOOK_ORDER_TYPE = "BookOrder";
 const BOOK_TABLE = "Book-hjfzxqw62rgpdb4jgpf27ueacu-prod";
 const createOrder = async (payload) => {
-  const { order_id,address, username,DeliverDate,PickUpDate,phoneNum, email, total } = payload;
+  const { order_id,address, username,DeliverDate,PickUpDate,phoneNum, email, total,firstName,lastName,address2,suburb,postcode } = payload;
   console.log(payload);
   var params = {
     TableName: ORDER_TABLE,
@@ -22,6 +22,12 @@ const createOrder = async (payload) => {
       address:address,
       user: username,
       total: total,
+      firstName: firstName,
+      lastName: lastName,
+      address:address,
+      address2: address2,
+      suburb: suburb,
+      postcode: postcode,
       updatedAt: new Date().toISOString(),
       createdAt: new Date().toISOString()
     }

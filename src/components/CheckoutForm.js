@@ -29,7 +29,7 @@ const CheckoutForm = () => {
   const { cart, total, clearCart } = useContext(CartContext);
   const { checkout } = useContext(BookContext);
 
-  const [orderDetails, setOrderDetails] = useState({ cart, total, address: null,phoneNum:null, PickUpDate:null,DeliverDate:null,token: null });
+  const [orderDetails, setOrderDetails] = useState({ cart, total,fisrtName:null, address: null,phoneNum:null, PickUpDate:null,DeliverDate:null,token: null });
   const [error, setError] = useState(null);
   const stripe = useStripe();
   const elements = useElements();
@@ -117,12 +117,62 @@ useEffect(() => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="checkout-form">
-        <label htmlFor="checkout-address">Shipping Address</label>
-        <input
-          id="checkout-address"
-          type="text"
-          onChange={(e) => setOrderDetails({ ...orderDetails, address: e.target.value })}
-        />
+         <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">First name</label>
+              <input type="text" class="form-control" id="firstName" placeholder="" required
+              onChange={(e) => setOrderDetails({ ...orderDetails, firstName: e.target.value })}/>
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Last name</label>
+              <input type="text" class="form-control" id="lastName" placeholder="" required
+              onChange={(e) => setOrderDetails({ ...orderDetails, lastName: e.target.value })}/>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+
+
+
+
+            <br/> <span class="text-muted" style={{fontSize:"8px"}}>We only provide service to Victoria at the moment</span>
+            <div class="col-12">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required
+              onChange={(e) => setOrderDetails({ ...orderDetails, address: e.target.value })}/>
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
+              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite"
+              onChange={(e) => setOrderDetails({ ...orderDetails, address2: e.target.value })}/>
+            </div>
+
+            <div class="col-12">
+              <label for="address2" class="form-label">Suburb</label>
+              <input type="text" class="form-control" id="address2" placeholder="Suburb" required
+              onChange={(e) => setOrderDetails({ ...orderDetails, suburb: e.target.value })}/>
+            </div>
+
+
+            <div class="col-md-3">
+              <label for="zip" class="form-label">Postcode</label>
+              <input type="text" class="form-control" id="zip" placeholder="" required
+                onChange={(e) => setOrderDetails({ ...orderDetails, postcode: e.target.value })}/>
+              <div class="invalid-feedback">
+                Postcode code required.
+              </div>
+            </div>
+          </div>
+
+
         <div className="stripe-section">
           <label htmlFor="stripe-element"> Credit or debit card </label>
           <CardElement id="stripe-element" options={CARD_ELEMENT_OPTIONS} onChange={handleChange} />
