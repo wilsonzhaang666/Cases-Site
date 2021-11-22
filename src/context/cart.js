@@ -10,7 +10,7 @@ const CartProvider = ({ children }) => {
     const total = [...cart].reduce((total, { amount, price }) => {
       return (total += amount * price);
     }, 0);
-    setTotal(parseFloat(total.toFixed(2)));
+    setTotal(parseFloat((total*0.8).toFixed(2)));
   }, [cart]);
 
   const increaseAmount = (id) => {

@@ -18,20 +18,20 @@
       "function": {
         "CreateOrder": {
           "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
-          "s3Key": "amplify-builds/CreateOrder-794c62314f5a34346a5a-build.zip"
+          "s3Key": "amplify-builds/CreateOrder-526f5a656150532b3244-build.zip"
         },
         "ProcessOrderPayment": {
           "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
-          "s3Key": "amplify-builds/ProcessOrderPayment-3746626c794c46693777-build.zip"
+          "s3Key": "amplify-builds/ProcessOrderPayment-5a317550723053535534-build.zip"
         },
         "SendEmailToUser": {
           "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
-          "s3Key": "amplify-builds/SendEmailToUser-6a6d6c6e71626b536150-build.zip",
+          "s3Key": "amplify-builds/SendEmailToUser-3758735a515a78782f33-build.zip",
           "sesEmail": "casessite01@gmail.com"
         },
         "SendEmailToAdmin": {
           "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
-          "s3Key": "amplify-builds/SendEmailToAdmin-66336d3170664a44362f-build.zip"
+          "s3Key": "amplify-builds/SendEmailToAdmin-53723079675338704643-build.zip"
         }
       }
     }

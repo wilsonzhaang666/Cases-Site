@@ -2,7 +2,7 @@ const { CognitoIdentityServiceProvider } = require("aws-sdk");
 const cognitoIdentityServiceProvider = new CognitoIdentityServiceProvider();
 const USER_POOL_ID = "ap-southeast-2_nWSYfmxen";
  
-const stripe = require('stripe')('sk_test_51JmIKpHLMDgfJmh8riUTbAeTEi3uqiAKXonWDpn0K699hDMAv9U9HpAhga8dbSRN2LVjzaVReb8MX3YVaeCAFQyO00VUL1He3Z');
+const stripe = require('stripe')('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');
 
 const getUserEmail = async (event) => {
   const params = {
@@ -29,7 +29,7 @@ exports.handler = async (event) => {
     const email = await getUserEmail(event);
 
     await stripe.charges.create({
-      amount: total * 100,
+      amount: (total * 100).toFixed(0),
       currency: "aud",
       source: token,
       description: `Order ${new Date()} by ${username} with ${email} `

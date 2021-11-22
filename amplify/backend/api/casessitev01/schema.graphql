@@ -80,7 +80,12 @@ input ProcessOrderInput {
   cart: [CartItem]
   total: Float!
   token: String!
+  firstName: String!
+  lastName: String!
   address: String!
+  address2: String
+  suburb: String!
+  postcode: String!
   phoneNum: Int!
   DeliverDate: String
   PickUpDate: String

@@ -29,7 +29,7 @@ const CheckoutForm = () => {
   const { cart, total, clearCart } = useContext(CartContext);
   const { checkout } = useContext(BookContext);
 
-  const [orderDetails, setOrderDetails] = useState({ cart, total,fisrtName:null, address: null,phoneNum:null, PickUpDate:null,DeliverDate:null,token: null });
+  const [orderDetails, setOrderDetails] = useState({ cart, total, address: null,phoneNum:null, PickUpDate:null,DeliverDate:null,token: null });
   const [error, setError] = useState(null);
   const stripe = useStripe();
   const elements = useElements();

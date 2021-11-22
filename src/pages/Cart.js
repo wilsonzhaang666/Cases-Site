@@ -170,7 +170,6 @@ const Button = styled.button`
 `;
   const history = useHistory();
   const { cart, total, increaseAmount, decreaseAmount } = useContext(CartContext);
-
   if (!cart.length) {
     return <h3>Empty Cart</h3>
   }
@@ -232,15 +231,19 @@ const Button = styled.button`
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>${(total).toFixed(2)}</SummaryItemPrice>
+              <SummaryItemPrice>${(total/0.8).toFixed(2)}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Tax</SummaryItemText>
               <SummaryItemPrice>$0</SummaryItemPrice>
             </SummaryItem>
+            <SummaryItem>
+              <SummaryItemText>Discount</SummaryItemText>
+              <SummaryItemPrice>10%</SummaryItemPrice>
+            </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>${total}</SummaryItemPrice>
+              <SummaryItemPrice>${(total).toFixed(2)}</SummaryItemPrice>
             </SummaryItem>
             <Button onClick={() => history.push("/checkout")}>CHECKOUT NOW</Button>
           </Summary>
