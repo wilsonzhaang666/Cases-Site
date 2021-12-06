@@ -13,6 +13,7 @@ import BookDetails from "./pages/BookDetails";
 import Admin from './pages/Admin';
 import OrderDetail from './pages/OrderDetail';
 import BookOrderDetail from './pages/BookOrderDetail';
+import ContactUs from './pages/ContactUs';
 // Components
 import Header from "./components/Header"
 
@@ -33,6 +34,9 @@ const App = () => {
         </Route>
         <Route exact path="/order">
           <OrderDetail />
+        </Route>
+        <Route exact path="/contactus">
+          <ContactUs />
         </Route>
         <Route path="/cart">
           <Cart />
