@@ -14,6 +14,7 @@ import Admin from './pages/Admin';
 import OrderDetail from './pages/OrderDetail';
 import BookOrderDetail from './pages/BookOrderDetail';
 import ContactUs from './pages/ContactUs';
+import DeliveryInfo from './pages/DeliveryInfo';
 // Components
 import Header from "./components/Header"
 
@@ -37,6 +38,9 @@ const App = () => {
         </Route>
         <Route exact path="/contactus">
           <ContactUs />
+        </Route>
+        <Route exact path="/deliveryinfo">
+          <DeliveryInfo />
         </Route>
         <Route path="/cart">
           <Cart />
