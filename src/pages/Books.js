@@ -110,7 +110,7 @@ const ContainerForProduct = styled.div`
 
       <FilterContainer>
         <Filter>
-          <FilterText>Select Your Phone Model:</FilterText>
+          <FilterText>Select Phone Model:</FilterText>
           <select onChange={handleInputChange} >
           <Option disabled selected>
               Case Type
@@ -130,7 +130,7 @@ const ContainerForProduct = styled.div`
           
         </Filter>
         <Filter>
-          <FilterText>Sort Products:</FilterText>
+          <FilterText>Sort Products:</FilterText><br/>
           <Select>
             <Option selected>Newest</Option>
           </Select>
