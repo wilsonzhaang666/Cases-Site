@@ -34,7 +34,6 @@ const BookDetails = () => {
       <div className="detail-description">
         <h3>{title}</h3>
         <p>{category}</p>
-        <h3>{quantity}</h3>
         <h4>Price - $ {price}</h4>
         <Button
           

@@ -110,7 +110,7 @@ const ContainerForProduct = styled.div`
 
       <FilterContainer>
         <Filter>
-          <FilterText>Filter Products:</FilterText>
+          <FilterText>Select Your Phone Model:</FilterText>
           <select onChange={handleInputChange} >
           <Option disabled selected>
               Case Type

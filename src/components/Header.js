@@ -29,7 +29,7 @@ const Header = () => {
     </LinkContainer>
     <LinkContainer to="/cases" style={{fontSize:"18px",margin:"10px"}} activeStyle={{ backgroundColor: "white",color:"black" }}>
 
-    <NavDropdown.Item>Cases</NavDropdown.Item>
+    <NavDropdown.Item>All Phone Cases</NavDropdown.Item>
     </LinkContainer >
     <LinkContainer to="/cart" style={{fontSize:"18px",margin:"10px"}} activeStyle={{ backgroundColor: "white",color:"black" }}>
 

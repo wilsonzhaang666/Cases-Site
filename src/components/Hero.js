@@ -8,7 +8,7 @@ const Hero = () => {
             <p>WELCOME</p>
             <h3>Protecting Your Phone<br />
             Dressing Your Phone</h3>
-            <Link className="btn" to="/cases">View All Cases</Link>
+            <Link className="btn" to="/cases">Shop Now</Link>
         </section>
     )
 }
