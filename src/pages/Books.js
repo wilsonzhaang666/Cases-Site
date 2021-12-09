@@ -130,7 +130,7 @@ const ContainerForProduct = styled.div`
           
         </Filter>
         <Filter>
-          <FilterText>Sort Products:</FilterText><br/>
+          <FilterText>Sort Products:</FilterText>
           <Select>
             <Option selected>Newest</Option>
           </Select>
