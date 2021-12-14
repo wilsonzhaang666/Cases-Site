@@ -6,12 +6,10 @@ import {
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import React, { useContext } from "react";
-import { IconButton } from '@material-ui/core';
+import { IconButton } from "@material-ui/core";
 import { BookContext } from "../context/books";
 import { CartContext } from "../context/cart";
 import { useParams, useHistory } from "react-router-dom";
-
-
 
 const Info = styled.div`
   opacity: 0;
@@ -37,10 +35,10 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f5fbfd;
+  background-color: #ffffff;
   position: relative;
 
-  &:hover ${Info}{
+  &:hover ${Info} {
     opacity: 1;
   }
 `;
@@ -67,7 +65,7 @@ const Icon = styled.div`
   align-items: center;
   justify-content: center;
   margin: 10px;
-  
+
   transition: all 0.5s ease;
   &:hover {
     background-color: #e9f5f5;
@@ -75,7 +73,7 @@ const Icon = styled.div`
   }
 `;
 
-const Product = ({ image,id}) => {
+const Product = ({ image, id }) => {
   const history = useHistory();
   const { books } = useContext(BookContext);
   const { addToCart } = useContext(CartContext);
@@ -88,36 +86,29 @@ const Product = ({ image,id}) => {
   }
 
   const { image: url, title, category, quantity, price } = book;
-  console.log(image)
-  console.log(id)
+  console.log(image);
+  console.log(id);
   return (
     <Container>
       <Circle />
       <Image src={image} />
       <Info>
-        
         <Icon>
-        <IconButton onClick={() => {
-            addToCart({ ...book, id });
-            history.push("/cart");
-          }}>
-
-          <ShoppingCartOutlined />
+          <IconButton
+            onClick={() => {
+              addToCart({ ...book, id });
+              history.push("/cart");
+            }}
+          >
+            <ShoppingCartOutlined />
           </IconButton>
-
         </Icon>
 
-
         <Icon>
-        <IconButton component={Link} to={`cases/${id}`}>
-
-
-          <SearchOutlined  />
+          <IconButton component={Link} to={`cases/${id}`}>
+            <SearchOutlined />
           </IconButton>
-
-          </Icon>
-
-
+        </Icon>
       </Info>
     </Container>
   );
