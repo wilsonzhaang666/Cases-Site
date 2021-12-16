@@ -1,8 +1,10 @@
 import React from 'react';
+
 import { Link } from 'react-router-dom';
 import {logoImg} from '../assets/logo.jpg';
 import {Navbar,Nav,Container,NavDropdown} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const Header = () => {
     return (
@@ -15,13 +17,16 @@ const Header = () => {
     width="80"
     height="80"/>
         
+
       
-      
-  <Navbar.Brand href="/" style={{ backgroundImage: "linear-gradient(to right, violet, indigo, orange, red)",webkitBackgroundClip: "text" ,color: "transparent",fontSize:"20"}}>
+  <Navbar.Brand href="/" style={{fontFamily:"Roboto", backgroundImage: "linear-gradient(to right, violet, indigo, orange, red)",webkitBackgroundClip: "text" ,color: "transparent",fontSize:"20"}}>
       Cases.Site
 </Navbar.Brand>
+<Navbar.Toggle aria-controls="basic-navbar-nav" style={{border:"none"}}>
+  <MenuIcon style={{fontSize:"300%",border:"none"}}/>
+ </Navbar.Toggle>
 
-  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
     <LinkContainer to="/" style={{fontSize:"18px",margin:"10px"}} activeStyle={{ backgroundColor: "white",color:"black" }}>

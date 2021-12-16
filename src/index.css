@@ -1,25 +1,38 @@
 /* Global Styles */
-@import url('https://fonts.googleapis.com/css2?family=Italianno&family=Rampart+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Pattaya&family=Poppins:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Italianno&family=Rampart+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pattaya&family=Poppins:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+@font-face {
+  font-family: "Roboto Condensed-Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://fonts.animaapp.com/RobotoCondensed-Regular")
+    format("truetype");
+}
+@font-face {
+  font-family: "Roboto Condensed-Bold";
+  font-style: normal;
+  font-weight: 700;
+  src: url("https://fonts.animaapp.com/RobotoCondensed-Bold") format("truetype");
+}
 
 html {
-  font-size: 62.5%
+  font-size: 62.5%;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 h1 {
   font-size: 2.6rem;
 }
-
 
 li,
 button,
@@ -70,16 +83,16 @@ a {
   right: 10px;
   font-weight: bold;
 }
-.navbar-link{
+.navbar-link {
   color: black;
   background-size: contain;
-
 }
 
 /* Hero Section */
 
 .hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), transparent), url(./assets/Home1.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), transparent),
+    url(./assets/Home1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -95,13 +108,12 @@ a {
 .hero h3 {
   padding: 1rem;
   position: relative;
-  bottom:10px;
-  font-family: 'Rampart One', cursive;}
+  bottom: 10px;
+  font-family: "Rampart One", cursive;
+}
 .hero p {
-  font-family: 'Italianno', cursive;
+  font-family: "Italianno", cursive;
   font-size: 60px;
-;
-
 }
 .hero .wrapper {
   width: 90%;
@@ -116,36 +128,69 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
-background-size: 1800% 1800%;
+  background: linear-gradient(
+    124deg,
+    #ff2400,
+    #e81d1d,
+    #e8b71d,
+    #e3e81d,
+    #1de840,
+    #1ddde8,
+    #2b1de8,
+    #dd00f3,
+    #dd00f3
+  );
+  background-size: 1800% 1800%;
 
--webkit-animation: rainbow 18s ease infinite;
--z-animation: rainbow 18s ease infinite;
--o-animation: rainbow 18s ease infinite;
+  -webkit-animation: rainbow 18s ease infinite;
+  -z-animation: rainbow 18s ease infinite;
+  -o-animation: rainbow 18s ease infinite;
   animation: rainbow 18s ease infinite;
 }
 @-webkit-keyframes rainbow {
-  0%{background-position:0% 82%}
-  50%{background-position:100% 19%}
-  100%{background-position:0% 82%}
+  0% {
+    background-position: 0% 82%;
+  }
+  50% {
+    background-position: 100% 19%;
+  }
+  100% {
+    background-position: 0% 82%;
+  }
 }
 @-moz-keyframes rainbow {
-  0%{background-position:0% 82%}
-  50%{background-position:100% 19%}
-  100%{background-position:0% 82%}
+  0% {
+    background-position: 0% 82%;
+  }
+  50% {
+    background-position: 100% 19%;
+  }
+  100% {
+    background-position: 0% 82%;
+  }
 }
 @-o-keyframes rainbow {
-  0%{background-position:0% 82%}
-  50%{background-position:100% 19%}
-  100%{background-position:0% 82%}
+  0% {
+    background-position: 0% 82%;
+  }
+  50% {
+    background-position: 100% 19%;
+  }
+  100% {
+    background-position: 0% 82%;
+  }
 }
-@keyframes rainbow { 
-  0%{background-position:0% 82%}
-  50%{background-position:100% 19%}
-  100%{background-position:0% 82%}
+@keyframes rainbow {
+  0% {
+    background-position: 0% 82%;
+  }
+  50% {
+    background-position: 100% 19%;
+  }
+  100% {
+    background-position: 0% 82%;
+  }
 }
-
-
 
 .books {
   display: flex;
@@ -165,7 +210,7 @@ background-size: 1800% 1800%;
   width: 18rem;
   height: 24rem;
   margin: 1rem 1rem;
-  
+
   border-top: 1px solid #efefef;
   background: floralwhite;
 }
@@ -183,9 +228,7 @@ background-size: 1800% 1800%;
   padding: 2rem 0rem;
   align-items: center;
   max-height: 20rem;
-
 }
-
 
 .book-link {
   background: #55606c;
@@ -217,7 +260,7 @@ select {
   width: 90%;
   margin: auto;
   height: 80vh;
-  text-align: center
+  text-align: center;
 }
 
 .detail-image {
