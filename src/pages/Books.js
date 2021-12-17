@@ -65,35 +65,19 @@ const Books = () => {
   //     </div>
   // )
 
-  const Container = styled.div``;
-
+  const Container = styled.div`
+    margin-top: -20px;
+    background-color: #f8f8f8;
+  `;
+  const ContainerBlank = styled.div`
+    height: 50px;
+  `;
   const Title = styled.h1`
-    margin: 20px;
+    margin-top: 20px;
   `;
-
-  const FilterContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
+  const ProductContainer = styled.div`
+    height: auto;
   `;
-
-  const Filter = styled.div`
-    margin: 20px;
-    ${mobile({ width: "0px 20px", display: "flex", flexDirection: "column" })}
-  `;
-
-  const FilterText = styled.span`
-    font-size: 20px;
-    font-weight: 600;
-    margin-right: 20px;
-    ${mobile({ marginRight: "0px" })}
-  `;
-
-  const Select = styled.select`
-    padding: 10px;
-    margin-right: 20px;
-    ${mobile({ margin: "10px 0px" })}
-  `;
-  const Option = styled.option``;
 
   const ContainerForProduct = styled.div`
     padding: 20px;
@@ -101,38 +85,66 @@ const Books = () => {
     flex-wrap: wrap;
     justify-content: space-between;
   `;
+  const ProductItem = styled.div`
+    flex: 1;
+    margin: 10px;
+    min-width: 100px;
+    height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+  `;
+  const ProductTitle = styled.h1`
+    text-align: left;
+    position: absolute;
+    color: black;
+    top: 2vh;
+    left: 2vh;
+  `;
+  const ProductSubtitle = styled.p`
+    text-align: left;
+    font-size: 10px;
+    position: absolute;
+    color: grey;
+    top: 4.5vh;
+    left: 2vh;
+  `;
+
   return (
     <Container>
-      <FilterContainer>
-        <Filter>
-          <FilterText>Select Phone Model:</FilterText>
-          <select onChange={handleInputChange}>
-            <Option disabled selected>
-              Case Type
-            </Option>
-            <Option value="iphone11">iPhone11</Option>
-            <Option value="iphone11pro">iPhone11 pro</Option>
-            <Option value="iphone11promax">iPhone11 pro Max</Option>
-            <Option value="iphone12">iPhone12</Option>
-            <Option value="iphone12mini">iPhone12 mini</Option>
-            <Option value="iphone12pro">iPhone12 pro</Option>
-            <Option value="iphone12promax">iPhone12 pro Max</Option>
-            <Option value="iphone13">iPhone13</Option>
-            <Option value="iphone13mini">iPhone13 mini</Option>
-            <Option value="iphone13pro">iPhone13 pro</Option>
-            <Option value="iphone13promax">iPhone13 pro Max</Option>
-            <Option value="airpod">AirPod</Option>
-            <Option value="airpodpro">AirPod Pro</Option>
-          </select>
-        </Filter>
-        <Filter>
-          <FilterText>Sort Products:</FilterText>
-          <Select>
-            <Option selected>Newest</Option>
-          </Select>
-        </Filter>
-      </FilterContainer>
-      <Title>Case For {Category}:</Title>
+      <ProductContainer>
+        <ContainerBlank></ContainerBlank>
+        <Title>Case For {Category}:</Title>
+
+        {books
+          .filter((book) => book.category === Category && book.quantity !== 0)
+          .map(({ image: image, id, title }) => (
+            <Link
+              to="/iphone13"
+              style={{ display: "inline-block", width: "50%", height: "100%" }}
+            >
+              <ProductItem style={{ backgroundColor: "#FFFFFF" }}>
+                <ProductTitle> {title}</ProductTitle>
+                {/* <ProductSubtitle>All series included</ProductSubtitle> */}
+
+                <iphonePicSection>
+                  <img
+                    src={image}
+                    style={{
+                      marginTop: "100px",
+                      maxHeight: "150px",
+                      marginLeft: "50px",
+                    }}
+                  />
+                </iphonePicSection>
+              </ProductItem>
+            </Link>
+          ))}
+      </ProductContainer>
 
       <ContainerForProduct>
         {books
