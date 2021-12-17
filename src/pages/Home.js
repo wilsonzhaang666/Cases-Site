@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
 import Carousel from 'react-bootstrap/Carousel'
 import { BookContext } from "../context/books";
-import styled,{css} from "styled-components";
+import styled, { css } from "styled-components";
 
 export const ValignTextMiddle = css`
   display: flex;
@@ -30,7 +30,7 @@ border-radius: 12px;
 justify-content: center;
 
 `;
-const SecondSideShow =styled.div`
+const SecondSideShow = styled.div`
 align-items: flex-start;
 display: flex;
 height:250px;
@@ -75,126 +75,149 @@ const ViewAll = styled(Link)`
     font-size:24px;
 `;
 
+
+
+//Second Section for the Phone Category
 const PhoneCategory = styled.div`
-    height:600px;
+    height:auto;
+
 `
 
-export const CategorySection = styled.div`
-  display: grid
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 50px 50px
-  grid-gap: 5px
-`;
+const PhoneCategoryTitle = styled.h1`
+margin:20px;
+`
 
-const iphone13Section = styled.div`
+const ContainerForCategory = styled.div`
+    padding: 20px;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+`;
+const PhoneCategoryItem = styled.div`
 
-    background-color:#00FF47;
-    height:240px;
-    border-radius: 12px;
-justify-content: center;
+  flex: 1;
+  margin: 10px;
+  min-width: 100px;
+  height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius:12px;
+  overflow:hidden;
+  text-align:left;
+
 `;
 
-const iphone12Section = styled.div`
-    display: flex;
-
-    background-color:#EB9494;
-    height:240px;
-    border-radius: 12px;
-justify-content: center;
-
-`;
-const iphone11Section = styled.div`
-    display: flex;
-
-    background-color:#EB9494;
-    height:240px;
-    border-radius: 12px;
-justify-content: center;
-
-`;
+//Section of Each Category Image 
+const iphonePicSection = styled.div`
+align-items: flex-start;
+`
+const CategoryTitle = styled.h1`
+text-align:left;
+position:absolute;
+color:black;
+top:2vh;
+left:2vh
+`
 
 const Home = () => {
-    const { featured } = useContext(BookContext);
-    if (!featured.length) {
-        return <h3>No Featured Books</h3>
-    }
-    return (
-        <>
-        <Carousel fade>
-  <Carousel.Item>
-        <MainSlideShow>
-        <GetToSeeOurBrand>
-      <span>
-        <span className="robotocondensed-regular-normal-black-18px" style={{fontSize: "18px"}}>Get To See Our brand new </span>
-        <Span1>
-          IPhone Cases <br />
-        </Span1>
-        <span className="robotocondensed-regular-normal-black-18px"  style={{fontSize: "18px"}}>For Only </span>
-        <Span3>$12.99</Span3>
-      </span>
-      <ViewAll style={{textAlign: "center",textDecoration: "none"}}to="/cases">
-       <span style={{color:"black",fontSize: "18px",fontWeight:"500"}}>View All</span>
-    </ViewAll>
-    </GetToSeeOurBrand>
-    <img 
-  src={require('../assets/Cases.png')} 
-     style={{marginTop: "10px",maxHeight:"200px"}}
-    />
-    
-        </MainSlideShow>
-  </Carousel.Item>
-  <Carousel.Item>
-  <SecondSideShow >
-        <GetToSeeOurBrand>
-      <span>
-        <span className="robotocondensed-regular-normal-black-18px" style={{fontSize: "18px",color:"white"}}>Come to Browse Our Christmas Collection </span>
+  const { featured } = useContext(BookContext);
+  if (!featured.length) {
+    return <h3>No Featured Books</h3>
+  }
+  return (
+    <>
+      <Carousel fade>
+        <Carousel.Item>
+          <MainSlideShow>
+            <GetToSeeOurBrand>
+              <span>
+                <span className="robotocondensed-regular-normal-black-18px" style={{ fontSize: "18px" }}>Get To See Our brand new </span>
+                <Span1>
+                  IPhone Cases <br />
+                </Span1>
+                <span className="robotocondensed-regular-normal-black-18px" style={{ fontSize: "18px" }}>For Only </span>
+                <Span3>$12.99</Span3>
+              </span>
+              <ViewAll style={{ textAlign: "center", textDecoration: "none" }} to="/cases">
+                <span style={{ color: "black", fontSize: "18px", fontWeight: "500" }}>View All</span>
+              </ViewAll>
+            </GetToSeeOurBrand>
+            <img
+              src={require('../assets/Cases.png')}
+              style={{ marginTop: "10px", maxHeight: "200px" }}
+            />
+
+          </MainSlideShow>
+        </Carousel.Item>
+        <Carousel.Item>
+          <SecondSideShow >
+            <GetToSeeOurBrand>
+              <span>
+                <span className="robotocondensed-regular-normal-black-18px" style={{ fontSize: "18px", color: "white" }}>Come to Browse Our Christmas Collection </span>
 
 
-      </span>
-      <ViewAll style={{textAlign: "center",textDecoration: "none"}}to="/cases">
-       <span style={{color:"black",fontSize: "18px",fontWeight:"500"}}>View All</span>
-    </ViewAll>
-    </GetToSeeOurBrand>
-    <img 
-  src={require('../assets/CasesItem2.png')} 
-     style={{marginTop: "10px",maxHeight:"200px",marginRight:"0px"}}/>
-    
-        </SecondSideShow>
+              </span>
+              <ViewAll style={{ textAlign: "center", textDecoration: "none" }} to="/cases">
+                <span style={{ color: "black", fontSize: "18px", fontWeight: "500" }}>View All</span>
+              </ViewAll>
+            </GetToSeeOurBrand>
+            <img
+              src={require('../assets/CasesItem2.png')}
+              style={{ marginTop: "10px", maxHeight: "200px", marginRight: "0px" }} />
+
+          </SecondSideShow>
 
 
-  </Carousel.Item>
-</Carousel>
-{/* <CategorySection>
-    <h1>IPhone Cases</h1>
-    <categoryItem>
-    <iphone13Section></iphone13Section>
-    <iphone12Section></iphone12Section>
-    <iphone11Section></iphone11Section>
-    </categoryItem>
+        </Carousel.Item>
+      </Carousel>
+      <PhoneCategory>
+        <PhoneCategoryTitle>IPhone Cases</PhoneCategoryTitle>
+
+        <ContainerForCategory>
+          <Link to="cases" style={{ display: "inline-block",width:"50%",height:"100%" }}>
+          <PhoneCategoryItem style={{backgroundColor: "#edfff2"}}>  
+          <CategoryTitle> IPhone13</CategoryTitle>
+          <iphonePicSection>
+          <img
+              src={require('../assets/iPhone13TP.png')}
+              style={{ marginTop: "100px", maxHeight: "150px", marginLeft: "50px"}} />
+          </iphonePicSection>
+            
+          </PhoneCategoryItem>
+          </Link>
+          <Link to="cases" style={{ display: "inline-block",width:"50%",height:"100%" }}>
+
+          <PhoneCategoryItem style={{backgroundColor: "#EB9494"}}>
+          <CategoryTitle>IPhone12</CategoryTitle>
+          <iphonePicSection>
+            
+          <img
+              src={require('../assets/Iphone12TP.png')}
+              style={{ marginTop: "70px", maxHeight: "150px", marginLeft:"30px"}} />
+          </iphonePicSection>
+          </PhoneCategoryItem>
+          </Link>
+          <Link to="cases" style={{ display: "inline-block",width:"100%",height:"100%" }}>
+
+          <PhoneCategoryItem style={{backgroundColor: "#F6FFBC"}}>
+          <CategoryTitle> IPhone11</CategoryTitle>
+          <iphonePicSection>
+          <img
+              src={require('../assets/Transparent IPhone11.png')}
+              style={{ marginTop: "120px", maxHeight: "150px", marginLeft: "50px"}} />
+          </iphonePicSection>
+          </PhoneCategoryItem>
+          </Link>
+
+        </ContainerForCategory>
+      </PhoneCategory>
 
 
-</CategorySection> */}
-       
-            <section className="featured">
-                <header className="featured-head">
-                    <h3>Latest Updated</h3>
-                </header>
-                <div className="books featured-list">
-                    {featured
-                    .filter(book => book.quantity!==0)
-                    .map(({ id, image, title }) => (
-                        <article key={id} className="book featured-book">
-                            <div className="book-image">
-                                <img src={image} alt={title} />
-                            </div>
-                            <Link to={`cases/${id}`} className="btn book-link">details</Link>
-                        </article>
-                    ))}
-                </div>
-            </section>
-        </>
-    )
+
+    </>
+  )
 }
 
 export default Home;
