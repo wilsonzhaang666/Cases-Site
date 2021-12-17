@@ -197,7 +197,7 @@ const Cart = () => {
     return (
       <Notification>
         <Notice>Empty Cart</Notice>
-        <Engagement>Go Grab some stuff and Come Back! </Engagement>
+        <Engagement>Go Grab some stuff and Come Back 😄! </Engagement>
       </Notification>
     );
   }
