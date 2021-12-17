@@ -242,7 +242,9 @@ const Home = () => {
           >
             <PhoneCategoryItem style={{ backgroundColor: "#EB9494" }}>
               <CategoryTitle>IPhone12</CategoryTitle>
-              <CategorySubtitle>All series included</CategorySubtitle>
+              <CategorySubtitle style={{ color: "#F6F6F6" }}>
+                All series included
+              </CategorySubtitle>
 
               <iphonePicSection>
                 <img
