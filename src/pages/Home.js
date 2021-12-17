@@ -176,7 +176,7 @@ const Home = () => {
         <PhoneCategoryTitle>IPhone Cases</PhoneCategoryTitle>
 
         <ContainerForCategory>
-          <Link to="cases" style={{ display: "inline-block",width:"50%",height:"100%" }}>
+          <Link to="/iphone13" style={{ display: "inline-block",width:"50%",height:"100%" }}>
           <PhoneCategoryItem style={{backgroundColor: "#edfff2"}}>  
           <CategoryTitle> IPhone13</CategoryTitle>
           <iphonePicSection>
@@ -187,7 +187,7 @@ const Home = () => {
             
           </PhoneCategoryItem>
           </Link>
-          <Link to="cases" style={{ display: "inline-block",width:"50%",height:"100%" }}>
+          <Link to="/iphone12" style={{ display: "inline-block",width:"50%",height:"100%" }}>
 
           <PhoneCategoryItem style={{backgroundColor: "#EB9494"}}>
           <CategoryTitle>IPhone12</CategoryTitle>
@@ -199,7 +199,7 @@ const Home = () => {
           </iphonePicSection>
           </PhoneCategoryItem>
           </Link>
-          <Link to="cases" style={{ display: "inline-block",width:"100%",height:"100%" }}>
+          <Link to="/iphone11" style={{ display: "inline-block",width:"100%",height:"100%" }}>
 
           <PhoneCategoryItem style={{backgroundColor: "#F6FFBC"}}>
           <CategoryTitle> IPhone11</CategoryTitle>
