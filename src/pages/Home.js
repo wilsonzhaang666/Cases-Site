@@ -194,7 +194,7 @@ const Home = () => {
           <iphonePicSection>
             
           <img
-              src={require('../assets/Iphone12TP.png')}
+              src={require('../assets/iphone12TP1.png')}
               style={{ marginTop: "70px", maxHeight: "150px", marginLeft:"30px"}} />
           </iphonePicSection>
           </PhoneCategoryItem>
