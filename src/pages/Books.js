@@ -1,10 +1,23 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { BookContext } from "../context/books";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Product from "../components/Product";
 
 import { mobile } from "../responsive";
+export const ValignTextMiddle = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export const RobotocondensedRegularNormalBlack18 = css`
+  color: var(--black);
+  font-family: var(--font-family-roboto_condensed-regular);
+  font-size: var(--font-size-m);
+  font-weight: 300;
+  font-style: normal;
+`;
 const Books = () => {
   const [Category, setCategory] = useState("iphone11");
   const [field, setField] = useState("iphone11");
@@ -66,8 +79,10 @@ const Books = () => {
   // )
 
   const Container = styled.div`
+    ${ValignTextMiddle}
+    ${RobotocondensedRegularNormalBlack18}
     margin-top: -20px;
-    background-color: #f8f8f8;
+    background-color: #e8e4e4;
   `;
   const ContainerBlank = styled.div`
     height: 50px;
@@ -101,17 +116,18 @@ const Books = () => {
   const ProductTitle = styled.h1`
     text-align: left;
     position: absolute;
-    color: black;
-    top: 2vh;
-    left: 2vh;
+    color: #424141;
+    bottom: 1vh;
+    left: 1vh;
+    font-weight: light;
   `;
   const ProductSubtitle = styled.p`
     text-align: left;
-    font-size: 10px;
+    font-size: 12px;
     position: absolute;
     color: grey;
-    top: 4.5vh;
-    left: 2vh;
+    bottom: 4.5vh;
+    left: 1vh;
   `;
 
   return (
@@ -122,22 +138,21 @@ const Books = () => {
 
         {books
           .filter((book) => book.category === Category && book.quantity !== 0)
-          .map(({ image: image, id, title }) => (
+          .map(({ image: image, id, title, price }) => (
             <Link
               to="/iphone13"
               style={{ display: "inline-block", width: "50%", height: "100%" }}
             >
               <ProductItem style={{ backgroundColor: "#FFFFFF" }}>
-                <ProductTitle> {title}</ProductTitle>
-                {/* <ProductSubtitle>All series included</ProductSubtitle> */}
+                <ProductTitle> ${price}</ProductTitle>
+                <ProductSubtitle>{title}</ProductSubtitle>
 
                 <iphonePicSection>
                   <img
                     src={image}
                     style={{
-                      marginTop: "100px",
-                      maxHeight: "150px",
-                      marginLeft: "50px",
+                      marginTop: "-100px",
+                      maxHeight: "130px",
                     }}
                   />
                 </iphonePicSection>
