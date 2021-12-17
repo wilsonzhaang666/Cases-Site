@@ -159,7 +159,7 @@ const Home = () => {
 
 
               </span>
-              <ViewAll style={{ textAlign: "center", textDecoration: "none" }} to="/cases">
+              <ViewAll style={{ textAlign: "center", textDecoration: "none" }} to="/event">
                 <span style={{ color: "black", fontSize: "18px", fontWeight: "500" }}>View All</span>
               </ViewAll>
             </GetToSeeOurBrand>
