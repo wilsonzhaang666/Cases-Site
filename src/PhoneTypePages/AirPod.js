@@ -5,9 +5,9 @@ import styled from "styled-components";
 import Product from "../components/Product";
 
 import { mobile } from "../responsive";
-const Books = () => {
-  const [Category, setCategory] = useState("iphone11");
-  const [field, setField] = useState("iphone11");
+const AirPod = () => {
+  const [Category, setCategory] = useState("airpod");
+  const [field, setField] = useState("airpod");
 
   const { books } = useContext(BookContext);
   console.log(books);
@@ -103,36 +103,7 @@ const Books = () => {
   `;
   return (
     <Container>
-      <FilterContainer>
-        <Filter>
-          <FilterText>Select Phone Model:</FilterText>
-          <select onChange={handleInputChange}>
-            <Option disabled selected>
-              Case Type
-            </Option>
-            <Option value="iphone11">iPhone11</Option>
-            <Option value="iphone11pro">iPhone11 pro</Option>
-            <Option value="iphone11promax">iPhone11 pro Max</Option>
-            <Option value="iphone12">iPhone12</Option>
-            <Option value="iphone12mini">iPhone12 mini</Option>
-            <Option value="iphone12pro">iPhone12 pro</Option>
-            <Option value="iphone12promax">iPhone12 pro Max</Option>
-            <Option value="iphone13">iPhone13</Option>
-            <Option value="iphone13mini">iPhone13 mini</Option>
-            <Option value="iphone13pro">iPhone13 pro</Option>
-            <Option value="iphone13promax">iPhone13 pro Max</Option>
-            <Option value="airpod">AirPod</Option>
-            <Option value="airpodpro">AirPod Pro</Option>
-          </select>
-        </Filter>
-        <Filter>
-          <FilterText>Sort Products:</FilterText>
-          <Select>
-            <Option selected>Newest</Option>
-          </Select>
-        </Filter>
-      </FilterContainer>
-      <Title>Case For {Category}:</Title>
+      <Title>Case For AirPod:</Title>
 
       <ContainerForProduct>
         {books
@@ -145,4 +116,4 @@ const Books = () => {
   );
 };
 
-export default Books;
+export default AirPod;

@@ -5,9 +5,9 @@ import styled from "styled-components";
 import Product from "../components/Product";
 
 import { mobile } from "../responsive";
-const Iphone11 = () => {
-  const [Category, setCategory] = useState("iphone11");
-  const [field, setField] = useState("iphone11");
+const AirPodPro = () => {
+  const [Category, setCategory] = useState("airpodpro");
+  const [field, setField] = useState("airpodpro");
 
   const { books } = useContext(BookContext);
   console.log(books);
@@ -63,23 +63,7 @@ const Iphone11 = () => {
   `;
   return (
     <Container>
-      <FilterContainer>
-        <Filter>
-          <FilterText>Select Phone Model:</FilterText>
-          <select onChange={handleInputChange}>
-            <Option value="iphone11">iPhone11</Option>
-            <Option value="iphone11pro">iPhone11 pro</Option>
-            <Option value="iphone11promax">iPhone11 pro Max</Option>
-          </select>
-        </Filter>
-        <Filter>
-          <FilterText>Sort Products:</FilterText>
-          <Select>
-            <Option selected>Newest</Option>
-          </Select>
-        </Filter>
-      </FilterContainer>
-      <Title>Case For {Category}:</Title>
+      <Title>Case For AirPod Pro:</Title>
 
       <ContainerForProduct>
         {books
@@ -92,4 +76,4 @@ const Iphone11 = () => {
   );
 };
 
-export default Iphone11;
+export default AirPodPro;

@@ -22,6 +22,15 @@
   src: url("https://fonts.animaapp.com/RobotoCondensed-Bold") format("truetype");
 }
 
+.carousel-indicators li {
+  background-color: #999 !important;
+  background-color: rgba(70, 70, 70, 0.25) !important;
+}
+
+.carousel-indicators .active {
+  margin-bottom: 15px;
+  background-color: #444 !important;
+}
 html {
   font-size: 62.5%;
 }

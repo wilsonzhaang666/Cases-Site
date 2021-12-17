@@ -106,6 +106,8 @@ const Admin = () => {
                                     <option value="iphone13mini">iphone13 mini</option>                            
                                     <option value="iphone13pro">iphone13 pro</option>                            
                                     <option value="iphone13promax">iphone13 pro Max</option>                            
+                                    <option value="airpod">AirPod</option>                            
+                                    <option value="airpodpro">AirPod Pro</option>                            
 
                                 </select>
                                 </p>
