@@ -86,8 +86,7 @@ const Product = ({ image, id }) => {
   }
 
   const { image: url, title, category, quantity, price } = book;
-  console.log(image);
-  console.log(id);
+
   return (
     <Container>
       <Circle />

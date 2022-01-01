@@ -5,6 +5,7 @@ import Amplify from "aws-amplify";
 //Event
 import Event from "./EventPage/Event";
 //PhoneTypePages
+import SimpleDialogDemo from "./components/PhoneTypeOptions";
 import Iphone11 from "./PhoneTypePages/iphone11";
 import Iphone12 from "./PhoneTypePages/iphone12";
 import Iphone13 from "./PhoneTypePages/iphone13";
@@ -37,6 +38,10 @@ const App = () => {
     <Router>
       <Header />
       <Switch>
+        <Route exact path="/tst1">
+          <SimpleDialogDemo />
+        </Route>
+
         <Route exact path="/event">
           <Event />
         </Route>
