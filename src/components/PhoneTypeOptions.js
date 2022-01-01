@@ -15,7 +15,7 @@ import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import { BookContext } from "../context/books";
 import styled from "styled-components";
-import Product from "../components/Product";
+import Product from "./Product";
 import { mobile } from "../responsive";
 
 const PhoneTypes = [
