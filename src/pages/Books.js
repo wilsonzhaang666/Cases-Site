@@ -14,7 +14,7 @@ import { blue } from "@material-ui/core/colors";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import { BookContext } from "../context/books";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Product from "../components/Product";
 import { mobile } from "../responsive";
 
@@ -150,17 +150,14 @@ const Books = () => {
   }
 
   const Container = styled.div`
-    ${ValignTextMiddle}
-    ${RobotocondensedRegularNormalBlack18}
     margin-top: -20px;
-    background-color: #e8e4e4;
+    background-color: #f8f8f8;
   `;
   const ContainerBlank = styled.div`
     height: 50px;
   `;
   const Title = styled.h1`
     font-family: Roboto;
-
     margin-top: 10px;
     text-align: center;
   `;
@@ -230,15 +227,16 @@ const Books = () => {
               style={{ display: "inline-block", width: "50%", height: "100%" }}
             >
               <ProductItem style={{ backgroundColor: "#FFFFFF" }}>
-                <ProductTitle> ${price}</ProductTitle>
-                <ProductSubtitle>{title}</ProductSubtitle>
+                <ProductTitle> {title}</ProductTitle>
+                {/* <ProductSubtitle>All series included</ProductSubtitle> */}
 
                 <iphonePicSection>
                   <img
                     src={image}
                     style={{
-                      marginTop: "-100px",
-                      maxHeight: "130px",
+                      marginTop: "100px",
+                      maxHeight: "150px",
+                      marginLeft: "50px",
                     }}
                   />
                 </iphonePicSection>

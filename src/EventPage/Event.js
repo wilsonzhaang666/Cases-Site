@@ -1,158 +1,254 @@
-import React, { useContext,useState } from 'react'
+import React, { useContext, useState } from "react";
+import PropTypes from "prop-types";
+import Button from "@material-ui/core/Button";
+import Avatar from "@material-ui/core/Avatar";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import ListItemText from "@material-ui/core/ListItemText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Dialog from "@material-ui/core/Dialog";
+import SmartphoneIcon from "@material-ui/icons/Smartphone";
+import AddIcon from "@material-ui/icons/Add";
+import { blue } from "@material-ui/core/colors";
+import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
-import { BookContext } from '../context/books';
+import { BookContext } from "../context/books";
 import styled from "styled-components";
 import Product from "../components/Product";
-
 import { mobile } from "../responsive";
-const Event = () => {
-    const [Category, setCategory] = useState("iphone11");
-    const [field, setField] =  useState("iphone11");
 
-    const { books,featured} = useContext(BookContext);
-    console.log(books)
+const PhoneTypes = [
+  "iPhone11",
+  "iPhone11 Pro",
+  "iPhone11 Pro Max",
+  "iPhone12",
+  "iPhone12 Pro",
+  "iPhone12 Pro Max",
+  "iPhone12 Mini",
+  "iPhone13",
+  "iPhone13 Pro",
+  "iPhone13 Pro Max",
+  "iPhone13 Mini",
+];
 
-    const handleInputChange = (event) => {
-        setField(event.target.value);
-        setCategory(event.target.value);
+function SimpleDialog(props) {
+  const { onClose, selectedValue, open } = props;
 
-      };
-    // general input change
-      const handleSubmit = (event) => {
-        event.preventDefault();
-    
-        
-      };
-    console.log(books)
-    if (!books.length) {
-        return <h3>No Books Available</h3>
+  const handleClose = () => {
+    onClose(selectedValue);
+  };
+
+  const handleListItemClick = (value) => {
+    onClose(value);
+  };
+
+  return (
+    <Dialog onClose={handleClose} open={open}>
+      <DialogTitle>Select Your Phone Type</DialogTitle>
+      <List sx={{ pt: 0 }}>
+        {PhoneTypes.map((phonetype) => (
+          <ListItem
+            button
+            onClick={() => handleListItemClick(phonetype)}
+            key={phonetype}
+          >
+            <ListItemAvatar>
+              <Avatar>
+                <img
+                  src={require("../assets/iphone-icon.png")}
+                  style={{
+                    maxHeight: "30px",
+                  }}
+                />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary={phonetype} />
+          </ListItem>
+        ))}
+      </List>
+    </Dialog>
+  );
+}
+
+SimpleDialog.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
+  selectedValue: PropTypes.string.isRequired,
+};
+
+const Books = () => {
+  //Dialog section
+  //
+  const [open, setOpen] = React.useState(true);
+  const [selectedValue, setSelectedValue] = React.useState(PhoneTypes[0]);
+  const [phonetype, setPhonetype] = useState(PhoneTypes[0]);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (value) => {
+    console.log(value);
+
+    setOpen(false);
+    if (value === "iPhone11") {
+      setSelectedValue("iphone11");
+      setPhonetype(value);
+    } else if (value === "iPhone11 Pro Max") {
+      setSelectedValue("iphone11promax");
+      setPhonetype(value);
+    } else if (value === "iPhone11 Pro") {
+      setSelectedValue("iphone11pro");
+      setPhonetype(value);
+    } else if (value === "iPhone12") {
+      setSelectedValue("iphone12");
+      setPhonetype(value);
+    } else if (value === "iPhone12 Pro") {
+      setSelectedValue("iphone12pro");
+      setPhonetype(value);
+    } else if (value === "iPhone12 Pro Max") {
+      setSelectedValue("iphone12promax");
+      setPhonetype(value);
+    } else if (value === "iPhone12 Mini") {
+      setSelectedValue("iphone12mini");
+      setPhonetype(value);
+    } else if (value === "iPhone13") {
+      setSelectedValue("iphone13");
+      setPhonetype(value);
+    } else if (value === "iPhone13 Pro") {
+      setSelectedValue("iphone13pro");
+      setPhonetype(value);
+    } else if (value === "iPhone13 Pro Max") {
+      setSelectedValue("iphone13promax");
+      setPhonetype(value);
+    } else if (value === "iPhone13 Mini") {
+      setSelectedValue("iphone13mini");
+      setPhonetype(value);
     }
-    
-    
-    // return (
-    //     <div>
-    //   <form onSubmit={handleSubmit}>
-    //   <div class="form-group">
-    //     <div className="col-md-4">
-    //       <label htmlFor="phonetype">Your Phone Type</label>
-    //       <select class="form-control"   onChange={handleInputChange} >
-    //            <option value="iphone11">iphone11</option>
-    //          <option value="iphone11pro">iphone11 pro</option>
-    //              <option value="iphone11promax">iphone11 pro Max</option>
-    //            <option value="iphone12">iphone12</option>                            
-    //              <option value="iphone12mini">iphone12 mini</option>                            
-    //             <option value="iphone12pro">iphone12 pro</option>                            
-    //              <option value="iphone12promax">iphone12 pro Max</option>                            
-    //              <option value="iphone13">iphone13</option>                            
-    //              <option value="iphone13mini">iphone13 mini</option>                            
-    //             <option value="iphone13pro">iphone13 pro</option>                            
-    //             <option value="iphone13promax">iphone13 pro Max</option>       
-    //         </select>
+  };
+  console.log(selectedValue);
 
-    //     </div>
-    //   </div>
-      
-    // </form>
-    //     <section className="books">
-    //         {books
-    //         .filter(book=>book.category===Category &&book.quantity!==0)
-    //         .map(({ image: image, id, title }) => (
-    //             <article key={id} className="book">
-    //                 <div className="book-image">
-    //                     <img src={image} style={{maxWidth:"150px",maxHeight:"120px",width:"auto",height:"auto"}}   alt={title} />
-    //                 </div>
-    //                 <Link to={`cases/${id}`} className="btn book-link">details</Link>
-    //             </article>
-    //         ))}
-            
-    //     </section>
-    //     </div>
-    // )
+  //Item Section
+  //
+  const [Category, setCategory] = useState(PhoneTypes[0]);
+  const [field, setField] = useState(PhoneTypes[0]);
 
-    const Container = styled.div``;
+  const { books } = useContext(BookContext);
 
-const Title = styled.h1`
-  margin: 20px;
-`;
+  const handleInputChange = (event) => {
+    setField(event.target.value);
+    setCategory(event.target.value);
+  };
+  // general input change
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+  console.log(books);
+  if (!books.length) {
+    return <h3>No Books Available</h3>;
+  }
 
-const FilterContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
+  const Container = styled.div`
+    margin-top: -20px;
+    background-color: #f8f8f8;
+  `;
+  const ContainerBlank = styled.div`
+    height: 50px;
+  `;
+  const Title = styled.h1`
+    font-family: Roboto;
+    margin-top: 10px;
+    text-align: center;
+  `;
+  const ProductContainer = styled.div`
+    height: auto;
+  `;
 
-const Filter = styled.div`
-  margin: 20px;
-  ${mobile({ width: "0px 20px", display: "flex", flexDirection: "column" })}
-`;
-
-const FilterText = styled.span`
-  font-size: 20px;
-  font-weight: 600;
-  margin-right: 20px;
-  ${mobile({ marginRight: "0px" })}
-`;
-
-const Select = styled.select`
-  padding: 10px;
-  margin-right: 20px;
-  ${mobile({ margin: "10px 0px" })}
-`;
-const Option = styled.option``;
-
-const ContainerForProduct = styled.div`
+  const ContainerForProduct = styled.div`
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-`;
-console.log(books)
+  `;
+  const ProductItem = styled.div`
+    flex: 1;
+    margin: 10px;
+    min-width: 100px;
+    height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+  `;
+  const ProductTitle = styled.h1`
+    text-align: left;
+    font-family: Roboto;
+    font-weight: light;
+    position: absolute;
+    color: black;
+    top: 2vh;
+    left: 2vh;
+    font-size: 16px;
+  `;
+  const FilterContainer = styled.div`
+    bottom: -40px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: relative;
+  `;
   return (
     <Container>
+      <SimpleDialog
+        selectedValue={selectedValue}
+        open={open}
+        onClose={handleClose}
+      />
+      <ProductContainer>
+        <FilterContainer>
+          <Button variant="outlined" onClick={handleClickOpen}>
+            Change The Phone Type
+          </Button>
+        </FilterContainer>
+        <ContainerBlank></ContainerBlank>
+        <Title>{phonetype}</Title>
 
-      <FilterContainer>
-        <Filter>
-          <FilterText>Select Phone Model:</FilterText>
-          <select onChange={handleInputChange} >
-          <Option disabled selected>
-              Case Type
-            </Option>
-           <Option value="iphone11">iPhone11</Option>
-         <Option value="iphone11pro">iPhone11 pro</Option>
-            <Option value="iphone11promax">iPhone11 pro Max</Option>
-            <Option value="iphone12">iPhone12</Option>                            
-             <Option value="iphone12mini">iPhone12 mini</Option>                            
-             <Option value="iphone12pro">iPhone12 pro</Option>                            
-              <Option value="iphone12promax">iPhone12 pro Max</Option>                            
-              <Option value="iphone13">iPhone13</Option>                            
-              <Option value="iphone13mini">iPhone13 mini</Option>                            
-             <Option value="iphone13pro">iPhone13 pro</Option>                            
-             <Option value="iphone13promax">iPhone13 pro Max</Option>       
-          </select>
-          
-        </Filter>
-        <Filter>
-          <FilterText>Sort Products:</FilterText>
-          <Select>
-            <Option selected>Newest</Option>
-          </Select>
-        </Filter>
-      </FilterContainer>
-      <Title>Case For {Category}:</Title>
-      <Title style={{fontWeight: 'bold' ,textAlign: 'center'}}> Christmas Collections</Title>
+        {books
+          .filter(
+            (book) =>
+              book.category === selectedValue &&
+              book.featured === true &&
+              book.quantity !== 0
+          )
+          .map(({ image: image, id, title }) => (
+            <Link
+              to={`cases/${id}`}
+              style={{ display: "inline-block", width: "50%", height: "100%" }}
+            >
+              <ProductItem style={{ backgroundColor: "#FFFFFF" }}>
+                <ProductTitle> {title}</ProductTitle>
+                {/* <ProductSubtitle>All series included</ProductSubtitle> */}
 
-      <ContainerForProduct>
-      
-      {books
-             .filter(book=>book.category===Category&&book.featured===true &&book.quantity!==0)
-             .map(({ image: image, id, title }) => (
-
-                     <Product image={image} id={id} key={id} />
-
-             ))}
-    </ContainerForProduct>
+                <iphonePicSection>
+                  <img
+                    src={image}
+                    style={{
+                      marginTop: "100px",
+                      maxHeight: "150px",
+                      marginLeft: "50px",
+                    }}
+                  />
+                </iphonePicSection>
+              </ProductItem>
+            </Link>
+          ))}
+      </ProductContainer>
     </Container>
   );
 };
 
-
-export default Event
+export default Books;
