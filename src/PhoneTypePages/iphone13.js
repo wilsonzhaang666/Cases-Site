@@ -182,10 +182,10 @@ const Iphone13 = () => {
     font-family: Roboto;
     font-weight: light;
     position: absolute;
-    color: black;
+    color: grey;
     top: 2vh;
     left: 2vh;
-    font-size: 16px;
+    font-size: 12px;
   `;
   const FilterContainer = styled.div`
     bottom: -40px;
@@ -193,6 +193,16 @@ const Iphone13 = () => {
     justify-content: center;
     display: flex;
     position: relative;
+  `;
+  const ProductPrice = styled.div`
+    text-align: left;
+    font-family: Roboto;
+    font-weight: light;
+    position: absolute;
+    color: black;
+    top: 5vh;
+    left: 2vh;
+    font-size: 16px;
   `;
   return (
     <Container>
@@ -214,13 +224,15 @@ const Iphone13 = () => {
           .filter(
             (book) => book.category === selectedValue && book.quantity !== 0
           )
-          .map(({ image: image, id, title }) => (
+          .map(({ image: image, id, title, price }) => (
             <Link
               to={`cases/${id}`}
               style={{ display: "inline-block", width: "50%", height: "100%" }}
             >
               <ProductItem style={{ backgroundColor: "#FFFFFF" }}>
                 <ProductTitle> {title}</ProductTitle>
+                <ProductPrice>${price}</ProductPrice>
+
                 {/* <ProductSubtitle>All series included</ProductSubtitle> */}
 
                 <iphonePicSection>
