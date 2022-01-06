@@ -5,7 +5,7 @@ import Amplify from "aws-amplify";
 //Event
 import Event from "./EventPage/Event";
 //PhoneTypePages
-import SimpleDialogDemo from "./components/PhoneTypeOptions";
+import SignIn from "./Auth/SignIn";
 import Iphone11 from "./PhoneTypePages/iphone11";
 import Iphone12 from "./PhoneTypePages/iphone12";
 import Iphone13 from "./PhoneTypePages/iphone13";
@@ -13,7 +13,6 @@ import AirPod from "./PhoneTypePages/AirPod";
 import AirPodPro from "./PhoneTypePages/AirPodPro";
 
 // Pages
-import Login from "./Auth/Login";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
 import Books from "./pages/Books";
@@ -40,11 +39,9 @@ const App = () => {
       <Header />
       <Switch>
         <Route exact path="/tst1">
-          <SimpleDialogDemo />
+          <SignIn />
         </Route>
-        <Route exact path="/login">
-          <Login />
-        </Route>
+
         <Route exact path="/event">
           <Event />
         </Route>
