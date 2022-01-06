@@ -2,7 +2,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Italianno&family=Rampart+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pattaya&family=Poppins:wght@400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+/*Custom UI Cognito*/
 
+:root {
+  --amplify-primary-color: #11a29b;
+  --amplify-primary-tint: #3f6060;
+  --amplify-primary-shade: #2dba89;
+  --amplify-background-color: #e0faf4;
+}
+/*general*/
 * {
   margin: 0;
   padding: 0;

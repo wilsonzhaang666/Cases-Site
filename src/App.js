@@ -13,6 +13,7 @@ import AirPod from "./PhoneTypePages/AirPod";
 import AirPodPro from "./PhoneTypePages/AirPodPro";
 
 // Pages
+import Login from "./Auth/Login";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
 import Books from "./pages/Books";
@@ -41,7 +42,9 @@ const App = () => {
         <Route exact path="/tst1">
           <SimpleDialogDemo />
         </Route>
-
+        <Route exact path="/login">
+          <Login />
+        </Route>
         <Route exact path="/event">
           <Event />
         </Route>
