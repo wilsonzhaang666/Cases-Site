@@ -208,7 +208,7 @@ const Register = ({ onRegister }) => {
           <img
             src={require("../assets/SiteLogo.png")}
             style={{
-              marginLeft: "-70px",
+              marginLeft: "-50px",
               minWidth: "240px",
               maxWidth: "100%",
               marginTop: "-120px",
