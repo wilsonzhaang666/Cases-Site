@@ -139,7 +139,7 @@ const SignInButton = styled.button`
   width: 100%;
   height: 50px;
   border-radius: 25px;
-  background: #57b846;
+  background: #4dc8d2;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -164,24 +164,27 @@ const ErrorContainer = styled.div`
   width: 50%;
   margin: 0 auto;
 `;
-const ConfirmSignUp = ({ onConfirm }) => {
+const ConfirmForgotReset = ({ onConfirmForgotReset }) => {
   const location = useLocation();
   const [code, setCode] = useState("");
+  const [new_password, setNewPassword] = useState("");
   const username = location.state.username;
-  const password = location.state.password;
   const [errorText, setErrorText] = useState("");
 
   const history = useHistory();
-  const confirmSignup = async (e) => {
+  const confirmResetPassword = async (e) => {
     e.preventDefault();
     try {
-      const user = await Auth.confirmSignUp(username, code);
+      const user = await Auth.forgotPasswordSubmit(username, code, new_password)
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+      const password = new_password;
       const login = await Auth.signIn(username, password);
 
       history.push("/");
       window.location.reload(false);
 
-      onConfirm();
+      onConfirmForgotReset();
     } catch (error) {
       setErrorText("error occur:" + error);
     }
@@ -202,7 +205,7 @@ const ConfirmSignUp = ({ onConfirm }) => {
           />
         </LogoContainer>
         <ContainerForForm>
-          <form onSubmit={confirmSignup}>
+          <form onSubmit={confirmResetPassword}>
             <TitleContainer class="login100-form-title">
               Confirm Sign Up
             </TitleContainer>
@@ -222,6 +225,19 @@ const ConfirmSignUp = ({ onConfirm }) => {
                 <AccountCircleOutlinedIcon style={{ fontSize: "28px" }} />
               </IconsContainer>
             </WrapInput>
+            <WrapInput>
+              <InputContainer
+                id="newPassword"
+                label="newPassword"
+                type="password"
+                value={new_password}
+                onChange={(e) => setNewPassword(e.target.value)}
+                placeholder="NewPassword"
+              />
+              <IconsContainer>
+                <AccountCircleOutlinedIcon style={{ fontSize: "28px" }} />
+              </IconsContainer>
+            </WrapInput>
 
             <ButtonCotainer>
               <SignInButton type="submit" color="primary">
@@ -235,4 +251,4 @@ const ConfirmSignUp = ({ onConfirm }) => {
   );
 };
 
-export default ConfirmSignUp;
+export default ConfirmForgotReset;

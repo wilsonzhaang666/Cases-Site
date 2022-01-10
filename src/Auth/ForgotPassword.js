@@ -139,7 +139,7 @@ const SignInButton = styled.button`
   width: 100%;
   height: 50px;
   border-radius: 25px;
-  background: #57b846;
+  background: #4dc8d2;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -164,24 +164,25 @@ const ErrorContainer = styled.div`
   width: 50%;
   margin: 0 auto;
 `;
-const ConfirmSignUp = ({ onConfirm }) => {
-  const location = useLocation();
-  const [code, setCode] = useState("");
-  const username = location.state.username;
-  const password = location.state.password;
+const ForgotPassword = ({ onForgot }) => {
+  const [username, setUsername] = useState("");
   const [errorText, setErrorText] = useState("");
 
   const history = useHistory();
-  const confirmSignup = async (e) => {
+  const forgotPasswordHandle = async (e) => {
     e.preventDefault();
     try {
-      const user = await Auth.confirmSignUp(username, code);
-      const login = await Auth.signIn(username, password);
+      const user = await Auth.forgotPassword(username)
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
 
-      history.push("/");
-      window.location.reload(false);
-
-      onConfirm();
+      history.push({
+        pathname: "/confirmforgot",
+        state: {
+          username: username,
+        },
+      });
+      onForgot();
     } catch (error) {
       setErrorText("error occur:" + error);
     }
@@ -202,21 +203,21 @@ const ConfirmSignUp = ({ onConfirm }) => {
           />
         </LogoContainer>
         <ContainerForForm>
-          <form onSubmit={confirmSignup}>
+          <form onSubmit={forgotPasswordHandle}>
             <TitleContainer class="login100-form-title">
-              Confirm Sign Up
+              Password Recovery
             </TitleContainer>
             <SubTitleContainer class="login100-form-title">
-              Please Input the Code that we send to your email
+              Please Input Your Username
             </SubTitleContainer>
             <ErrorContainer>{errorText}</ErrorContainer>
             <WrapInput>
               <InputContainer
-                id="code"
-                label="code"
-                value={code}
-                onChange={(e) => setCode(e.target.value)}
-                placeholder="Confirm Code"
+                id="username"
+                label="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Username"
               />
               <IconsContainer>
                 <AccountCircleOutlinedIcon style={{ fontSize: "28px" }} />
@@ -235,4 +236,4 @@ const ConfirmSignUp = ({ onConfirm }) => {
   );
 };
 
-export default ConfirmSignUp;
+export default ForgotPassword;

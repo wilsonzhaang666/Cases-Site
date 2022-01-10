@@ -11,11 +11,13 @@ import Iphone12 from "./PhoneTypePages/iphone12";
 import Iphone13 from "./PhoneTypePages/iphone13";
 import AirPod from "./PhoneTypePages/AirPod";
 import AirPodPro from "./PhoneTypePages/AirPodPro";
-
-// Pages
+// Auth
+import ForgotPassword from "./Auth/ForgotPassword";
 import SignIn from "./Auth/SignIn";
 import Register from "./Auth/Register";
 import ConfirmSignUp from "./Auth/ConfirmSignUp";
+import ConfirmForgotReset from "./Auth/ForgotPasswordReset";
+// Pages
 
 import Home from "./pages/Home";
 import Error from "./pages/Error";
@@ -44,6 +46,12 @@ const App = () => {
       <Switch>
         <Route exact path="/confirm">
           <ConfirmSignUp />
+        </Route>
+        <Route exact path="/confirmforgot">
+          <ConfirmForgotReset />
+        </Route>
+        <Route exact path="/passwordReset">
+          <ForgotPassword />
         </Route>
         <Route exact path="/signin">
           <SignIn />

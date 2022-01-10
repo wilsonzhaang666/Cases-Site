@@ -165,6 +165,11 @@ const ErrorContainer = styled.div`
   width: 50%;
   margin: 0 auto;
 `;
+const ForgotContainer = styled.div`
+padding-top: 16px;
+
+  text-align: center;'
+`;
 const Signin = ({ onSignin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -239,7 +244,21 @@ const Signin = ({ onSignin }) => {
               </SignInButton>
             </ButtonCotainer>
           </form>
-          <SignUpContainer class="text-center p-t-136">
+          <ForgotContainer>
+            <Link to="/passwordReset">
+              <p
+                style={{
+                  color: "#6a6c7e",
+                  fontSize: "16px",
+                }}
+              >
+                Forgot Password
+                <ArrowForwardOutlinedIcon />
+                <br />
+              </p>
+            </Link>
+          </ForgotContainer>
+          <SignUpContainer>
             <Link to="/register">
               <p
                 style={{
