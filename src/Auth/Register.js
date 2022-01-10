@@ -51,7 +51,6 @@ const ContainerForForm = styled.div`
   min-width: 200px;
   width: 50%;
   margin: 0 auto;
-  margin-left: -20px;
 `;
 const WrapInput = styled.div`
   position: relative;
