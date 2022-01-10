@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Auth } from "aws-amplify";
 import { Paper, Button, TextField } from "@material-ui/core";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import LockOpenOutlinedIcon from "@material-ui/icons/LockOpenOutlined";
@@ -159,31 +159,32 @@ const SignUpContainer = styled.div`
   text-align: center;
   padding-top: 136px;
 `;
-
 const ErrorContainer = styled.div`
   text-align: center;
   color: red;
   width: 50%;
   margin: 0 auto;
 `;
-const Signin = ({ onSignin }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorText, setError] = useState("");
-  const history = useHistory();
+const ConfirmSignUp = ({ onConfirm }) => {
+  const location = useLocation();
+  const [code, setCode] = useState("");
+  const username = location.state.username;
+  const password = location.state.password;
+  const [errorText, setErrorText] = useState("");
 
-  const signIn = async (e) => {
+  const history = useHistory();
+  const confirmSignup = async (e) => {
     e.preventDefault();
     try {
-      const user = await Auth.signIn(username, password);
-      history.push("/");
-      window.location.reload(false);
+      const user = await Auth.confirmSignUp(username, code);
+      const login = await Auth.signIn(username, password);
 
-      onSignin();
+      history.push("/");
+      onConfirm();
     } catch (error) {
-      console.log("error signing in", error);
-      setError("error signing in" + error);
+      setErrorText("error occur:" + error);
     }
+    window.location.reload(false);
   };
 
   return (
@@ -201,61 +202,37 @@ const Signin = ({ onSignin }) => {
           />
         </LogoContainer>
         <ContainerForForm>
-          <form onSubmit={signIn}>
+          <form onSubmit={confirmSignup}>
             <TitleContainer class="login100-form-title">
-              Member Login
+              Confirm Sign Up
             </TitleContainer>
             <SubTitleContainer class="login100-form-title">
-              Welcome To Cases.Site
+              Please Input the Code that we send to your email
             </SubTitleContainer>
+            <ErrorContainer>{errorText}</ErrorContainer>
             <WrapInput>
               <InputContainer
-                id="username"
-                label="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Username"
+                id="code"
+                label="code"
+                value={code}
+                onChange={(e) => setCode(e.target.value)}
+                placeholder="Confirm Code"
               />
               <IconsContainer>
                 <AccountCircleOutlinedIcon style={{ fontSize: "28px" }} />
               </IconsContainer>
             </WrapInput>
-            <WrapInput>
-              <InputContainer
-                id="password"
-                label="Password"
-                type="password"
-                placeholder="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <IconsContainer>
-                <LockOpenOutlinedIcon style={{ fontSize: "28px" }} />
-              </IconsContainer>
-            </WrapInput>
-            <ErrorContainer>{errorText}</ErrorContainer>
+
             <ButtonCotainer>
               <SignInButton type="submit" color="primary">
-                Sign In
+                Confirm
               </SignInButton>
             </ButtonCotainer>
           </form>
-          <SignUpContainer class="text-center p-t-136">
-            <Link to="/register">
-              <p
-                style={{
-                  color: "#6a6c7e",
-                }}
-              >
-                Create your Account <ArrowForwardOutlinedIcon />
-                <br />
-              </p>
-            </Link>
-          </SignUpContainer>
         </ContainerForForm>
       </InnerContainer>
     </FormContainer>
   );
 };
 
-export default Signin;
+export default ConfirmSignUp;

@@ -70,7 +70,7 @@ const InputContainer = styled.input`
   background: #e6e6e6;
   height: 50px;
   border-radius: 25px;
-  padding: 0 30px 0 68px;
+  padding: 0 30px 0 15px;
 `;
 const IconsContainer = styled.span`
   font-size: 18px;
@@ -130,7 +130,7 @@ const ButtonCotainer = styled.div`
   padding-top: 20px;
 `;
 
-const SignInButton = styled.button`
+const SignUpButton = styled.button`
   font-family: Montserrat-Bold;
   font-size: 15px;
   line-height: 1.5;
@@ -140,7 +140,7 @@ const SignInButton = styled.button`
   width: 100%;
   height: 50px;
   border-radius: 25px;
-  background: #57b846;
+  background: #f18a91;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -155,34 +155,50 @@ const SignInButton = styled.button`
   -moz-transition: all 0.4s;
   transition: all 0.4s;
 `;
-const SignUpContainer = styled.div`
-  text-align: center;
-  padding-top: 136px;
+const TitleForSection = styled.span`
+  margin: 10px;
+  font-size: 20px;
 `;
-
 const ErrorContainer = styled.div`
+  margin: 8px;
   text-align: center;
   color: red;
-  width: 50%;
-  margin: 0 auto;
 `;
-const Signin = ({ onSignin }) => {
+const Register = ({ onRegister }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errorText, setError] = useState("");
+  const [confirmpassword, setconfirmPassword] = useState("");
+  const [email, setEmail] = useState("");
   const history = useHistory();
-
+  const [ConfirmPasswordError, setConfirmPasswordError] = useState("");
+  const [errorText, setErrorText] = useState("");
   const signIn = async (e) => {
-    e.preventDefault();
-    try {
-      const user = await Auth.signIn(username, password);
-      history.push("/");
-      window.location.reload(false);
+    if (password === confirmpassword && confirmpassword !== "") {
+      e.preventDefault();
+      try {
+        const { user } = await Auth.signUp({
+          username,
+          password,
+          attributes: {
+            email, // optional
+            // optional - E.164 number convention
+            // other custom attributes
+          },
+        });
+        history.push({
+          pathname: "/confirm",
+          state: {
+            username: username,
+            password: password,
+          },
+        });
 
-      onSignin();
-    } catch (error) {
-      console.log("error signing in", error);
-      setError("error signing in" + error);
+        onRegister();
+      } catch (error) {
+        setErrorText("error occur" + error);
+      }
+    } else {
+      setErrorText("Please Type The Same Password Twice");
     }
   };
 
@@ -203,12 +219,15 @@ const Signin = ({ onSignin }) => {
         <ContainerForForm>
           <form onSubmit={signIn}>
             <TitleContainer class="login100-form-title">
-              Member Login
+              Registration
             </TitleContainer>
             <SubTitleContainer class="login100-form-title">
               Welcome To Cases.Site
             </SubTitleContainer>
+            <ErrorContainer>{errorText}</ErrorContainer>
             <WrapInput>
+              <TitleForSection>Username</TitleForSection>
+
               <InputContainer
                 id="username"
                 label="Username"
@@ -216,11 +235,23 @@ const Signin = ({ onSignin }) => {
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Username"
               />
-              <IconsContainer>
-                <AccountCircleOutlinedIcon style={{ fontSize: "28px" }} />
-              </IconsContainer>
+              <IconsContainer></IconsContainer>
             </WrapInput>
             <WrapInput>
+              <TitleForSection>Email</TitleForSection>
+
+              <InputContainer
+                id="email"
+                label="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+              />
+              <IconsContainer></IconsContainer>
+            </WrapInput>
+            <WrapInput>
+              <TitleForSection>Password</TitleForSection>
+
               <InputContainer
                 id="password"
                 label="Password"
@@ -229,33 +260,31 @@ const Signin = ({ onSignin }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <IconsContainer>
-                <LockOpenOutlinedIcon style={{ fontSize: "28px" }} />
-              </IconsContainer>
+              <IconsContainer></IconsContainer>
             </WrapInput>
-            <ErrorContainer>{errorText}</ErrorContainer>
+            <WrapInput>
+              <TitleForSection>Confirm Password</TitleForSection>
+
+              <InputContainer
+                id="confirmpassword"
+                label="confirmpassword"
+                type="password"
+                placeholder="Confirm Password"
+                value={confirmpassword}
+                onChange={(e) => setconfirmPassword(e.target.value)}
+              />
+              <IconsContainer></IconsContainer>
+            </WrapInput>
             <ButtonCotainer>
-              <SignInButton type="submit" color="primary">
-                Sign In
-              </SignInButton>
+              <SignUpButton type="submit" color="primary">
+                Register
+              </SignUpButton>
             </ButtonCotainer>
           </form>
-          <SignUpContainer class="text-center p-t-136">
-            <Link to="/register">
-              <p
-                style={{
-                  color: "#6a6c7e",
-                }}
-              >
-                Create your Account <ArrowForwardOutlinedIcon />
-                <br />
-              </p>
-            </Link>
-          </SignUpContainer>
         </ContainerForForm>
       </InnerContainer>
     </FormContainer>
   );
 };
 
-export default Signin;
+export default Register;
