@@ -38,7 +38,7 @@ const App = () => {
     <Router>
       <Header />
       <Switch>
-        <Route exact path="/tst1">
+        <Route exact path="/signin">
           <SignIn />
         </Route>
 
