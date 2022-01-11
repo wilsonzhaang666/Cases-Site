@@ -7,8 +7,9 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import MenuIcon from "@material-ui/icons/Menu";
 
-const Header = () => {
+const Header = (props) => {
   const [userLoggedIn, updateUser] = useState();
+
   useEffect(() => {
     const getData = async () => {
       const userStatus = await ionViewCanEnter();

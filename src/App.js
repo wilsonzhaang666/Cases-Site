@@ -1,5 +1,13 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useHistory,
+  useLocation,
+  withRouter,
+} from "react-router-dom";
+
 // Amplify
 import Amplify from "aws-amplify";
 //Event
@@ -39,10 +47,15 @@ import ReturnPolicy from "./pages/ReturnPolicy";
 import awsExports from "./aws-exports";
 Amplify.configure(awsExports);
 
-const App = () => {
+const App = (props) => {
+  let loggedStatus = {
+    username: undefined,
+    isLoggedIn: false,
+  };
+
   return (
     <Router>
-      <Header />
+      <Header props={loggedStatus} {...props} />
       <Switch>
         <Route exact path="/confirm">
           <ConfirmSignUp />

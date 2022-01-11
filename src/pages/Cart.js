@@ -190,6 +190,11 @@ const Cart = () => {
     margin-right: -50%;
     transform: translate(-50%, -50%);
   `;
+  const Reminder = styled.div`
+    font-size: 18px;
+    text-align: center;
+    padding: 20px;
+  `;
   const history = useHistory();
   const { cart, total, increaseAmount, decreaseAmount } =
     useContext(CartContext);
@@ -273,6 +278,22 @@ const Cart = () => {
                 <SummaryItemText>Total</SummaryItemText>
                 <SummaryItemPrice>${total.toFixed(2)}</SummaryItemPrice>
               </SummaryItem>
+              <Reminder>
+                Please Sign In Before Checkout 👉
+                <Link
+                  to="signin"
+                  style={{
+                    color: "black",
+                    backgroundImage:
+                      "linear-gradient(to right, violet, indigo, orange, red)",
+                    webkitBackgroundClip: "text",
+                    color: "transparent",
+                  }}
+                >
+                  Sign In
+                </Link>
+              </Reminder>
+
               <Button onClick={() => history.push("/checkout")}>
                 CHECKOUT NOW
               </Button>
