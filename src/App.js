@@ -125,10 +125,6 @@ const App = (props) => {
         <Route path="/admin">
           <Admin />
         </Route>
-
-        <Route path="*">
-          <Error />
-        </Route>
       </Switch>
     </Router>
   );
