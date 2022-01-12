@@ -34,7 +34,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && mkdir -p ./build/.well-known && cp ./applepay/apple-developer-merchantid-domain-association ./build/.well-known/",
+    "build": "react-scripts build && mkdir -p ./build/.well-known && cp ./ApplePay/apple-developer-merchantid-domain-association ./build/.well-known/",
     "test": "react-scripts test",
     
     "eject": "react-scripts eject"
