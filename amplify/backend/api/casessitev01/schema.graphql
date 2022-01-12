@@ -20,9 +20,6 @@ type Book
   orders: [BookOrder] @connection(keyName: "byBook", fields: ["id"])
 }
 
-
-
-
 type BookOrder
   @model(subscriptions: null)
   @key(name: "byBook", fields: ["book_id", "order_id"])
@@ -91,11 +88,21 @@ input ProcessOrderInput {
   PickUpDate: String
 }
 
+input TotalpriceInput {
+  total: Float!
+}
+
 type Mutation {
+  createPaymentIntent(input: TotalpriceInput): PaymentIntent
+    @function(name: "CreatePaymentIntent-${env}")
+
   processOrder(input: ProcessOrderInput!): OrderStatus
     @function(name: "ProcessOrderPayment-${env}")
     @function(name: "CreateOrder-${env}")
     @function(name: "SendEmailToUser-prod")
     @function(name: "SendEmailToAdmin-prod")
+}
 
+type PaymentIntent {
+  clientSecret: String!
 }

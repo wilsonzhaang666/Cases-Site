@@ -22,7 +22,7 @@
         },
         "ProcessOrderPayment": {
           "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
-          "s3Key": "amplify-builds/ProcessOrderPayment-5a317550723053535534-build.zip"
+          "s3Key": "amplify-builds/ProcessOrderPayment-687268436f4d55493278-build.zip"
         },
         "SendEmailToUser": {
           "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
@@ -32,6 +32,10 @@
         "SendEmailToAdmin": {
           "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
           "s3Key": "amplify-builds/SendEmailToAdmin-53723079675338704643-build.zip"
+        },
+        "CreatePaymentIntent": {
+          "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
+          "s3Key": "amplify-builds/CreatePaymentIntent-4244474b4957586d684e-build.zip"
         }
       }
     }

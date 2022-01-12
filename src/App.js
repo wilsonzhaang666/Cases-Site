@@ -9,7 +9,10 @@ import {
 } from "react-router-dom";
 
 // Amplify
-import Amplify from "aws-amplify";
+import Amplify, { API, graphqlOperation } from "aws-amplify";
+//backend
+import { createPaymentIntent } from "./graphql/mutations";
+
 //Event
 import Event from "./EventPage/Event";
 //PhoneTypePages

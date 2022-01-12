@@ -1,21 +1,49 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { AmplifyAuthenticator } from "@aws-amplify/ui-react";
 import SignIn from "../Auth/SignIn";
 import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
+import { Elements, PaymentElement } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
+import { API, graphqlOperation } from "aws-amplify";
+import { createPaymentIntent } from "../graphql/mutations";
+import { CartContext } from "../context/cart";
+const stripePromise = loadStripe(
+  "pk_live_51JmIKpHLMDgfJmh8FvXl6eXgyMNL7xcLL4U6Z1jL0N1h3JZo4P2klIRyxYvRDyUPKeeluDNZAhlFW1ENpmtVhEI100NFSpYj73"
+);
 const Checkout = () => {
-  const stripePromise = loadStripe(
-    "pk_live_51JmIKpHLMDgfJmh8FvXl6eXgyMNL7xcLL4U6Z1jL0N1h3JZo4P2klIRyxYvRDyUPKeeluDNZAhlFW1ENpmtVhEI100NFSpYj73"
-  );
+  const { cart, total, clearCart } = useContext(CartContext);
+  const paymentPrice = { total: total };
+  const [clientSecret, setClientSecret] = useState("");
+  const fetchPaymentIntent = async () => {
+    const response = await API.graphql(
+      graphqlOperation(createPaymentIntent, { input: paymentPrice })
+    );
+    console.log(response);
+    setClientSecret(response.data.createPaymentIntent.clientSecret);
+  };
+  useEffect(() => {
+    if (!clientSecret) {
+      fetchPaymentIntent();
+    }
+  }, [clientSecret]);
+
+  console.log(clientSecret);
+  const thekey = clientSecret;
+  const request = ("'" + clientSecret + "'").toString();
+  console.log(request);
+
+  const options = {
+    clientSecret,
+  };
+
   return (
     <section>
       <AmplifyAuthenticator>
-        <Elements stripe={stripePromise}>
-          <section>
+        {clientSecret && (
+          <Elements stripe={stripePromise} options={options}>
             <CheckoutForm />
-          </section>
-        </Elements>
+          </Elements>
+        )}
       </AmplifyAuthenticator>
     </section>
   );

@@ -3,7 +3,12 @@ import { useHistory } from "react-router-dom";
 import moment from "moment";
 import { BookContext } from "../context/books";
 import { CartContext } from "../context/cart";
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import {
+  CardElement,
+  useElements,
+  useStripe,
+  PaymentElement,
+} from "@stripe/react-stripe-js";
 import DatePicker from "react-datepicker";
 import styled from "styled-components";
 import Collapse from "@material-ui/core/Collapse";
@@ -224,7 +229,6 @@ const CheckoutForm = () => {
             {" "}
             <div>
               <TitleContainer>Customer Info and Payments</TitleContainer>
-
               <NameContainer>
                 <FormSection>
                   <label for="firstName" class="form-label">
@@ -434,6 +438,8 @@ const CheckoutForm = () => {
                 }
               />
               <Collapse in={isChecked}>
+                {/* <PaymentElement /> */}
+
                 <FormSection>
                   <div className="stripe-section">
                     <label htmlFor="stripe-element">

@@ -28,14 +28,15 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "3.4.1",
     "react-stripe-elements": "^6.0.1",
-    "stripe": "^8.186.1",
+    "stripe": "^8.195.0",
     "styled-components": "^5.3.3",
     "uuid": "^8.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && mkdir -p ./build/.well-known && cp ./applepay/apple-developer-merchantid-domain-association ./build/.well-known/",
     "test": "react-scripts test",
+    
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
