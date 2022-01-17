@@ -166,6 +166,9 @@ const Button = styled.button`
   background-color: black;
   color: white;
   font-weight: 600;
+  :disabled {
+    background-color: #d3d3d3;
+  }
 `;
 
 const Notification = styled.div`
@@ -314,7 +317,10 @@ const Cart = () => {
                 }
               })()}
 
-              <Button onClick={() => history.push("/checkout")}>
+              <Button
+                disabled={!user}
+                onClick={() => history.push("/checkout")}
+              >
                 CHECKOUT NOW
               </Button>
             </Summary>
