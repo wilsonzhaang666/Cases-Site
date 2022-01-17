@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { CartContext } from "../context/cart";
 import { FiChevronUp } from "react-icons/fi";
 import { FiChevronDown } from "react-icons/fi";
@@ -8,194 +8,206 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { IconButton } from "@material-ui/core";
 import { mobile } from "../responsive";
-const Cart = () => {
-  const Container = styled.div``;
+import { Auth } from "aws-amplify";
 
-  const Wrapper = styled.div`
-    padding: 20px;
-    ${mobile({ padding: "10px" })}
-  `;
+const Container = styled.div``;
 
-  const Title = styled.h1`
-    font-weight: 300;
-    text-align: center;
-  `;
+const Wrapper = styled.div`
+  padding: 20px;
+  ${mobile({ padding: "10px" })}
+`;
 
-  const Top = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-  `;
+const Title = styled.h1`
+  font-weight: 300;
+  text-align: center;
+`;
 
-  const TopButton = styled.button`
-    text-decoration: none;
-    color: inherit;
-    padding: 10px;
-    border: 1px solid;
+const Top = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+`;
 
-    font-weight: 600;
-    cursor: pointer;
-    background-color: transparent;
-  `;
-
-  const TopButton1 = styled.button`
-      text-decoration: none;
-      color: inherit;
+const TopButton = styled.button`
+  text-decoration: none;
+  color: inherit;
   padding: 10px;
+  border: 1px solid;
+
   font-weight: 600;
   cursor: pointer;
-  border:none;
-  background-color:black};
-  color:white;
+  background-color: transparent;
 `;
-  const TopTexts = styled.div`
-    ${mobile({ display: "none" })}
-  `;
-  const TopText = styled.span`
-    text-decoration: underline;
-    cursor: pointer;
-    margin: 0px 10px;
-  `;
 
-  const Bottom = styled.div`
-    display: flex;
-    justify-content: space-between;
-    ${mobile({ flexDirection: "column" })}
-  `;
+const TopButton1 = styled.button`
+    text-decoration: none;
+    color: inherit;
+padding: 10px;
+font-weight: 600;
+cursor: pointer;
+border:none;
+background-color:black};
+color:white;
+`;
+const TopTexts = styled.div`
+  ${mobile({ display: "none" })}
+`;
+const TopText = styled.span`
+  text-decoration: underline;
+  cursor: pointer;
+  margin: 0px 10px;
+`;
 
-  const Info = styled.div`
-    flex: 3;
-  `;
+const Bottom = styled.div`
+  display: flex;
+  justify-content: space-between;
+  ${mobile({ flexDirection: "column" })}
+`;
 
-  const Product = styled.div`
-    display: flex;
-    justify-content: space-between;
-    ${mobile({ flexDirection: "column" })}
-  `;
+const Info = styled.div`
+  flex: 3;
+`;
 
-  const ProductDetail = styled.div`
-    flex: 2;
-    display: flex;
-  `;
+const Product = styled.div`
+  display: flex;
+  justify-content: space-between;
+  ${mobile({ flexDirection: "column" })}
+`;
 
-  const Image = styled.img`
-    width: 200px;
-  `;
+const ProductDetail = styled.div`
+  flex: 2;
+  display: flex;
+`;
 
-  const Details = styled.div`
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  `;
+const Image = styled.img`
+  width: 200px;
+`;
 
-  const ProductName = styled.span``;
+const Details = styled.div`
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`;
 
-  const ProductId = styled.span``;
+const ProductName = styled.span``;
 
-  const ProductColor = styled.div`
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: ${(props) => props.color};
-  `;
+const ProductId = styled.span``;
 
-  const ProductSize = styled.span``;
+const ProductColor = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: ${(props) => props.color};
+`;
 
-  const PriceDetail = styled.div`
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  `;
+const ProductSize = styled.span``;
 
-  const ProductAmountContainer = styled.div`
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  `;
+const PriceDetail = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
-  const ProductAmount = styled.div`
-    font-size: 24px;
-    margin: 5px;
-    ${mobile({ margin: "5px 15px" })}
-  `;
+const ProductAmountContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+`;
 
-  const ProductPrice = styled.div`
-    font-size: 30px;
-    font-weight: 200;
-    ${mobile({ marginBottom: "20px" })}
-  `;
+const ProductAmount = styled.div`
+  font-size: 24px;
+  margin: 5px;
+  ${mobile({ margin: "5px 15px" })}
+`;
 
-  const Hr = styled.hr`
-    background-color: #eee;
-    border: none;
-    height: 1px;
-  `;
+const ProductPrice = styled.div`
+  font-size: 30px;
+  font-weight: 200;
+  ${mobile({ marginBottom: "20px" })}
+`;
 
-  const Summary = styled.div`
-    flex: 1;
-    border: 0.5px solid lightgray;
-    border-radius: 10px;
-    padding: 20px;
-    height: 50vh;
-  `;
+const Hr = styled.hr`
+  background-color: #eee;
+  border: none;
+  height: 1px;
+`;
 
-  const SummaryTitle = styled.h1`
-    font-weight: 200;
-  `;
+const Summary = styled.div`
+  flex: 1;
+  border: 0.5px solid lightgray;
+  border-radius: 10px;
+  padding: 20px;
+  height: 50vh;
+`;
 
-  const SummaryItem = styled.div`
-    margin: 30px 0px;
-    display: flex;
-    justify-content: space-between;
-    font-weight: ${(props) => props.type === "total" && "500"};
-    font-size: ${(props) => props.type === "total" && "24px"};
-  `;
+const SummaryTitle = styled.h1`
+  font-weight: 200;
+`;
 
-  const SummaryItemText = styled.span``;
+const SummaryItem = styled.div`
+  margin: 30px 0px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: ${(props) => props.type === "total" && "500"};
+  font-size: ${(props) => props.type === "total" && "24px"};
+`;
 
-  const SummaryItemPrice = styled.span``;
+const SummaryItemText = styled.span``;
 
-  const Button = styled.button`
-    width: 100%;
-    padding: 10px;
-    background-color: black;
-    color: white;
-    font-weight: 600;
-  `;
+const SummaryItemPrice = styled.span``;
 
-  const Notification = styled.div`
-    height: 10em;
-    position: relative;
-  `;
-  const Notice = styled.h1`
-    margin: 0;
-    position: absolute;
-    top: 250%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-  `;
-  const Engagement = styled.p`
-    font-weight: light;
-    font-size: 14px;
-    color: grey;
-    margin: 0;
-    position: absolute;
-    top: 280%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-  `;
-  const Reminder = styled.div`
-    font-size: 18px;
-    text-align: center;
-    padding: 20px;
-  `;
+const Button = styled.button`
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+`;
+
+const Notification = styled.div`
+  height: 10em;
+  position: relative;
+`;
+const Notice = styled.h1`
+  margin: 0;
+  position: absolute;
+  top: 250%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+`;
+const Engagement = styled.p`
+  font-weight: light;
+  font-size: 14px;
+  color: grey;
+  margin: 0;
+  position: absolute;
+  top: 280%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+`;
+const Reminder = styled.div`
+  font-size: 18px;
+  text-align: center;
+  padding: 20px;
+`;
+const Cart = () => {
+  const [authStatus, setAuthStatus] = useState(null);
   const history = useHistory();
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    async function loadUser() {
+      const user = await Auth.currentAuthenticatedUser();
+      const username = user.username;
+      setUser(username);
+    }
+    loadUser();
+  }, []);
   const { cart, total, increaseAmount, decreaseAmount } =
     useContext(CartContext);
   if (!cart.length) {
@@ -278,21 +290,29 @@ const Cart = () => {
                 <SummaryItemText>Total</SummaryItemText>
                 <SummaryItemPrice>${total.toFixed(2)}</SummaryItemPrice>
               </SummaryItem>
-              <Reminder>
-                Please Sign In Before Checkout 👉
-                <Link
-                  to="signin"
-                  style={{
-                    color: "black",
-                    backgroundImage:
-                      "linear-gradient(to right, violet, indigo, orange, red)",
-                    webkitBackgroundClip: "text",
-                    color: "transparent",
-                  }}
-                >
-                  Sign In
-                </Link>
-              </Reminder>
+              {(() => {
+                if (user === null) {
+                  return (
+                    <Reminder>
+                      Please Sign In Before Checkout 👉
+                      <Link
+                        to="signin"
+                        style={{
+                          color: "black",
+                          backgroundImage:
+                            "linear-gradient(to right, violet, indigo, orange, red)",
+                          webkitBackgroundClip: "text",
+                          color: "transparent",
+                        }}
+                      >
+                        Sign In
+                      </Link>
+                    </Reminder>
+                  );
+                } else {
+                  return <></>;
+                }
+              })()}
 
               <Button onClick={() => history.push("/checkout")}>
                 CHECKOUT NOW
