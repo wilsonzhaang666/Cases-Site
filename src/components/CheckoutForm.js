@@ -115,6 +115,70 @@ const TitleContainer = styled.h1`
   font-size: 28px;
   text-align: center;
 `;
+
+const ContainerForChoosingButtons = styled.div``;
+const ChoosingButtons = styled.button`
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: #405cf5;
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+    rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    Ubuntu, sans-serif;
+  font-size: 100%;
+  height: 44px;
+  line-height: 1.15;
+  margin: 12px;
+  outline: none;
+  overflow: hidden;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transform: translateZ(0);
+  transition: all 0.2s, box-shadow 0.08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 40%;
+
+  :disabled {
+    cursor: default;
+  }
+
+  :focus {
+    box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+      rgba(50, 50, 93, 0.2) 0 6px 15px 0, rgba(0, 0, 0, 0.1) 0 2px 2px 0,
+      rgba(50, 151, 211, 0.3) 0 0 0 4px;
+  }
+`;
+
+const ContainerForTimePicker = styled.div`
+  border-radius: 12px;
+  border: 1px solid #9c9997;
+  padding: 10px;
+  text-align: center;
+`;
+
+const SubTitleForTimePicker = styled.span`
+  font-weight: light;
+  font-size: 18px;
+`;
+const TextMessage = styled.span`
+  font-weight: light;
+  font-size: 18px;
+`;
+const ContainerForpicker = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
 const CheckoutForm = () => {
   const [isChecked, setIsChecked] = React.useState(false);
 
@@ -377,45 +441,56 @@ const CheckoutForm = () => {
               <label htmlFor="choose">
                 Would you like to pick up or deliver
               </label>
-              <button type="button" onClick={() => loadPickUpTime()}>
-                Pick Up
-              </button>
-              <button type="button" onClick={() => loadDeliver()}>
-                Delivery
-              </button>
+              <ContainerForChoosingButtons>
+                {" "}
+                <ChoosingButtons type="button" onClick={() => loadPickUpTime()}>
+                  Pick Up
+                </ChoosingButtons>
+                <ChoosingButtons type="button" onClick={() => loadDeliver()}>
+                  Delivery
+                </ChoosingButtons>
+              </ContainerForChoosingButtons>
+
               {(() => {
                 if (deliverOption === null) {
                   return null;
                 } else if (deliverOption === "pickup") {
                   return (
-                    <div>
-                      <h1>Pick Time</h1>
-                      <h3>Monday-Sunday 10:30-5:30</h3>
-                      <p>Please pick a day:</p>
+                    <ContainerForTimePicker>
+                      {" "}
+                      <SubTitleForTimePicker>
+                        Monday-Sunday 10:30-5:30
+                      </SubTitleForTimePicker>{" "}
+                      <br />
+                      <TextMessage>Please pick a day:</TextMessage>
                       <DatePicker
                         showTimeSelect
                         selected={startDate}
                         onChange={(date) => TwoCallsForPU(date)}
                         placeholderText="Select a time"
                       />
-                    </div>
+                    </ContainerForTimePicker>
                   );
                 } else if (deliverOption === "deliver") {
                   return (
                     <div>
-                      <label htmlFor="date">Date</label>
-                      <div>
-                        <p>Please pick a day:</p>
-                        <DatePicker
-                          selected={new Date(dateRange.startDate)}
-                          onChange={(date) => twoCalls(date)}
-                          name="startDate"
-                          filterDate={(date) =>
-                            date.getDay() === 0 || date.getDay() === 6
-                          }
-                          placeholderText="Select a Monday"
-                        />
-                      </div>
+                      <ContainerForTimePicker>
+                        <TextMessage>We only deliver at Weekend</TextMessage>
+                        <br />
+
+                        <TextMessage>Please pick a time:</TextMessage>
+                        <ContainerForpicker>
+                          <DatePicker
+                            selected={new Date(dateRange.startDate)}
+                            onChange={(date) => twoCalls(date)}
+                            name="startDate"
+                            filterDate={(date) =>
+                              date.getDay() === 0 || date.getDay() === 6
+                            }
+                            placeholderText="Select a Monday"
+                          />
+                        </ContainerForpicker>
+                      </ContainerForTimePicker>
                     </div>
                   );
                 }

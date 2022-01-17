@@ -443,3 +443,11 @@ select {
     margin-top: 4rem;
   }
 }
+
+/* datepicker */
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+  border-radius: 12px;
+  text-align: center;
+}
