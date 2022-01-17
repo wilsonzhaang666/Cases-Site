@@ -74,7 +74,9 @@ const NameContainer = styled.div`
   flex-direction: row;
 `;
 const FormSection = styled.div`
-  margin: 10px;
+  margin: 5px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 const CardPaymentContainer = styled.div`
   border-radius: 12px;
