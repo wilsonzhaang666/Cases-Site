@@ -10,7 +10,7 @@ const CartProvider = ({ children }) => {
     const total = [...cart].reduce((total, { amount, price }) => {
       return (total += amount * price);
     }, 0);
-    setTotal(parseFloat((total).toFixed(2)));
+    setTotal(parseFloat(total.toFixed(2)));
   }, [cart]);
 
   const increaseAmount = (id) => {
@@ -31,16 +31,19 @@ const CartProvider = ({ children }) => {
     }
     setCart(updatedCart);
   };
-//change the title and quantity
+  //change the title and quantity
   const addToCart = (book) => {
-    const { id, title, price, image,quantity,category,featured} = book;
+    const { id, title, price, image, quantity, category, featured } = book;
     const cartItem = [...cart].find((item) => item.id === id);
     if (cartItem) {
       increaseAmount(id);
     } else {
-      const cartItems = [...cart, { id, title, image,quantity,category,featured, price, amount: 1 }];
+      const cartItems = [
+        ...cart,
+        { id, title, image, quantity, category, featured, price, amount: 1 },
+      ];
       setCart(cartItems);
-      console.log(cart)
+      console.log(cart);
     }
   };
 
@@ -50,7 +53,14 @@ const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, total, addToCart, increaseAmount, decreaseAmount, clearCart }}
+      value={{
+        cart,
+        total,
+        addToCart,
+        increaseAmount,
+        decreaseAmount,
+        clearCart,
+      }}
     >
       {children}
     </CartContext.Provider>

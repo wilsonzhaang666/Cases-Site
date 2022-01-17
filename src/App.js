@@ -29,7 +29,7 @@ import Register from "./Auth/Register";
 import ConfirmSignUp from "./Auth/ConfirmSignUp";
 import ConfirmForgotReset from "./Auth/ForgotPasswordReset";
 // Pages
-
+import PaymentSuccess from "./components/PaymentSuccess";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
 import Books from "./pages/Books";
@@ -60,6 +60,9 @@ const App = (props) => {
     <Router>
       <Header props={loggedStatus} {...props} />
       <Switch>
+        <Route path="/PaymentSucess">
+          <PaymentSuccess />
+        </Route>
         <Route exact path="/confirm">
           <ConfirmSignUp />
         </Route>
@@ -124,6 +127,9 @@ const App = (props) => {
         ></Route>
         <Route path="/admin">
           <Admin />
+        </Route>
+        <Route path="*">
+          <Error />
         </Route>
       </Switch>
     </Router>

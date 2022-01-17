@@ -13,6 +13,11 @@ export const processOrder = /* GraphQL */ `
     processOrder(input: $input)
   }
 `;
+export const processOrderWithPayment = /* GraphQL */ `
+  mutation ProcessOrderWithPayment($input: OrderInput!) {
+    ProcessOrderWithPayment(input: $input)
+  }
+`;
 export const createBook = /* GraphQL */ `
   mutation CreateBook(
     $input: CreateBookInput!

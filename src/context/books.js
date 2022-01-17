@@ -18,13 +18,12 @@ const BookProvider = ({ children }) => {
   const checkout = async (orderDetails) => {
     const payload = {
       id: uuidv4(),
-      ...orderDetails
+      ...orderDetails,
     };
     try {
       await API.graphql(graphqlOperation(processOrder, { input: payload }));
       console.log("Order is successful");
       alert("Your Order is Successful");
-
     } catch (err) {
       console.log(err);
       alert("There is something happen with the process");
@@ -38,8 +37,7 @@ const BookProvider = ({ children }) => {
       const { data } = await API.graphql({
         query: listBooks,
         authMode: "API_KEY",
-        variables: {  limit: 10000 },
-
+        variables: { limit: 10000 },
       });
       const books = data.listBooks.items;
       const featured = books.filter((book) => {

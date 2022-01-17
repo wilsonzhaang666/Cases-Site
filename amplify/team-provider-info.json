@@ -35,7 +35,11 @@
         },
         "CreatePaymentIntent": {
           "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
-          "s3Key": "amplify-builds/CreatePaymentIntent-4244474b4957586d684e-build.zip"
+          "s3Key": "amplify-builds/CreatePaymentIntent-44763852342f32707445-build.zip"
+        },
+        "PaymentProcess": {
+          "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
+          "s3Key": "amplify-builds/PaymentProcess-306950516c724f743532-build.zip"
         }
       }
     }

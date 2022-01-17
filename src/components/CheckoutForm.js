@@ -438,8 +438,6 @@ const CheckoutForm = () => {
                 }
               />
               <Collapse in={isChecked}>
-                {/* <PaymentElement /> */}
-
                 <FormSection>
                   <div className="stripe-section">
                     <label htmlFor="stripe-element">
