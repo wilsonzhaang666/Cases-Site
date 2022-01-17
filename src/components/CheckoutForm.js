@@ -81,6 +81,7 @@ const FormSection = styled.div`
 const CardPaymentContainer = styled.div`
   border-radius: 12px;
   border: 1px solid #9c9997;
+  padding: 15px;
 `;
 
 const CardButtonContainer = styled.div`
