@@ -49,6 +49,9 @@ cursor: pointer;
 border:none;
 background-color:black};
 color:white;
+:disabled {
+  background-color: #d3d3d3;
+}
 `;
 const TopTexts = styled.div`
   ${mobile({ display: "none" })}
@@ -235,7 +238,11 @@ const Cart = () => {
             <TopTexts>
               <TopText>Shopping Bag</TopText>
             </TopTexts>
-            <TopButton1 type="filled" onClick={() => history.push("/checkout")}>
+            <TopButton1
+              disabled={!user}
+              type="filled"
+              onClick={() => history.push("/checkout")}
+            >
               CHECKOUT NOW
             </TopButton1>
           </Top>
