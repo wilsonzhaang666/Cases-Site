@@ -286,7 +286,7 @@ const Cart = () => {
               <SummaryTitle>ORDER SUMMARY</SummaryTitle>
               <SummaryItem>
                 <SummaryItemText>Subtotal</SummaryItemText>
-                <SummaryItemPrice>${(total / 0.8).toFixed(2)}</SummaryItemPrice>
+                <SummaryItemPrice>${total.toFixed(2)}</SummaryItemPrice>
               </SummaryItem>
               <SummaryItem>
                 <SummaryItemText>Tax</SummaryItemText>
@@ -294,7 +294,7 @@ const Cart = () => {
               </SummaryItem>
               <SummaryItem>
                 <SummaryItemText>Discount</SummaryItemText>
-                <SummaryItemPrice>10%</SummaryItemPrice>
+                <SummaryItemPrice>0%</SummaryItemPrice>
               </SummaryItem>
               <SummaryItem type="total">
                 <SummaryItemText>Total</SummaryItemText>
