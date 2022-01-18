@@ -104,7 +104,6 @@ type Mutation {
 
   EmailChanges(input: ProcessOrderInput!): OrderStatus
     @function(name: "SendEmailToUser-prod")
-    @function(name: "SendEmailToAdmin-prod")
 }
 
 type PaymentIntent {

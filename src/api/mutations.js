@@ -13,9 +13,9 @@ export const processOrder = /* GraphQL */ `
     processOrder(input: $input)
   }
 `;
-export const processOrderWithPayment = /* GraphQL */ `
-  mutation ProcessOrderWithPayment($input: OrderInput!) {
-    ProcessOrderWithPayment(input: $input)
+export const emailChanges = /* GraphQL */ `
+  mutation EmailChanges($input: ProcessOrderInput!) {
+    EmailChanges(input: $input)
   }
 `;
 export const createBook = /* GraphQL */ `

@@ -197,6 +197,7 @@ const CheckoutForm = () => {
     DeliverDate: null,
     token: null,
   });
+  console.log(cart);
   const [error, setError] = useState(null);
   const stripe = useStripe();
   const elements = useElements();
