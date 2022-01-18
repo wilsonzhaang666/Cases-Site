@@ -88,23 +88,8 @@ input ProcessOrderInput {
   PickUpDate: String
 }
 
-input OrderInput {
-  id: ID!
-  cart: [CartItem]
-  total: Float!
-  firstName: String!
-  lastName: String!
-  address: String!
-  address2: String
-  suburb: String!
-  postcode: String!
-  phoneNum: Int!
-  DeliverDate: String
-  PickUpDate: String
-}
-
 input TotalpriceInput {
-  total: Int!
+  total: Float!
 }
 
 type Mutation {
@@ -117,8 +102,7 @@ type Mutation {
     @function(name: "SendEmailToUser-prod")
     @function(name: "SendEmailToAdmin-prod")
 
-  ProcessOrderWithPayment(input: OrderInput!): OrderStatus
-    @function(name: "CreateOrder-${env}")
+  EmailChanges(input: ProcessOrderInput!): OrderStatus
     @function(name: "SendEmailToUser-prod")
     @function(name: "SendEmailToAdmin-prod")
 }

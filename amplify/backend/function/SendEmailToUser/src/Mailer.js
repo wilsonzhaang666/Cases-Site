@@ -21,7 +21,7 @@ const getUserEmail = async (event) => {
 module.exports.run = async(event, context, cb) => {
 
 
-const { id, cart, total, address,phoneNum, token,DeliverDate,PickUpDate,firstName,lastName,address2,suburb,postcode  } = event.arguments.input;
+const { id, cart, total, address,phoneNum, token,DeliverDate,PickUpDate } = event.arguments.input;
 
   let mailResult;
   sendgridMail.setApiKey(API_KEY);
@@ -33,14 +33,10 @@ const { id, cart, total, address,phoneNum, token,DeliverDate,PickUpDate,firstNam
     text:"text Hello",
   html: "<p>Dear Customer </p>"+"<br/>"+"<p>Your Order is Successful </p>"+"<br/>"+
   "<p>Here is Your Order Details:</p>"+"<br/>"+
-  "<p>Contact Number:</p>"+phoneNum+
+  "<p>Contact Number</p>"+phoneNum+
 
-  "<p>Address:</p>"+address+
-  "<p>Address2:</p>"+address2+
-  "<p>suburb:</p>"+suburb+
-  "<p>postcode:</p>"+postcode+
-
-  "<p>total:AUD$</p>"+total+
+  "<p>Address</p>"+address+
+  "<p>total</p>"+total+
   "<p> Delivery/Pick Up Time:</p>"+DeliverDate+"/"+PickUpDate
 
   };

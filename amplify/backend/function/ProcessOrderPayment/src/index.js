@@ -3,7 +3,7 @@ const cognitoIdentityServiceProvider = new CognitoIdentityServiceProvider();
 const USER_POOL_ID = "ap-southeast-2_nWSYfmxen";
 
 const stripe = require("stripe")(
-  "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"
+  "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"
 );
 
 const getUserEmail = async (event) => {
@@ -33,11 +33,6 @@ exports.handler = async (event) => {
       cart,
       total,
       address,
-      firstName,
-      lastName,
-      address2,
-      suburb,
-      postcode,
       phoneNum,
       token,
       DeliverDate,
@@ -47,7 +42,7 @@ exports.handler = async (event) => {
     const email = await getUserEmail(event);
 
     await stripe.charges.create({
-      amount: (total * 100).toFixed(0),
+      amount: total * 100,
       currency: "aud",
       source: token,
       description: `Order ${new Date()} by ${username} with ${email} `,
@@ -57,11 +52,6 @@ exports.handler = async (event) => {
       cart,
       total,
       address,
-      firstName,
-      lastName,
-      address2,
-      suburb,
-      postcode,
       phoneNum,
       username,
       DeliverDate,

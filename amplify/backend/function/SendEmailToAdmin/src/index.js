@@ -9,8 +9,7 @@ const sendrequest = async (event) => {
   };
 exports.handler = async (event) => {
     try {
-        const { id, cart, total, address,phoneNum, token,DeliverDate,PickUpDate
-          ,firstName,lastName,address2,suburb,postcode  } = event.arguments.input;
+        const { id, cart, total, address,phoneNum, token,DeliverDate,PickUpDate } = event.arguments.input;
         const { username } = event.identity.claims;
 
         var params = {
@@ -20,14 +19,10 @@ exports.handler = async (event) => {
             Message: {
               Body: {
                 Text: { Data: "Hi there,\nThe new Order has accounced\nHere is Your Order Details:\n"
-                +"\n firstName:"+firstName+"\n lastName:"+lastName
                 +"\n id:"+id
                 +"\n Username:"+username
                 +"\nContact Number: "+phoneNum
                 +"\n Address: "+address
-                +"\n Address2: "+address2
-                +"\n suburb: "+suburb
-                +"\n postcode"+postcode
                 +"\n total: "+ total+cart
                 +"\n Delivery/Pick Up Time: "+DeliverDate+"/"+PickUpDate},
               },
