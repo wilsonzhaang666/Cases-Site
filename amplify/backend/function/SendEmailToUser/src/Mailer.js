@@ -2,7 +2,7 @@ const { CognitoIdentityServiceProvider } = require("aws-sdk");
 const cognitoIdentityServiceProvider = new CognitoIdentityServiceProvider();
 const USER_POOL_ID = "ap-southeast-2_nWSYfmxen";
 const sendgridMail = require("@sendgrid/mail");
-
+//api key for the sendgrid account
 const API_KEY =
   "SG.6Qanvb8sTbyAnwO4_ppVUQ.xFBQ3VhV8CV1EaaNK0QQsasYS5zt65VnzAeQ7AK53_8";
 
