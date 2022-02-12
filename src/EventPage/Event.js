@@ -80,58 +80,59 @@ SimpleDialog.propTypes = {
 const Books = () => {
   //Dialog section
   //
+  const event = "Bing Dwen Dwen";
   const [open, setOpen] = React.useState(true);
-  const [selectedValue, setSelectedValue] = React.useState(PhoneTypes[0]);
-  const [phonetype, setPhonetype] = useState(PhoneTypes[0]);
+  const [selectedValue, setSelectedValue] = React.useState(event);
+  const [phonetype, setPhonetype] = useState(event);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = (value) => {
-    console.log(value);
+  // const handleClose = (value) => {
+  //   console.log(value);
 
-    setOpen(false);
-    if (value === "iPhone11") {
-      setSelectedValue("iphone11");
-      setPhonetype(value);
-    } else if (value === "iPhone11 Pro Max") {
-      setSelectedValue("iphone11promax");
-      setPhonetype(value);
-    } else if (value === "iPhone11 Pro") {
-      setSelectedValue("iphone11pro");
-      setPhonetype(value);
-    } else if (value === "iPhone12") {
-      setSelectedValue("iphone12");
-      setPhonetype(value);
-    } else if (value === "iPhone12 Pro") {
-      setSelectedValue("iphone12pro");
-      setPhonetype(value);
-    } else if (value === "iPhone12 Pro Max") {
-      setSelectedValue("iphone12promax");
-      setPhonetype(value);
-    } else if (value === "iPhone12 Mini") {
-      setSelectedValue("iphone12mini");
-      setPhonetype(value);
-    } else if (value === "iPhone13") {
-      setSelectedValue("iphone13");
-      setPhonetype(value);
-    } else if (value === "iPhone13 Pro") {
-      setSelectedValue("iphone13pro");
-      setPhonetype(value);
-    } else if (value === "iPhone13 Pro Max") {
-      setSelectedValue("iphone13promax");
-      setPhonetype(value);
-    } else if (value === "iPhone13 Mini") {
-      setSelectedValue("iphone13mini");
-      setPhonetype(value);
-    }
-  };
+  //   setOpen(false);
+  //   if (value === "iPhone11") {
+  //     setSelectedValue("iphone11");
+  //     setPhonetype(value);
+  //   } else if (value === "iPhone11 Pro Max") {
+  //     setSelectedValue("iphone11promax");
+  //     setPhonetype(value);
+  //   } else if (value === "iPhone11 Pro") {
+  //     setSelectedValue("iphone11pro");
+  //     setPhonetype(value);
+  //   } else if (value === "iPhone12") {
+  //     setSelectedValue("iphone12");
+  //     setPhonetype(value);
+  //   } else if (value === "iPhone12 Pro") {
+  //     setSelectedValue("iphone12pro");
+  //     setPhonetype(value);
+  //   } else if (value === "iPhone12 Pro Max") {
+  //     setSelectedValue("iphone12promax");
+  //     setPhonetype(value);
+  //   } else if (value === "iPhone12 Mini") {
+  //     setSelectedValue("iphone12mini");
+  //     setPhonetype(value);
+  //   } else if (value === "iPhone13") {
+  //     setSelectedValue("iphone13");
+  //     setPhonetype(value);
+  //   } else if (value === "iPhone13 Pro") {
+  //     setSelectedValue("iphone13pro");
+  //     setPhonetype(value);
+  //   } else if (value === "iPhone13 Pro Max") {
+  //     setSelectedValue("iphone13promax");
+  //     setPhonetype(value);
+  //   } else if (value === "iPhone13 Mini") {
+  //     setSelectedValue("iphone13mini");
+  //     setPhonetype(value);
+  //   }
+  // };
   console.log(selectedValue);
 
   //Item Section
   //
-  const [Category, setCategory] = useState(PhoneTypes[0]);
+  const [Category, setCategory] = useState("event");
   const [field, setField] = useState(PhoneTypes[0]);
 
   const { books } = useContext(BookContext);
@@ -152,6 +153,8 @@ const Books = () => {
   const Container = styled.div`
     margin-top: -20px;
     background-color: #f8f8f8;
+    max-width: 1080px;
+    margin: auto;
   `;
   const ContainerBlank = styled.div`
     height: 50px;
@@ -166,16 +169,20 @@ const Books = () => {
   `;
 
   const ContainerForProduct = styled.div`
+    margin: auto;
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    @media only screen and (max-width: 700px) {
+      justify-content: left;
+      margin-left: 15%;
+    }
   `;
   const ProductItem = styled.div`
     flex: 1;
-    margin: 10px;
-    min-width: 100px;
-    height: 230px;
+    min-width: 250px;
+    height: 450px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -186,13 +193,33 @@ const Books = () => {
   `;
   const ProductTitle = styled.h1`
     text-align: left;
-    font-family: Roboto;
-    font-weight: light;
+    font-family: "Akaya Telivigala", cursive;
+    font-size: 24px;
+    font-weight: 500;
     position: absolute;
     color: black;
-    top: 2vh;
-    left: 2vh;
-    font-size: 16px;
+    top: 4vh;
+    left: 4vh;
+  `;
+  const ProductsubTitle = styled.h1`
+    text-align: left;
+    font-family: "Akaya Telivigala", cursive;
+    font-size: 24px;
+    font-weight: 500;
+    position: absolute;
+    color: black;
+    top: 8vh;
+    left: 4vh;
+  `;
+  const ProductPrice = styled.h2`
+    text-align: left;
+    font-family: "Akaya Telivigala", cursive;
+    font-size: 24px;
+    font-weight: 500;
+    position: absolute;
+    color: black;
+    top: 16vh;
+    left: 4vh;
   `;
   const FilterContainer = styled.div`
     bottom: -40px;
@@ -203,48 +230,73 @@ const Books = () => {
   `;
   return (
     <Container>
-      <SimpleDialog
+      {/* <SimpleDialog
         selectedValue={selectedValue}
         open={open}
         onClose={handleClose}
-      />
+      /> */}
       <ProductContainer>
-        <FilterContainer>
-          <Button variant="outlined" onClick={handleClickOpen}>
-            Change The Phone Type
-          </Button>
-        </FilterContainer>
         <ContainerBlank></ContainerBlank>
+
         <Title>{phonetype}</Title>
 
         {books
           .filter(
             (book) =>
-              book.category === selectedValue &&
-              book.featured === true &&
+              book.category === "event" &&
+              // book.featured === true &&
               book.quantity !== 0
           )
-          .map(({ image: image, id, title }) => (
-            <Link
-              to={`cases/${id}`}
-              style={{ display: "inline-block", width: "50%", height: "100%" }}
-            >
-              <ProductItem style={{ backgroundColor: "#FFFFFF" }}>
-                <ProductTitle> {title}</ProductTitle>
-                {/* <ProductSubtitle>All series included</ProductSubtitle> */}
+          .map(({ image: image, id, subtitle, title, price }) => (
+            <ContainerForProduct>
+              <Link
+                to={`cases/${id}`}
+                style={{
+                  display: "inline-block",
+                  width: "50%",
+                  height: "100%",
+                }}
+              >
+                <ProductItem style={{ backgroundColor: "#FFFFFF" }}>
+                  <ProductTitle> {title}</ProductTitle>
+                  <div className="snow"></div>
 
-                <iphonePicSection>
-                  <img
-                    src={image}
-                    style={{
-                      marginTop: "100px",
-                      maxHeight: "150px",
-                      marginLeft: "50px",
-                    }}
-                  />
-                </iphonePicSection>
-              </ProductItem>
-            </Link>
+                  {(() => {
+                    if (id === "BINGDDSET") {
+                      return (
+                        <ProductsubTitle>
+                          Bing Dwen Dwen Special Set{" "}
+                        </ProductsubTitle>
+                      );
+                    } else if (id === "BINGDDKEY") {
+                      return (
+                        <ProductsubTitle>
+                          Bing Dwen Dwen Keychain
+                        </ProductsubTitle>
+                      );
+                    } else if (id === "BINGDD") {
+                      return <ProductsubTitle>Bing Dwen Dwen</ProductsubTitle>;
+                    } else {
+                      return null;
+                    }
+                  })()}
+
+                  <ProductPrice>${price}</ProductPrice>
+                  {/* <ProductSubtitle>All series included</ProductSubtitle> */}
+
+                  <iphonePicSection>
+                    <img
+                      src={image}
+                      style={{
+                        marginTop: "150px",
+                        maxHeight: "400px",
+                        marginLeft: "10px",
+                      }}
+                    />
+                  </iphonePicSection>
+                </ProductItem>
+              </Link>
+            </ContainerForProduct>
           ))}
       </ProductContainer>
     </Container>

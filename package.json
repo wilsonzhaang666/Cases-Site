@@ -28,6 +28,7 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "3.4.1",
     "react-stripe-elements": "^6.0.1",
+    "sass": "^1.49.7",
     "stripe": "^8.195.0",
     "styled-components": "^5.3.3",
     "uuid": "^8.2.0"
@@ -36,7 +37,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build && mkdir -p ./build/.well-known && cp ./ApplePay/apple-developer-merchantid-domain-association ./build/.well-known/",
     "test": "react-scripts test",
-    
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
