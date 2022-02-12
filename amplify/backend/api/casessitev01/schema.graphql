@@ -93,9 +93,6 @@ input TotalpriceInput {
 }
 
 type Mutation {
-  createPaymentIntent(input: TotalpriceInput): PaymentIntent
-    @function(name: "CreatePaymentIntent-${env}")
-
   processOrder(input: ProcessOrderInput!): OrderStatus
     @function(name: "ProcessOrderPayment-${env}")
     @function(name: "CreateOrder-${env}")
@@ -104,8 +101,4 @@ type Mutation {
 
   EmailChanges(input: ProcessOrderInput!): OrderStatus
     @function(name: "SendEmailToUser-prod")
-}
-
-type PaymentIntent {
-  clientSecret: String!
 }
