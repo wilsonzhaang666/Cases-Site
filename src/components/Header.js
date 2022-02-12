@@ -47,7 +47,6 @@ const Header = (props) => {
       >
         <Container>
           <img src={require("../assets/logo.jpg")} width="80" height="80" />
-          {/* tested data */}
           <Navbar.Brand
             href="/"
             style={{
