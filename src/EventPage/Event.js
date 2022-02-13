@@ -238,7 +238,11 @@ const Books = () => {
       <ProductContainer>
         <ContainerBlank></ContainerBlank>
 
-        <Title>{phonetype}</Title>
+        <Title>
+          {phonetype}
+          <br />
+          (Pre-Order Estimate Arrival 10/03/2022)
+        </Title>
 
         {books
           .filter(
