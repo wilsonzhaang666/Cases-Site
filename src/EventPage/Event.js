@@ -17,7 +17,7 @@ import { BookContext } from "../context/books";
 import styled from "styled-components";
 import Product from "../components/Product";
 import { mobile } from "../responsive";
-
+import ReactPlayer from "react-player";
 const PhoneTypes = [
   "iPhone11",
   "iPhone11 Pro",
@@ -228,8 +228,20 @@ const Books = () => {
     display: flex;
     position: relative;
   `;
+  const PlayerContainer = styled.div`
+    max-width: 400px;
+    margin: auto;
+    border-radius: 15px;
+  `;
   return (
     <Container>
+      <PlayerContainer>
+        <ReactPlayer
+          className="react-player"
+          url="https://youtu.be/il-kQFI7nbA"
+          width="100%"
+        />
+      </PlayerContainer>
       {/* <SimpleDialog
         selectedValue={selectedValue}
         open={open}
