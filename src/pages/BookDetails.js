@@ -11,12 +11,12 @@ const BookDetails = () => {
   const { books } = useContext(BookContext);
   const { addToCart } = useContext(CartContext);
   const Button = styled.button`
-  width: 100%;
-  padding: 10px;
-  background-color: black;
-  color: white;
-  font-weight: 600;
-`;
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+  `;
   const book = books.find((book) => {
     return book.id === id;
   });
@@ -29,14 +29,29 @@ const BookDetails = () => {
   return (
     <section className="book-details">
       <div className="detail-image">
-        <img src={url} style={{maxWidth:"400px",maxHeight:"500px",width:"auto",height:"auto"}}alt="10x Rule" />
+        <img
+          src={url}
+          style={{
+            maxWidth: "400px",
+            maxHeight: "500px",
+            width: "auto",
+            height: "auto",
+          }}
+          alt="10x Rule"
+        />
       </div>
       <div className="detail-description">
         <h3>{title}</h3>
-        <p>{category}</p>
+        {(() => {
+          if (category === "event") {
+            return <p>Special Item</p>;
+          } else {
+            return <p>{category}</p>;
+          }
+        })()}
+
         <h4>Price - $ {price}</h4>
         <Button
-          
           className="btn"
           onClick={() => {
             addToCart({ ...book, id });

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import moment from "moment";
 import { BookContext } from "../context/books";
+
 import { CartContext } from "../context/cart";
 import {
   CardElement,
@@ -499,6 +500,14 @@ const CheckoutForm = () => {
                   );
                 }
               })()}
+            </FormSection>
+            <FormSection>
+              <label htmlFor="Policy">
+                <input type="checkbox" required />
+                <span style={{ padding: "10px" }}>
+                  I fully understand the return policy of the products
+                </span>
+              </label>
             </FormSection>
             <CardPaymentContainer>
               <FormControlLabel

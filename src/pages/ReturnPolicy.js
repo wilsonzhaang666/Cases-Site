@@ -18,7 +18,11 @@ const ReturnPolicy = () => {
           Unable to return because of changing of mind and self-caused damage
           and other reasons except for the quality{" "}
         </p>
-        <p>The Event Products are not refundable/returnable </p>
+        <b style={{ fontSize: "20px", textAlign: "center" }}>
+          Please Note that the above policy is not applied to any Special items,
+          please carefully consider it before your purchase the special items
+          are not refundable/returnable
+        </b>
 
         <div style={{ margin: "20%", marginTop: "20%" }}>
           <b style={{ fontSize: "20px", textAlign: "center" }}>
