@@ -186,7 +186,7 @@ const ConfirmForgotReset = ({ onConfirmForgotReset }) => {
 
       onConfirmForgotReset();
     } catch (error) {
-      setErrorText("error occur:" + error);
+      setErrorText("error occur:" + error.message);
     }
   };
 

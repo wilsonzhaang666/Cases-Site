@@ -194,7 +194,8 @@ const Register = ({ onRegister }) => {
 
         onRegister();
       } catch (error) {
-        setErrorText("error occur" + error);
+        setErrorText("error occur:" + error.message);
+        console.log(error);
       }
     } else {
       setErrorText("Please Type The Same Password Twice");

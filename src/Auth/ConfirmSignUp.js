@@ -183,7 +183,7 @@ const ConfirmSignUp = ({ onConfirm }) => {
 
       onConfirm();
     } catch (error) {
-      setErrorText("error occur:" + error);
+      setErrorText("error occur:" + error.message);
     }
   };
 

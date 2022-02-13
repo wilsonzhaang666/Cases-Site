@@ -185,8 +185,8 @@ const Signin = ({ onSignin }) => {
 
       onSignin();
     } catch (error) {
-      console.log("error signing in", error);
-      setError("error signing in" + error);
+      console.log("error signing in:", error.message);
+      setError("error signing in:" + error.message);
     }
   };
 

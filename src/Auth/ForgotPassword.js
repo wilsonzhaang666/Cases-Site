@@ -184,7 +184,7 @@ const ForgotPassword = ({ onForgot }) => {
       });
       onForgot();
     } catch (error) {
-      setErrorText("error occur:" + error);
+      setErrorText("error occur:" + error.message);
     }
   };
 
