@@ -216,7 +216,7 @@ const CheckoutForm = () => {
     return currentDate.getTime() < selectedDate.getTime();
   };
   const [deliverOption, setDeliverOption] = useState(null);
-  console.log(startDate);
+  console.log(orderDetails);
 
   useEffect(() => {
     if (orderDetails.token) {

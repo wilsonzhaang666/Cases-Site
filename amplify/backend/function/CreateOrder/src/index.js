@@ -8,7 +8,21 @@ const BOOK_ORDER_TABLE = "BookOrder-hjfzxqw62rgpdb4jgpf27ueacu-prod";
 const BOOK_ORDER_TYPE = "BookOrder";
 const BOOK_TABLE = "Book-hjfzxqw62rgpdb4jgpf27ueacu-prod";
 const createOrder = async (payload) => {
-  const { order_id,address, username,DeliverDate,PickUpDate,phoneNum, email, total } = payload;
+  const {
+    order_id,
+    address,
+    username,
+    DeliverDate,
+    PickUpDate,
+    phoneNum,
+    email,
+    total,
+    firstName,
+    lastName,
+    address2,
+    suburb,
+    postcode,
+  } = payload;
   console.log(payload);
   var params = {
     TableName: ORDER_TABLE,
@@ -16,15 +30,20 @@ const createOrder = async (payload) => {
       id: order_id,
       __typename: ORDER_TYPE,
       customer: email,
-      PhoneNumber:phoneNum,
-      DeliverDate:DeliverDate,
-      PickUpDate:PickUpDate,
-      address:address,
+      PhoneNumber: phoneNum,
+      DeliverDate: DeliverDate,
+      PickUpDate: PickUpDate,
+      address: address,
       user: username,
       total: total,
+      firstName: firstName,
+      lastName: lastName,
+      address2: address2,
+      suburb: suburb,
+      postcode: postcode,
       updatedAt: new Date().toISOString(),
-      createdAt: new Date().toISOString()
-    }
+      createdAt: new Date().toISOString(),
+    },
   };
   console.log(params);
   await documentClient.put(params).promise();
@@ -40,16 +59,17 @@ const createBookOrder = async (payload) => {
           id: uuidv4(),
           __typename: BOOK_ORDER_TYPE,
           book_id: cartItem.id,
+          amount: cartItem.amount,
           order_id: payload.order_id,
           customer: payload.email,
           createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString()
-        }
-      }
+          updatedAt: new Date().toISOString(),
+        },
+      },
     });
   }
   let params = {
-    RequestItems: {}
+    RequestItems: {},
   };
   params["RequestItems"][BOOK_ORDER_TABLE] = bookOrders;
   console.log(params);
@@ -60,36 +80,37 @@ const ChangeCasesStatus = async (payload) => {
   let bookOrders = [];
   for (i = 0; i < payload.cart.length; i++) {
     const cartItem = payload.cart[i];
-    if(cartItem.quantity>cartItem.amount||cartItem.quantity==cartItem.amount){
+    if (
+      cartItem.quantity > cartItem.amount ||
+      cartItem.quantity == cartItem.amount
+    ) {
       bookOrders.push({
         PutRequest: {
           Item: {
             id: cartItem.id,
             __typename: "Book",
-            image:cartItem.image,
+            image: cartItem.image,
             featured: cartItem.featured,
             title: cartItem.title,
-            price:cartItem.price,
+            price: cartItem.price,
             category: cartItem.category,
-            quantity: cartItem.quantity-cartItem.amount,
+            quantity: cartItem.quantity - cartItem.amount,
             createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString()
-          }
-        }
+            updatedAt: new Date().toISOString(),
+          },
+        },
       });
-    }else{
+    } else {
       return "NOT SUCCESS DUE TO THE STOCK ISSUE";
     }
-    
-    
   }
   let params = {
-    RequestItems: {}
+    RequestItems: {},
   };
   params["RequestItems"][BOOK_TABLE] = bookOrders;
   console.log(params);
   await documentClient.batchWrite(params).promise();
-}
+};
 //try cartItem.amount-1 for decrase the amount and try if the amount was smaller then 0 then false and if the
 // the if the amount is =0 then the item should not be updated, instead it should be delete.
 //need function for phone call
@@ -112,7 +133,17 @@ exports.handler = async (event) => {
     await ChangeCasesStatus(payload);
     // Note - You may add another function to email the invoice to the user
 
-    return { id, cart, total, address,phoneNum, username,DeliverDate, email ,PickUpDate};
+    return {
+      id,
+      cart,
+      total,
+      address,
+      phoneNum,
+      username,
+      DeliverDate,
+      email,
+      PickUpDate,
+    };
   } catch (err) {
     console.log(err);
     return new Error(err);

@@ -184,7 +184,7 @@ const Home = () => {
     <>
       <ContainerForAll>
         <Carousel fade={true}>
-          <Carousel.Item>
+          {/* <Carousel.Item>
             <Link
               to="/event"
               style={{ textAlign: "center", textDecoration: "none" }}
@@ -246,7 +246,7 @@ const Home = () => {
                 </GetToSeeOurBrand>
               </SecondSideShow>
             </Link>
-          </Carousel.Item>
+          </Carousel.Item> */}
           <Carousel.Item>
             <MainSlideShow>
               <GetToSeeOurBrand>
@@ -291,7 +291,7 @@ const Home = () => {
           </Carousel.Item>
         </Carousel>
         {/* //Bing dun dun */}
-        <EventCategory>
+        {/* <EventCategory>
           <PhoneCategoryTitle>Special Event</PhoneCategoryTitle>
           <ContainerForCategory>
             <Link
@@ -321,7 +321,7 @@ const Home = () => {
               </EventCategoryItem>
             </Link>
           </ContainerForCategory>
-        </EventCategory>
+        </EventCategory> */}
         {/* Phone Cases */}
         <PhoneCategory>
           <PhoneCategoryTitle>IPhone Cases</PhoneCategoryTitle>
