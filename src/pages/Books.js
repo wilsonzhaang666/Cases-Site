@@ -210,6 +210,18 @@ const Books = () => {
     top: 5vh;
     left: 2vh;
     font-size: 16px;
+    text-decoration: line-through;
+  `;
+
+  const ProductPriceForDiscount = styled.div`
+    text-align: left;
+    font-family: Roboto;
+    font-weight: light;
+    position: absolute;
+    color: black;
+    top: 8vh;
+    left: 2vh;
+    font-size: 16px;
   `;
   return (
     <Container>
@@ -239,6 +251,8 @@ const Books = () => {
               <ProductItem style={{ backgroundColor: "#FFFFFF" }}>
                 <ProductTitle> {title}</ProductTitle>
                 <ProductPrice>${price}</ProductPrice>
+                <ProductPriceForDiscount>$10</ProductPriceForDiscount>
+
                 {/* <ProductSubtitle>All series included</ProductSubtitle> */}
 
                 <iphonePicSection>

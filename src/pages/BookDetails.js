@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { BookContext } from "../context/books";
 import { CartContext } from "../context/cart";
@@ -9,6 +9,7 @@ const BookDetails = () => {
   const { id } = useParams();
   const history = useHistory();
   const { books } = useContext(BookContext);
+  const [updatedBook, setUpdatedBook] = useState("");
   const { addToCart } = useContext(CartContext);
   const Button = styled.button`
     width: 100%;
@@ -20,12 +21,23 @@ const BookDetails = () => {
   const book = books.find((book) => {
     return book.id === id;
   });
+
+  useEffect(() => {
+    if (book) {
+      setUpdatedBook(book);
+    }
+  }, [book]);
   if (!book) {
     return <h3>Loading...</h3>;
   }
 
   const { image: url, title, category, quantity, price } = book;
-
+  const handleAddtoCart = () => {
+    const DiscountProduct = updatedBook;
+    DiscountProduct.price = 10;
+    addToCart({ ...DiscountProduct, id });
+    history.push("/cart");
+  };
   return (
     <section className="book-details">
       <div className="detail-image">
@@ -50,12 +62,14 @@ const BookDetails = () => {
           }
         })()}
 
-        <h4>Price - $ {price}</h4>
+        <h4 style={{ textDecoration: "line-through 3px" }}>
+          Price - $ {price}
+        </h4>
+        <h4>Now - $ 10</h4>
         <Button
           className="btn"
           onClick={() => {
-            addToCart({ ...book, id });
-            history.push("/cart");
+            handleAddtoCart();
           }}
         >
           Add to Cart

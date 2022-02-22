@@ -216,6 +216,7 @@ const Cart = () => {
   }, []);
   const { cart, total, increaseAmount, decreaseAmount } =
     useContext(CartContext);
+
   if (!cart.length) {
     return (
       <Notification>
@@ -224,6 +225,7 @@ const Cart = () => {
       </Notification>
     );
   }
+  console.log(cart);
 
   return (
     <>
