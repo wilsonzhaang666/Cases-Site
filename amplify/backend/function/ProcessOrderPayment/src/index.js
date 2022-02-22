@@ -37,6 +37,11 @@ exports.handler = async (event) => {
       token,
       DeliverDate,
       PickUpDate,
+      firstName,
+      lastName,
+      address2,
+      suburb,
+      postcode,
     } = event.arguments.input;
     const { username } = event.identity.claims;
     const email = await getUserEmail(event);
@@ -57,6 +62,11 @@ exports.handler = async (event) => {
       DeliverDate,
       email,
       PickUpDate,
+      firstName,
+      lastName,
+      address2,
+      suburb,
+      postcode,
     };
   } catch (err) {
     throw new Error(err);

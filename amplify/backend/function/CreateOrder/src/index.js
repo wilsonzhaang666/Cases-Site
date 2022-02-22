@@ -23,7 +23,6 @@ const createOrder = async (payload) => {
     suburb,
     postcode,
   } = payload;
-  console.log(payload);
   var params = {
     TableName: ORDER_TABLE,
     Item: {
@@ -62,6 +61,7 @@ const createBookOrder = async (payload) => {
           amount: cartItem.amount,
           order_id: payload.order_id,
           customer: payload.email,
+          category: cartItem.category,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
         },
