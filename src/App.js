@@ -20,8 +20,8 @@ import Event from "./EventPage/Event";
 import Iphone11 from "./PhoneTypePages/iphone11";
 import Iphone12 from "./PhoneTypePages/iphone12";
 import Iphone13 from "./PhoneTypePages/iphone13";
-import AirPod from "./PhoneTypePages/AirPod";
-import AirPodPro from "./PhoneTypePages/AirPodPro";
+// import AirPod from "./PhoneTypePages/AirPod";
+// import AirPodPro from "./PhoneTypePages/AirPodPro";
 // Auth
 import ForgotPassword from "./Auth/ForgotPassword";
 import SignIn from "./Auth/SignIn";
@@ -32,13 +32,13 @@ import ConfirmForgotReset from "./Auth/ForgotPasswordReset";
 import PaymentSuccess from "./components/PaymentSuccess";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
-import Books from "./pages/Books";
+import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
-import BookDetails from "./pages/BookDetails";
+import ProductDetails from "./pages/ProductDetails";
 import Admin from "./pages/Admin";
 import OrderDetail from "./pages/OrderDetail";
-import BookOrderDetail from "./pages/BookOrderDetail";
+import ProductOrderDetail from "./pages/ProductOrderDetail";
 import ContactUs from "./pages/ContactUs";
 import DeliveryInfo from "./pages/DeliveryInfo";
 // Components
@@ -81,12 +81,12 @@ const App = (props) => {
         <Route exact path="/event">
           <Event />
         </Route>
-        <Route exact path="/airpod">
+        {/* <Route exact path="/airpod">
           <AirPod />
         </Route>
         <Route exact path="/airpodpro">
           <AirPodPro />
-        </Route>
+        </Route> */}
         <Route exact path="/iphone11">
           <Iphone11 />
         </Route>
@@ -118,12 +118,15 @@ const App = (props) => {
           <ReturnPolicy />
         </Route>
         <Route exact path="/cases">
-          <Books />
+          <Products />
         </Route>
-        <Route path="/cases/:id" children={<BookDetails></BookDetails>}></Route>
+        <Route
+          path="/cases/:id"
+          children={<ProductDetails></ProductDetails>}
+        ></Route>
         <Route
           path="/order/:id"
-          children={<BookOrderDetail></BookOrderDetail>}
+          children={<ProductOrderDetail></ProductOrderDetail>}
         ></Route>
         <Route path="/admin">
           <Admin />

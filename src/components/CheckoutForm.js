@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import moment from "moment";
-import { BookContext } from "../context/books";
+import { ProductContext } from "../context/products";
+import { v4 as uuidv4 } from "uuid";
+import { API, graphqlOperation } from "aws-amplify";
+import { processOrder } from "../api/mutations";
 
 import { CartContext } from "../context/cart";
 import {
@@ -34,6 +37,19 @@ const CARD_ELEMENT_OPTIONS = {
     },
   },
 };
+const LoadingContainer = styled.div`
+  width: 100%;
+  margin: 0 auto;
+  min-height: 90vh;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #ffffff;
+`;
+
 const FormContainer = styled.div`
   width: 100%;
   margin: 0 auto;
@@ -183,22 +199,61 @@ const ContainerForpicker = styled.div`
   margin-right: auto;
 `;
 
+const ProcessPayment = styled.p`
+  display: block;
+`;
+
 const CheckoutForm = () => {
   const [isChecked, setIsChecked] = React.useState(false);
-
+  const [loading, setLoading] = React.useState(false);
   const { cart, total, clearCart } = useContext(CartContext);
-  const { checkout } = useContext(BookContext);
+  // const { checkout } = useContext(BookContext);
 
+  useEffect(() => {
+    function Addcart() {
+      var item = [];
+      const thecart = JSON.parse(localStorage.getItem("cart"));
+      if (thecart === null) {
+        localStorage.setItem("cart", JSON.stringify(item));
+      }
+    }
+    Addcart();
+  }, [cart]);
   const [orderDetails, setOrderDetails] = useState({
     cart,
     total,
     address: null,
     phoneNum: null,
-    PickUpDate: null,
-    DeliverDate: null,
+    PickUpDate: "",
+    DeliverDate: "",
     token: null,
+    firstName: null,
+    lastName: null,
+    address2: "",
+    suburb: "",
+    postcode: "",
   });
-  console.log(cart);
+  useEffect(() => {
+    if (orderDetails.token) {
+      checkout(orderDetails);
+    }
+  }, [orderDetails]);
+  const [localcart, setCart] = useState([]);
+  useEffect(() => {
+    function loadCart() {
+      if (cart.length === 0) {
+        const thecart = JSON.parse(localStorage.getItem("cart"));
+        setCart(thecart);
+        let totalnum = 0;
+        for (let i = 0; i < thecart.length; i++) {
+          totalnum += thecart[i].price;
+        }
+        setOrderDetails({ ...orderDetails, cart: thecart, total: totalnum });
+      }
+    }
+    loadCart();
+  }, [cart]);
+
   const [error, setError] = useState(null);
   const stripe = useStripe();
   const elements = useElements();
@@ -216,14 +271,31 @@ const CheckoutForm = () => {
     return currentDate.getTime() < selectedDate.getTime();
   };
   const [deliverOption, setDeliverOption] = useState(null);
-  console.log(orderDetails);
 
-  useEffect(() => {
-    if (orderDetails.token) {
-      checkout(orderDetails);
+  const checkout = async (orderDetails) => {
+    setLoading(true);
+
+    const payload = {
+      id: uuidv4(),
+      ...orderDetails,
+    };
+    try {
+      console.log(payload);
+      await API.graphql(graphqlOperation(processOrder, { input: payload }));
+      setLoading(false);
+
+      console.log("Order is successful");
       clearCart();
+      history.push("/PaymentSucess");
+    } catch (err) {
+      console.log(err.errors[0].message);
+      console.log(err);
+
+      alert(err.errors[0].message);
+      setLoading(false);
     }
-  }, [orderDetails]);
+  };
+  console.log(orderDetails);
 
   // Handle real-time validation errors from the card Element.
   const handleChange = (event) => {
@@ -252,10 +324,9 @@ const CheckoutForm = () => {
       // Send the token to your server.
       const token = result.token;
       setOrderDetails({ ...orderDetails, token: token.id });
-      console.log(orderDetails);
-      history.push("/");
     }
   };
+
   const twoCalls = (e) => {
     setDateRange({ ...dateRange, startDate: e });
     setOrderDetails({
@@ -282,14 +353,33 @@ const CheckoutForm = () => {
 
   const loadPickUpTime = () => {
     setDeliverOption("pickup");
-    setOrderDetails({ ...orderDetails, DeliverDate: null });
+    setOrderDetails({ ...orderDetails, DeliverDate: "" });
   };
   const loadDeliver = () => {
     setDeliverOption("deliver");
-    setOrderDetails({ ...orderDetails, PickUpDate: null });
+    setOrderDetails({ ...orderDetails, PickUpDate: "" });
   };
-  console.log(orderDetails);
-  console.log(deliverOption);
+
+  if (loading) {
+    return (
+      <LoadingContainer>
+        <div className="loading-container">
+          <ProcessPayment>Proccessing Payment</ProcessPayment>
+
+          <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </LoadingContainer>
+    );
+  }
   return (
     <FormContainer>
       <InnerContainer>

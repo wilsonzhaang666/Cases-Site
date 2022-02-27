@@ -1,13 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createPaymentIntent = /* GraphQL */ `
-  mutation CreatePaymentIntent($input: TotalpriceInput) {
-    createPaymentIntent(input: $input) {
-      clientSecret
-    }
-  }
-`;
 export const processOrder = /* GraphQL */ `
   mutation ProcessOrder($input: ProcessOrderInput!) {
     processOrder(input: $input)
@@ -119,7 +112,7 @@ export const createBookOrder = /* GraphQL */ `
         user
         date
         total
-        books {
+        products {
           nextToken
         }
         createdAt
@@ -160,7 +153,7 @@ export const updateBookOrder = /* GraphQL */ `
         user
         date
         total
-        books {
+        products {
           nextToken
         }
         createdAt
@@ -201,7 +194,7 @@ export const deleteBookOrder = /* GraphQL */ `
         user
         date
         total
-        books {
+        products {
           nextToken
         }
         createdAt
@@ -228,6 +221,360 @@ export const deleteBookOrder = /* GraphQL */ `
     }
   }
 `;
+export const createProduct = /* GraphQL */ `
+  mutation CreateProduct(
+    $input: CreateProductInput!
+    $condition: ModelProductConditionInput
+  ) {
+    createProduct(input: $input, condition: $condition) {
+      id
+      title
+      image
+      Secondimage
+      Thirdimage
+      featured
+      price
+      orders {
+        items {
+          id
+          product_id
+          order_id
+          category
+          createdAt
+          updatedAt
+          customer
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      categories {
+        items {
+          id
+          product_id
+          category
+          quantity
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+    }
+  }
+`;
+export const updateProduct = /* GraphQL */ `
+  mutation UpdateProduct(
+    $input: UpdateProductInput!
+    $condition: ModelProductConditionInput
+  ) {
+    updateProduct(input: $input, condition: $condition) {
+      id
+      title
+      image
+      Secondimage
+      Thirdimage
+      featured
+      price
+      orders {
+        items {
+          id
+          product_id
+          order_id
+          category
+          createdAt
+          updatedAt
+          customer
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      categories {
+        items {
+          id
+          product_id
+          category
+          quantity
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+    }
+  }
+`;
+export const deleteProduct = /* GraphQL */ `
+  mutation DeleteProduct(
+    $input: DeleteProductInput!
+    $condition: ModelProductConditionInput
+  ) {
+    deleteProduct(input: $input, condition: $condition) {
+      id
+      title
+      image
+      Secondimage
+      Thirdimage
+      featured
+      price
+      orders {
+        items {
+          id
+          product_id
+          order_id
+          category
+          createdAt
+          updatedAt
+          customer
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      categories {
+        items {
+          id
+          product_id
+          category
+          quantity
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+    }
+  }
+`;
+export const createProductType = /* GraphQL */ `
+  mutation CreateProductType(
+    $input: CreateProductTypeInput!
+    $condition: ModelProductTypeConditionInput
+  ) {
+    createProductType(input: $input, condition: $condition) {
+      id
+      product_id
+      category
+      quantity
+      createdAt
+      updatedAt
+      product {
+        id
+        title
+        image
+        Secondimage
+        Thirdimage
+        featured
+        price
+        orders {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        categories {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const updateProductType = /* GraphQL */ `
+  mutation UpdateProductType(
+    $input: UpdateProductTypeInput!
+    $condition: ModelProductTypeConditionInput
+  ) {
+    updateProductType(input: $input, condition: $condition) {
+      id
+      product_id
+      category
+      quantity
+      createdAt
+      updatedAt
+      product {
+        id
+        title
+        image
+        Secondimage
+        Thirdimage
+        featured
+        price
+        orders {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        categories {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const deleteProductType = /* GraphQL */ `
+  mutation DeleteProductType(
+    $input: DeleteProductTypeInput!
+    $condition: ModelProductTypeConditionInput
+  ) {
+    deleteProductType(input: $input, condition: $condition) {
+      id
+      product_id
+      category
+      quantity
+      createdAt
+      updatedAt
+      product {
+        id
+        title
+        image
+        Secondimage
+        Thirdimage
+        featured
+        price
+        orders {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        categories {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const createProductOrder = /* GraphQL */ `
+  mutation CreateProductOrder(
+    $input: CreateProductOrderInput!
+    $condition: ModelProductOrderConditionInput
+  ) {
+    createProductOrder(input: $input, condition: $condition) {
+      id
+      product_id
+      order_id
+      category
+      order {
+        id
+        user
+        date
+        total
+        products {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        customer
+      }
+      createdAt
+      updatedAt
+      product {
+        id
+        title
+        image
+        Secondimage
+        Thirdimage
+        featured
+        price
+        orders {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        categories {
+          nextToken
+        }
+      }
+      customer
+    }
+  }
+`;
+export const updateProductOrder = /* GraphQL */ `
+  mutation UpdateProductOrder(
+    $input: UpdateProductOrderInput!
+    $condition: ModelProductOrderConditionInput
+  ) {
+    updateProductOrder(input: $input, condition: $condition) {
+      id
+      product_id
+      order_id
+      category
+      order {
+        id
+        user
+        date
+        total
+        products {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        customer
+      }
+      createdAt
+      updatedAt
+      product {
+        id
+        title
+        image
+        Secondimage
+        Thirdimage
+        featured
+        price
+        orders {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        categories {
+          nextToken
+        }
+      }
+      customer
+    }
+  }
+`;
+export const deleteProductOrder = /* GraphQL */ `
+  mutation DeleteProductOrder(
+    $input: DeleteProductOrderInput!
+    $condition: ModelProductOrderConditionInput
+  ) {
+    deleteProductOrder(input: $input, condition: $condition) {
+      id
+      product_id
+      order_id
+      category
+      order {
+        id
+        user
+        date
+        total
+        products {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        customer
+      }
+      createdAt
+      updatedAt
+      product {
+        id
+        title
+        image
+        Secondimage
+        Thirdimage
+        featured
+        price
+        orders {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        categories {
+          nextToken
+        }
+      }
+      customer
+    }
+  }
+`;
 export const createOrder = /* GraphQL */ `
   mutation CreateOrder(
     $input: CreateOrderInput!
@@ -238,11 +585,12 @@ export const createOrder = /* GraphQL */ `
       user
       date
       total
-      books {
+      products {
         items {
           id
-          book_id
+          product_id
           order_id
+          category
           createdAt
           updatedAt
           customer
@@ -265,11 +613,12 @@ export const updateOrder = /* GraphQL */ `
       user
       date
       total
-      books {
+      products {
         items {
           id
-          book_id
+          product_id
           order_id
+          category
           createdAt
           updatedAt
           customer
@@ -292,11 +641,12 @@ export const deleteOrder = /* GraphQL */ `
       user
       date
       total
-      books {
+      products {
         items {
           id
-          book_id
+          product_id
           order_id
+          category
           createdAt
           updatedAt
           customer

@@ -7,9 +7,11 @@ const ORDER_TYPE = "Order";
 const BOOK_ORDER_TABLE = "BookOrder-hjfzxqw62rgpdb4jgpf27ueacu-prod";
 const BOOK_ORDER_TYPE = "BookOrder";
 const BOOK_TABLE = "Book-hjfzxqw62rgpdb4jgpf27ueacu-prod";
+const ProductType_TABLE = "ProductType-hjfzxqw62rgpdb4jgpf27ueacu-prod";
+
 const createOrder = async (payload) => {
   const {
-    order_id,
+    id,
     address,
     username,
     DeliverDate,
@@ -26,7 +28,7 @@ const createOrder = async (payload) => {
   var params = {
     TableName: ORDER_TABLE,
     Item: {
-      id: order_id,
+      id: id,
       __typename: ORDER_TYPE,
       customer: email,
       PhoneNumber: phoneNum,
@@ -59,8 +61,8 @@ const createBookOrder = async (payload) => {
           __typename: BOOK_ORDER_TYPE,
           book_id: cartItem.id,
           amount: cartItem.amount,
-          order_id: payload.order_id,
-          customer: payload.email,
+          order_id: payload.id,
+          customer_email: payload.email,
           category: cartItem.category,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
@@ -87,12 +89,10 @@ const ChangeCasesStatus = async (payload) => {
       bookOrders.push({
         PutRequest: {
           Item: {
-            id: cartItem.id,
-            __typename: "Book",
-            image: cartItem.image,
-            featured: cartItem.featured,
-            title: cartItem.title,
-            price: cartItem.price,
+            id: cartItem.ProdctTypeId,
+            __typename: "ProductType",
+            book_id: cartItem.id,
+
             category: cartItem.category,
             quantity: cartItem.quantity - cartItem.amount,
             createdAt: new Date().toISOString(),
@@ -100,15 +100,15 @@ const ChangeCasesStatus = async (payload) => {
           },
         },
       });
-    } else {
-      return "NOT SUCCESS DUE TO THE STOCK ISSUE";
-    }
+    } else return;
   }
   let params = {
     RequestItems: {},
   };
-  params["RequestItems"][BOOK_TABLE] = bookOrders;
+
+  params["RequestItems"][ProductType_TABLE] = bookOrders;
   console.log(params);
+
   await documentClient.batchWrite(params).promise();
 };
 //try cartItem.amount-1 for decrase the amount and try if the amount was smaller then 0 then false and if the

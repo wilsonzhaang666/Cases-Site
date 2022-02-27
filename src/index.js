@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BookProvider } from "./context/books";
 import { OrderProvider } from "./context/orders";
-import { BookOrderProvider } from "./context/bookOrder";
+import { ProductOrderProvider } from "./context/productOrder";
+import { ProductProvider } from "./context/products";
 
 import App from "./App";
 import { CartProvider } from "./context/cart";
@@ -10,16 +10,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.scss";
 
 ReactDOM.render(
-  <BookOrderProvider>
+  <ProductOrderProvider>
     <OrderProvider>
-      <BookProvider>
+      <ProductProvider>
         <CartProvider>
           <React.StrictMode>
             <App />
           </React.StrictMode>
         </CartProvider>
-      </BookProvider>
+      </ProductProvider>
     </OrderProvider>
-  </BookOrderProvider>,
+  </ProductOrderProvider>,
   document.getElementById("root")
 );

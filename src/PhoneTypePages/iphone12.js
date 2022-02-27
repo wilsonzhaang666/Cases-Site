@@ -13,9 +13,8 @@ import AddIcon from "@material-ui/icons/Add";
 import { blue } from "@material-ui/core/colors";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
-import { BookContext } from "../context/books";
+import { ProductContext } from "../context/products";
 import styled from "styled-components";
-import Product from "../components/Product";
 import { mobile } from "../responsive";
 
 const PhoneTypes = [
@@ -120,14 +119,13 @@ const Iphone12 = () => {
       setPhonetype(value);
     }
   };
-  console.log(selectedValue);
 
   //Item Section
   //
   const [Category, setCategory] = useState(PhoneTypes[0]);
   const [field, setField] = useState(PhoneTypes[0]);
 
-  const { books } = useContext(BookContext);
+  const { products, productTypes } = useContext(ProductContext);
 
   const handleInputChange = (event) => {
     setField(event.target.value);
@@ -137,14 +135,16 @@ const Iphone12 = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
   };
-  console.log(books);
-  if (!books.length) {
-    return <h3>No Books Available</h3>;
+
+  if (!products.length) {
+    return <h3>No Products Available</h3>;
   }
 
   const Container = styled.div`
     margin-top: -20px;
     background-color: #f8f8f8;
+    max-width: 1080px;
+    margin: auto;
   `;
   const ContainerBlank = styled.div`
     height: 50px;
@@ -219,34 +219,44 @@ const Iphone12 = () => {
         </FilterContainer>
         <ContainerBlank></ContainerBlank>
         <Title>{phonetype}</Title>
-
-        {books
-          .filter(
-            (book) => book.category === selectedValue && book.quantity !== 0
-          )
-          .map(({ image: image, id, title, price }) => (
-            <Link
-              to={`cases/${id}`}
-              style={{ display: "inline-block", width: "50%", height: "100%" }}
-            >
-              <ProductItem style={{ backgroundColor: "#FFFFFF" }}>
-                <ProductTitle> {title}</ProductTitle>
-                <ProductPrice>${price}</ProductPrice>
-
-                {/* <ProductSubtitle>All series included</ProductSubtitle> */}
-
-                <iphonePicSection>
-                  <img
-                    src={image}
+        {productTypes
+          .filter((productTypes) => productTypes.quantity !== 0)
+          .map((category) => (
+            <>
+              {products
+                .filter(
+                  (product) =>
+                    product.id === category.product_id &&
+                    category.category === selectedValue
+                )
+                .map(({ image: image, id, title, price }) => (
+                  <Link
+                    to={`cases/${id}`}
                     style={{
-                      marginTop: "100px",
-                      maxHeight: "150px",
-                      marginLeft: "50px",
+                      display: "inline-block",
+                      width: "50%",
+                      height: "100%",
                     }}
-                  />
-                </iphonePicSection>
-              </ProductItem>
-            </Link>
+                  >
+                    <ProductItem style={{ backgroundColor: "#FFFFFF" }}>
+                      <ProductTitle> {title}</ProductTitle>
+                      <ProductPrice>${price}</ProductPrice>
+                      {/* <ProductSubtitle>All series included</ProductSubtitle> */}
+
+                      <iphonePicSection>
+                        <img
+                          src={image}
+                          style={{
+                            marginTop: "100px",
+                            maxHeight: "150px",
+                            marginLeft: "50px",
+                          }}
+                        />
+                      </iphonePicSection>
+                    </ProductItem>
+                  </Link>
+                ))}
+            </>
           ))}
       </ProductContainer>
     </Container>

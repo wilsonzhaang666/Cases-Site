@@ -12,7 +12,7 @@ export const getBookOrder = /* GraphQL */ `
         user
         date
         total
-        books {
+        products {
           nextToken
         }
         createdAt
@@ -78,6 +78,88 @@ export const listBookOrders = /* GraphQL */ `
     }
   }
 `;
+export const getProductOrder = /* GraphQL */ `
+  query GetProductOrder($id: ID!) {
+    getProductOrder(id: $id) {
+      id
+      product_id
+      order_id
+      category
+      order {
+        id
+        user
+        date
+        total
+        products {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        customer
+      }
+      createdAt
+      updatedAt
+      product {
+        id
+        title
+        image
+        Secondimage
+        Thirdimage
+        featured
+        price
+        orders {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        categories {
+          nextToken
+        }
+      }
+      customer
+    }
+  }
+`;
+export const listProductOrders = /* GraphQL */ `
+  query ListProductOrders(
+    $filter: ModelProductOrderFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listProductOrders(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        product_id
+        order_id
+        category
+        order {
+          id
+          user
+          date
+          total
+          createdAt
+          updatedAt
+          customer
+        }
+        createdAt
+        updatedAt
+        product {
+          id
+          title
+          image
+          Secondimage
+          Thirdimage
+          featured
+          price
+          createdAt
+          updatedAt
+        }
+        customer
+      }
+      nextToken
+    }
+  }
+`;
 export const getOrder = /* GraphQL */ `
   query GetOrder($id: ID!) {
     getOrder(id: $id) {
@@ -85,11 +167,12 @@ export const getOrder = /* GraphQL */ `
       user
       date
       total
-      books {
+      products {
         items {
           id
-          book_id
+          product_id
           order_id
+          category
           createdAt
           updatedAt
           customer
@@ -114,7 +197,7 @@ export const listOrders = /* GraphQL */ `
         user
         date
         total
-        books {
+        products {
           nextToken
         }
         createdAt
@@ -171,6 +254,131 @@ export const listBooks = /* GraphQL */ `
         }
         createdAt
         updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getProduct = /* GraphQL */ `
+  query GetProduct($id: ID!) {
+    getProduct(id: $id) {
+      id
+      title
+      image
+      Secondimage
+      Thirdimage
+      featured
+      price
+      orders {
+        items {
+          id
+          product_id
+          order_id
+          category
+          createdAt
+          updatedAt
+          customer
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      categories {
+        items {
+          id
+          product_id
+          category
+          quantity
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+    }
+  }
+`;
+export const listProducts = /* GraphQL */ `
+  query ListProducts(
+    $filter: ModelProductFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listProducts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        title
+        image
+        Secondimage
+        Thirdimage
+        featured
+        price
+        orders {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        categories {
+          nextToken
+        }
+      }
+      nextToken
+    }
+  }
+`;
+export const getProductType = /* GraphQL */ `
+  query GetProductType($id: ID!) {
+    getProductType(id: $id) {
+      id
+      product_id
+      category
+      quantity
+      createdAt
+      updatedAt
+      product {
+        id
+        title
+        image
+        Secondimage
+        Thirdimage
+        featured
+        price
+        orders {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        categories {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const listProductTypes = /* GraphQL */ `
+  query ListProductTypes(
+    $filter: ModelProductTypeFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listProductTypes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        product_id
+        category
+        quantity
+        createdAt
+        updatedAt
+        product {
+          id
+          title
+          image
+          Secondimage
+          Thirdimage
+          featured
+          price
+          createdAt
+          updatedAt
+        }
       }
       nextToken
     }

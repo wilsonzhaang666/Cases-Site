@@ -206,6 +206,11 @@ const Cart = () => {
   const [authStatus, setAuthStatus] = useState(null);
   const history = useHistory();
   const [user, setUser] = useState(null);
+  const [error, setError] = useState("");
+
+  const [localcart, setCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState();
+
   useEffect(() => {
     async function loadUser() {
       const user = await Auth.currentAuthenticatedUser();
@@ -214,10 +219,52 @@ const Cart = () => {
     }
     loadUser();
   }, []);
+
   const { cart, total, increaseAmount, decreaseAmount } =
     useContext(CartContext);
+  useEffect(() => {
+    function Addcart() {
+      var item = [];
+      const thecart = JSON.parse(localStorage.getItem("cart"));
+      if (thecart === null) {
+        localStorage.setItem("cart", JSON.stringify(item));
+      }
+    }
+    Addcart();
+  }, [cart]);
+  console.log(totalPrice);
+  useEffect(() => {
+    async function loadCart() {
+      if (cart.length === 0) {
+        const thecart = JSON.parse(localStorage.getItem("cart"));
+        setCart(thecart);
+        let totalnum = 0;
+        for (let i = 0; i < thecart.length; i++) {
+          totalnum += thecart[i].price;
+        }
+        setTotalPrice(totalnum);
+      } else {
+        setTotalPrice(total);
 
-  if (!cart.length) {
+        setCart(cart);
+      }
+    }
+    loadCart();
+  }, [cart, total]);
+  console.log(localcart);
+  const handleCheckout = () => {
+    for (let i = 0; i < localcart.length; i++) {
+      if (localcart[i].quantity < localcart[i].amount) {
+        setError(
+          "Fail to Process to Checkout Due to Stock not enough or Stock Not Available"
+        );
+        return;
+      } else {
+        history.push("/checkout");
+      }
+    }
+  };
+  if (localcart.length === 0) {
     return (
       <Notification>
         <Notice>Empty Cart</Notice>
@@ -225,7 +272,6 @@ const Cart = () => {
       </Notification>
     );
   }
-  console.log(cart);
 
   return (
     <>
@@ -250,45 +296,49 @@ const Cart = () => {
           </Top>
           <Bottom>
             <Info>
-              {cart.map(({ id, title, price, image, amount, category }) => (
-                <>
-                  <Product>
-                    <ProductDetail key={id}>
-                      <Image src={image} />
-                      <Details>
-                        <ProductName>
-                          <b style={{ fontSize: "22px" }}>{title}</b>
-                        </ProductName>
-                        <ProductId></ProductId>
+              {localcart.map(
+                ({ id, title, price, image, amount, category }) => (
+                  <>
+                    <Product>
+                      <ProductDetail key={id}>
+                        <Image src={image} />
+                        <Details>
+                          <ProductName>
+                            <b style={{ fontSize: "22px" }}>{title}</b>
+                          </ProductName>
+                          <ProductId></ProductId>
 
-                        <ProductSize>
-                          <b>Product ID:</b> {id}
-                          <br />
-                          <b>Category:</b> {category}
-                        </ProductSize>
-                      </Details>
-                    </ProductDetail>
-                    <PriceDetail>
-                      <ProductAmountContainer>
-                        <Add onClick={() => increaseAmount(id)} />
-                        <ProductAmount>{amount}</ProductAmount>
-                        <Remove onClick={() => decreaseAmount(id, amount)} />
-                      </ProductAmountContainer>
-                      <ProductPrice>
-                        $ {(price * amount).toFixed(2)}
-                      </ProductPrice>
-                    </PriceDetail>
-                  </Product>
-                  <br />
-                </>
-              ))}
+                          <ProductSize>
+                            <b>Product ID:</b> {id}
+                            <br />
+                            <b>Category:</b> {category}
+                          </ProductSize>
+                        </Details>
+                      </ProductDetail>
+                      <PriceDetail>
+                        <ProductAmountContainer>
+                          <Add onClick={() => increaseAmount(id, category)} />
+                          <ProductAmount>{amount}</ProductAmount>
+                          <Remove
+                            onClick={() => decreaseAmount(id, amount, category)}
+                          />
+                        </ProductAmountContainer>
+                        <ProductPrice>
+                          $ {(price * amount).toFixed(2)}
+                        </ProductPrice>
+                      </PriceDetail>
+                    </Product>
+                    <br />
+                  </>
+                )
+              )}
               <Hr />
             </Info>
             <Summary>
               <SummaryTitle>ORDER SUMMARY</SummaryTitle>
               <SummaryItem>
                 <SummaryItemText>Subtotal</SummaryItemText>
-                <SummaryItemPrice>${total.toFixed(2)}</SummaryItemPrice>
+                <SummaryItemPrice>${totalPrice.toFixed(2)}</SummaryItemPrice>
               </SummaryItem>
               <SummaryItem>
                 <SummaryItemText>Tax</SummaryItemText>
@@ -300,7 +350,7 @@ const Cart = () => {
               </SummaryItem>
               <SummaryItem type="total">
                 <SummaryItemText>Total</SummaryItemText>
-                <SummaryItemPrice>${total.toFixed(2)}</SummaryItemPrice>
+                <SummaryItemPrice>${totalPrice.toFixed(2)}</SummaryItemPrice>
               </SummaryItem>
               {(() => {
                 if (user === null) {
@@ -325,11 +375,8 @@ const Cart = () => {
                   return <></>;
                 }
               })()}
-
-              <Button
-                disabled={!user}
-                onClick={() => history.push("/checkout")}
-              >
+              {error}
+              <Button disabled={!user} onClick={() => handleCheckout()}>
                 CHECKOUT NOW
               </Button>
             </Summary>

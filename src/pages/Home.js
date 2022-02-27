@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
 import Carousel from "react-bootstrap/Carousel";
-import { BookContext } from "../context/books";
+import { ProductContext } from "../context/products";
 import styled, { css } from "styled-components";
 import BackgroundImage from "../assets/snowflake.jpg";
 import BackgroundImageTP from "../assets/snowflake-tp.png";
@@ -22,7 +22,7 @@ export const RobotocondensedRegularNormalBlack18 = css`
 `;
 
 const ContainerForAll = styled.div`
-  max-width: 700px;
+  max-width: 1080px;
   margin: auto;
 `;
 const MainSlideShow = styled.div`
@@ -176,10 +176,7 @@ const DwenDwen = styled.div`
   margin-bottom: 10px;
 `;
 const Home = () => {
-  const { featured } = useContext(BookContext);
-  if (!featured.length) {
-    return <h3>No Featured Books</h3>;
-  }
+  const { featured } = useContext(ProductContext);
   return (
     <>
       <ContainerForAll>
@@ -391,11 +388,11 @@ const Home = () => {
           </ContainerForCategory>
         </PhoneCategory>
 
-        <AirpodCategory>
+        {/* <AirpodCategory>
           <PhoneCategoryTitle>Airpod Cases</PhoneCategoryTitle>
 
-          <ContainerForCategory>
-            {/* <Link
+          <ContainerForCategory> */}
+        {/* <Link
             to="/airpod"
             style={{ display: "inline-block", width: "50%", height: "100%" }}
           >
@@ -413,7 +410,7 @@ const Home = () => {
               </iphonePicSection>
             </PhoneCategoryItem>
           </Link> */}
-            <Link
+        {/* <Link
               to="/airpodpro"
               style={{ display: "inline-block", width: "50%", height: "100%" }}
             >
@@ -430,9 +427,9 @@ const Home = () => {
                   />
                 </iphonePicSection>
               </PhoneCategoryItem>
-            </Link>
-          </ContainerForCategory>
-        </AirpodCategory>
+            </Link> */}
+        {/* </ContainerForCategory>
+        </AirpodCategory> */}
       </ContainerForAll>
     </>
   );
