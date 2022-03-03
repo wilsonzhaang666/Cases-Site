@@ -44,6 +44,7 @@ const SecondSideShow = styled.div`
   background: linear-gradient(to bottom, #cce3ff 100%, #cce4fe 100%);
   border-radius: 12px;
   justify-content: center;
+  overflow: hidden;
 `;
 
 const GetToSeeOurBrand = styled.div`
@@ -189,69 +190,6 @@ const Home = () => {
     <>
       <ContainerForAll>
         <Carousel fade={true}>
-          {/* <Carousel.Item>
-            <Link
-              to="/event"
-              style={{ textAlign: "center", textDecoration: "none" }}
-            >
-              <SecondSideShow>
-                <div className="snow"></div>
-
-                <GetToSeeOurBrand>
-                  <EventTextContainer>
-                    <EventCarouselspan>
-                      Bing Dwen Dwen are NOW available
-                    </EventCarouselspan>
-                  </EventTextContainer>
-                  <DwenDwen>
-                    <img
-                      src={require("../assets/BingDwenDwen.png")}
-                      style={{
-                        marginTop: "10px",
-                        maxHeight: "95px",
-                      }}
-                    />
-                    <img
-                      src={require("../assets/BingDwenDwen.png")}
-                      style={{
-                        marginTop: "10px",
-                        maxHeight: "95px",
-                      }}
-                    />
-                    <img
-                      src={require("../assets/BingDwenDwen.png")}
-                      style={{
-                        marginTop: "10px",
-                        maxHeight: "95px",
-                      }}
-                    />
-                    <img
-                      src={require("../assets/BingDwenDwen.png")}
-                      style={{
-                        marginTop: "10px",
-                        maxHeight: "95px",
-                      }}
-                    />
-                  </DwenDwen>
-
-                  <EventViewAll
-                    style={{ textAlign: "center", textDecoration: "none" }}
-                    to="/event"
-                  >
-                    <span
-                      style={{
-                        color: "black",
-                        fontSize: "18px",
-                        fontWeight: "600",
-                      }}
-                    >
-                      Pre-Order Now
-                    </span>
-                  </EventViewAll>
-                </GetToSeeOurBrand>
-              </SecondSideShow>
-            </Link>
-          </Carousel.Item> */}
           <Carousel.Item>
             <MainSlideShow>
               <GetToSeeOurBrand>
@@ -296,6 +234,22 @@ const Home = () => {
                 style={{ marginTop: "10px", maxHeight: "200px" }}
               />
             </MainSlideShow>
+          </Carousel.Item>
+          <Carousel.Item>
+            <SecondSideShow>
+              <img
+                src={require("../assets/background2.png")}
+                style={{ maxHeight: "100%" }}
+              />
+              <img
+                src={require("../assets/background2.png")}
+                style={{ maxHeight: "100%" }}
+              />
+              <img
+                src={require("../assets/background2.png")}
+                style={{ maxHeight: "100%" }}
+              />
+            </SecondSideShow>
           </Carousel.Item>
         </Carousel>
         {/* //Bing dun dun */}
