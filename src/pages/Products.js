@@ -207,9 +207,21 @@ const Products = () => {
     font-weight: light;
     position: absolute;
     color: black;
+    top: 8vh;
+    left: 2vh;
+    font-size: 16px;
+  `;
+
+  const DiscountProductPrice = styled.div`
+    text-align: left;
+    font-family: Roboto;
+    font-weight: light;
+    position: absolute;
+    color: black;
     top: 5vh;
     left: 2vh;
     font-size: 16px;
+    text-decoration: line-through;
   `;
   return (
     <Container>
@@ -247,6 +259,8 @@ const Products = () => {
                   >
                     <ProductItem style={{ backgroundColor: "#FFFFFF" }}>
                       <ProductTitle> {title}</ProductTitle>
+                      <DiscountProductPrice>$12.99</DiscountProductPrice>
+
                       <ProductPrice>${price}</ProductPrice>
                       {/* <ProductSubtitle>All series included</ProductSubtitle> */}
 

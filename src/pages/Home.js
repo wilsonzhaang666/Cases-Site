@@ -70,6 +70,13 @@ const Span3 = styled.span`
   color: #ee0000;
   font-size: 18px;
 `;
+
+const Span2 = styled.span`
+  font-family: var(--font-family-roboto_condensed-regular);
+  font-weight: 600;
+  font-size: 18px;
+  text-decoration: line-through;
+`;
 const ViewAll = styled(Link)`
   margin-top: 30px;
   border: none;
@@ -175,6 +182,7 @@ const DwenDwen = styled.div`
   margin-left: -82px;
   margin-bottom: 10px;
 `;
+
 const Home = () => {
   const { featured } = useContext(ProductContext);
   return (
@@ -252,7 +260,7 @@ const Home = () => {
                     className="robotocondensed-regular-normal-black-18px"
                     style={{ fontSize: "18px" }}
                   >
-                    Get To See Our brand new{" "}
+                    Quick Sale Quick Sale!{" "}
                   </span>
                   <Span1>
                     IPhone Cases <br />
@@ -261,9 +269,12 @@ const Home = () => {
                     className="robotocondensed-regular-normal-black-18px"
                     style={{ fontSize: "18px" }}
                   >
-                    For Only{" "}
+                    For Now Only{" "}
                   </span>
-                  <Span3>$12.99</Span3>
+                  <br />
+                  <Span2>$12.99</Span2>
+
+                  <Span3>$10</Span3>
                 </span>
                 <ViewAll
                   style={{ textAlign: "center", textDecoration: "none" }}
