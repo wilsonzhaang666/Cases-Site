@@ -25,7 +25,6 @@ const Header = (props) => {
       return false;
     }
   }
-  console.log(userLoggedIn);
 
   async function signOut(e) {
     e.preventDefault();

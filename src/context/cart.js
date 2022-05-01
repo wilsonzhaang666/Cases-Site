@@ -7,7 +7,6 @@ const CartProvider = ({ children }) => {
   const [localCart, setLocalCart] = useState();
   const [total, setTotal] = useState(0);
 
-  console.log(cart);
   useEffect(() => {
     if (cart.length > 0) {
       const total = [...cart].reduce((total, { amount, price }) => {
@@ -109,8 +108,6 @@ const CartProvider = ({ children }) => {
       ];
       setCart(cartItems);
       localStorage.setItem("cart", JSON.stringify(cartItems));
-
-      console.log(cart);
     }
   };
 

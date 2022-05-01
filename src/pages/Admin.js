@@ -60,9 +60,7 @@ const Admin = () => {
       console.log("error creating todo:", err);
     }
   };
-  console.log(productDetails);
 
-  console.log(productTypes);
   const handletypeChange = (e, index) => {
     const updatedAreas = [...productTypes];
     console.log(e);

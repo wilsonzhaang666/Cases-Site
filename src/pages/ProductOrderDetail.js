@@ -26,8 +26,6 @@ const ProductOrderDetail = () => {
   const productorder = productorders.filter((productorder) => {
     return productorder.order_id === order.id;
   });
-  console.log(productorder);
-  console.log(id);
 
   const product = products.filter((o1) =>
     productorder.some((o2) => o1.id === o2.product_id)

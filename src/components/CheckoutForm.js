@@ -280,7 +280,6 @@ const CheckoutForm = () => {
       ...orderDetails,
     };
     try {
-      console.log(payload);
       await API.graphql(graphqlOperation(processOrder, { input: payload }));
       setLoading(false);
 
@@ -295,7 +294,6 @@ const CheckoutForm = () => {
       setLoading(false);
     }
   };
-  console.log(orderDetails);
 
   // Handle real-time validation errors from the card Element.
   const handleChange = (event) => {

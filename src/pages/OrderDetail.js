@@ -110,11 +110,9 @@ const OrderDetail = () => {
   const { orders } = useContext(OrderContext);
   const { productorders } = useContext(ProductOrderContext);
 
-  console.log(orders);
   let orderslist = orders.filter(function (item) {
     return item.user == user;
   });
-  console.log(productorders);
   if (user === null) {
     return (
       <Notification>

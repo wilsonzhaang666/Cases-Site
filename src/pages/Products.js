@@ -88,8 +88,6 @@ const Products = () => {
   };
 
   const handleClose = (value) => {
-    console.log(value);
-
     setOpen(false);
     if (value === "iPhone11") {
       setSelectedValue("iphone11");

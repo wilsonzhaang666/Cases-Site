@@ -11,29 +11,6 @@ const stripePromise = loadStripe(
   "	pk_live_51JmIKpHLMDgfJmh8FvXl6eXgyMNL7xcLL4U6Z1jL0N1h3JZo4P2klIRyxYvRDyUPKeeluDNZAhlFW1ENpmtVhEI100NFSpYj73"
 );
 const Checkout = () => {
-  // const [clientSecret, setClientSecret] = useState("");
-  // const fetchPaymentIntent = async () => {
-  //   const response = await API.graphql(
-  //     graphqlOperation(createPaymentIntent, { input: paymentPrice })
-  //   );
-  //   console.log(response);
-  //   setClientSecret(response.data.createPaymentIntent.clientSecret);
-  // };
-  // useEffect(() => {
-  //   if (!clientSecret) {
-  //     fetchPaymentIntent();
-  //   }
-  // }, [clientSecret]);
-
-  // console.log(clientSecret);
-  // const thekey = clientSecret;
-  // const request = ("'" + clientSecret + "'").toString();
-  // console.log(request);
-
-  // const options = {
-  //   clientSecret,
-  // };
-
   return (
     <section>
       <AmplifyAuthenticator>

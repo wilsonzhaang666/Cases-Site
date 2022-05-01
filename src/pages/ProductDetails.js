@@ -69,7 +69,6 @@ const ProductDetails = () => {
     console.log(e);
     setMainImage(e);
   };
-  console.log(productTypes);
   //need to reform the variable to a new book object
   return (
     <div class="product-detail-Container">

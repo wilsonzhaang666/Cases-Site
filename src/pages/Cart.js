@@ -232,7 +232,6 @@ const Cart = () => {
     }
     Addcart();
   }, [cart]);
-  console.log(totalPrice);
   useEffect(() => {
     async function loadCart() {
       if (cart.length === 0) {
@@ -251,7 +250,6 @@ const Cart = () => {
     }
     loadCart();
   }, [cart, total]);
-  console.log(localcart);
   const handleCheckout = () => {
     for (let i = 0; i < localcart.length; i++) {
       if (localcart[i].quantity < localcart[i].amount) {
