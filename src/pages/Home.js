@@ -134,56 +134,6 @@ const CategorySubtitle = styled.p`
   left: 2vh;
 `;
 
-//Case Category
-const AirpodCategory = styled.div`
-  height: auto;
-`;
-//Event CategorySubtitle
-const EventCategory = styled.div`
-  height: auto;
-`;
-const EventCategoryItem = styled.div`
-  flex: 1;
-  margin: 10px;
-  min-width: 100px;
-  height: 230px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  text-align: left;
-`;
-const EventSubtitle = styled.div`
-  text-align: left;
-  font-size: 10px;
-  position: absolute;
-  color: #f2f2f2;
-  top: 6vh;
-  left: 2vh;
-`;
-
-const EventCarouselspan = styled.span`
-  font-family: "Akaya Telivigala", cursive;
-  font-size: 24px;
-  text-align: center;
-  color: white;
-`;
-
-const EventTextContainer = styled.div``;
-const EventViewAll = styled(Link)`
-  border-radius: 12px;
-  background-color: #ffffff;
-  font-size: 24px;
-`;
-
-const DwenDwen = styled.div`
-  min-width: 350px;
-  margin-left: -82px;
-  margin-bottom: 10px;
-`;
-
 const Home = () => {
   const { featured } = useContext(ProductContext);
   return (

@@ -35,6 +35,7 @@ const Admin = () => {
     },
   ]);
   const handleSubmit = async (e) => {
+    console.log(productDetails);
     e.preventDefault();
     try {
       if (!productDetails.title || !productDetails.price) return;

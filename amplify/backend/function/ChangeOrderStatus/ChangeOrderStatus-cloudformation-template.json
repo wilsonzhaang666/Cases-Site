@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "ProcessOrderPayment",
+            "ChangeOrderStatus",
             {
               "Fn::Join": [
                 "",
                 [
-                  "ProcessOrderPayment",
+                  "ChangeOrderStatus",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "casessite01LambdaRolef2488b44",
+            "casessite01LambdaRole6f2f2d2f",
             {
               "Fn::Join": [
                 "",
                 [
-                  "casessite01LambdaRolef2488b44",
+                  "casessite01LambdaRole6f2f2d2f",
                   "-",
                   {
                     "Ref": "env"

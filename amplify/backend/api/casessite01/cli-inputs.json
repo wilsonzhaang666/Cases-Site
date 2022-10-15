@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "casessite01",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "C:\\Users\\63459\\Documents\\work-casessite\\CasesSiteAWSCase\\Cases-Site\\amplify\\backend\\api\\casessite01\\schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authcasessite014012831e"
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "expirationTime": 365,
+        "apiKeyExpirationDate": "2023-10-13T10:51:36.537Z",
+        "keyDescription": "Guest User Aceess to Products"
+      },
+      {
+        "mode": "AWS_IAM"
+      }
+    ],
+    "conflictResolution": {}
+  }
+}

@@ -48,6 +48,9 @@ import ReturnPolicy from "./pages/ReturnPolicy";
 
 // Amplify Configurations
 import awsExports from "./aws-exports";
+//Management System
+
+import ManagementSystem from "./Management/Managerment";
 Amplify.configure(awsExports);
 
 const App = (props) => {
@@ -130,6 +133,9 @@ const App = (props) => {
         ></Route>
         <Route path="/admin">
           <Admin />
+        </Route>
+        <Route path="/managementsystem">
+          <ManagementSystem />
         </Route>
         <Route path="*">
           <Error />

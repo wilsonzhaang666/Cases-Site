@@ -1,6 +1,6 @@
 export type AmplifyDependentResourcesAttributes = {
     "auth": {
-        "casessitev01b4fd67c8": {
+        "casessite014012831e": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
             "UserPoolId": "string",
@@ -11,19 +11,19 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "storage": {
-        "TheImages": {
+        "ProductImages": {
             "BucketName": "string",
             "Region": "string"
         }
     },
     "function": {
-        "CreateOrder": {
+        "ProcessOrderPayment": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "ProcessOrderPayment": {
+        "CreateOrder": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
@@ -40,24 +40,19 @@ export type AmplifyDependentResourcesAttributes = {
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
+        },
+        "ChangeOrderStatus": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
         }
     },
     "api": {
-        "casessitev01": {
+        "casessite01": {
+            "GraphQLAPIKeyOutput": "string",
             "GraphQLAPIIdOutput": "string",
             "GraphQLAPIEndpointOutput": "string"
-        }
-    },
-    "hosting": {
-        "S3AndCloudFront": {
-            "Region": "string",
-            "HostingBucketName": "string",
-            "WebsiteURL": "string",
-            "S3BucketSecureURL": "string",
-            "CloudFrontDistributionID": "string",
-            "CloudFrontDomainName": "string",
-            "CloudFrontSecureURL": "string",
-            "CloudFrontOriginAccessIdentity": "string"
         }
     }
 }

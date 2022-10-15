@@ -2812,28 +2812,28 @@
     "uncontrollable" "^7.2.1"
     "warning" "^4.0.3"
 
-"@sendgrid/client@^7.6.0":
-  "integrity" "sha512-cpBVZKLlMTO+vpE18krTixubYmZa98oTbLkqBDuTiA3zRkW+urrxg7pDR24TkI35Mid0Zru8jDHwnOiqrXu0TA=="
-  "resolved" "https://registry.npmjs.org/@sendgrid/client/-/client-7.6.0.tgz"
-  "version" "7.6.0"
+"@sendgrid/client@^7.7.0":
+  "integrity" "sha512-SxH+y8jeAQSnDavrTD0uGDXYIIkFylCo+eDofVmZLQ0f862nnqbC3Vd1ej6b7Le7lboyzQF6F7Fodv02rYspuA=="
+  "resolved" "https://registry.npmjs.org/@sendgrid/client/-/client-7.7.0.tgz"
+  "version" "7.7.0"
   dependencies:
-    "@sendgrid/helpers" "^7.6.0"
-    "axios" "^0.21.4"
+    "@sendgrid/helpers" "^7.7.0"
+    "axios" "^0.26.0"
 
-"@sendgrid/helpers@^7.6.0":
-  "integrity" "sha512-0uWD+HSXLl4Z/X3cN+UMQC20RE7xwAACgppnfjDyvKG0KvJcUgDGz7HDdQkiMUdcVWfmyk6zKSg7XKfKzBjTwA=="
-  "resolved" "https://registry.npmjs.org/@sendgrid/helpers/-/helpers-7.6.0.tgz"
-  "version" "7.6.0"
+"@sendgrid/helpers@^7.7.0":
+  "integrity" "sha512-3AsAxfN3GDBcXoZ/y1mzAAbKzTtUZ5+ZrHOmWQ279AuaFXUNCh9bPnRpN504bgveTqoW+11IzPg3I0WVgDINpw=="
+  "resolved" "https://registry.npmjs.org/@sendgrid/helpers/-/helpers-7.7.0.tgz"
+  "version" "7.7.0"
   dependencies:
     "deepmerge" "^4.2.2"
 
-"@sendgrid/mail@^7.6.0":
-  "integrity" "sha512-0KdaSZzflJD/vUAZjB3ALBIuaVGoLq22hrb2fvQXZHRepU/yhRNlEOqrr05MfKBnKskzq1blnD1J0fHxiwaolw=="
-  "resolved" "https://registry.npmjs.org/@sendgrid/mail/-/mail-7.6.0.tgz"
-  "version" "7.6.0"
+"@sendgrid/mail@^7.7.0":
+  "integrity" "sha512-5+nApPE9wINBvHSUxwOxkkQqM/IAAaBYoP9hw7WwgDNQPxraruVqHizeTitVtKGiqWCKm2mnjh4XGN3fvFLqaw=="
+  "resolved" "https://registry.npmjs.org/@sendgrid/mail/-/mail-7.7.0.tgz"
+  "version" "7.7.0"
   dependencies:
-    "@sendgrid/client" "^7.6.0"
-    "@sendgrid/helpers" "^7.6.0"
+    "@sendgrid/client" "^7.7.0"
+    "@sendgrid/helpers" "^7.7.0"
 
 "@sheerun/mutationobserver-shim@^0.3.2":
   "integrity" "sha512-DetpxZw1fzPD5xUBrIAoplLChO2VB8DlL5Gg+I1IR9b2wPqYIca2WSUxL5g1vLeR4MsQq1NeWriXAVffV+U1Fw=="
@@ -3831,12 +3831,12 @@
   "resolved" "https://registry.npmjs.org/aws4/-/aws4-1.10.0.tgz"
   "version" "1.10.0"
 
-"axios@^0.21.4":
-  "integrity" "sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg=="
-  "resolved" "https://registry.npmjs.org/axios/-/axios-0.21.4.tgz"
-  "version" "0.21.4"
+"axios@^0.26.0":
+  "integrity" "sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA=="
+  "resolved" "https://registry.npmjs.org/axios/-/axios-0.26.1.tgz"
+  "version" "0.26.1"
   dependencies:
-    "follow-redirects" "^1.14.0"
+    "follow-redirects" "^1.14.8"
 
 "axios@0.19.0":
   "integrity" "sha512-1uvKqKQta3KBxIz14F2v06AEHZ/dIoeKfbTRkK1E5oqjDnuEerLmYTgJB5AiQZHJcljpg1TuRzdjDR06qNk0DQ=="
@@ -6461,10 +6461,10 @@
     "inherits" "^2.0.3"
     "readable-stream" "^2.3.6"
 
-"follow-redirects@^1.0.0", "follow-redirects@^1.14.0":
-  "integrity" "sha512-wtphSXy7d4/OR+MvIFbCVBDzZ5520qV8XfPklSN5QtxuMUJZ+b0Wnst1e1lCDocfzuCkHqj8k0FpZqO+UIaKNA=="
-  "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.5.tgz"
-  "version" "1.14.5"
+"follow-redirects@^1.0.0", "follow-redirects@^1.14.8":
+  "integrity" "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA=="
+  "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz"
+  "version" "1.15.2"
 
 "follow-redirects@1.5.10":
   "integrity" "sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ=="

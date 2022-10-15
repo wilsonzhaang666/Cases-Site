@@ -1,11 +1,12 @@
 {
-  "AppSyncApiName": "casessitev01",
+  "AppSyncApiName": "casessite01",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
   "AuthCognitoUserPoolId": {
     "Fn::GetAtt": [
-      "authcasessitev01b4fd67c8",
+      "authcasessite014012831e",
       "Outputs.UserPoolId"
     ]
-  }
+  },
+  "AuthModeLastUpdated": "2022-10-13T10:51:39.209Z"
 }

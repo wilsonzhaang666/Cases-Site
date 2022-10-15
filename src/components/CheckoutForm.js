@@ -204,11 +204,10 @@ const ProcessPayment = styled.p`
 `;
 
 const CheckoutForm = () => {
-  const [isChecked, setIsChecked] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const { cart, total, clearCart } = useContext(CartContext);
   // const { checkout } = useContext(BookContext);
-
+  console.log(cart);
   useEffect(() => {
     function Addcart() {
       var item = [];
@@ -226,18 +225,18 @@ const CheckoutForm = () => {
     phoneNum: null,
     PickUpDate: "",
     DeliverDate: "",
-    token: null,
+    // token: null,
     firstName: null,
     lastName: null,
     address2: "",
     suburb: "",
     postcode: "",
   });
-  useEffect(() => {
-    if (orderDetails.token) {
-      checkout(orderDetails);
-    }
-  }, [orderDetails]);
+  // useEffect(() => {
+  //   if (orderDetails.token) {
+  //     checkout(orderDetails);
+  //   }
+  // }, [orderDetails]);
   const [localcart, setCart] = useState([]);
   useEffect(() => {
     function loadCart() {
@@ -255,8 +254,6 @@ const CheckoutForm = () => {
   }, [cart]);
 
   const [error, setError] = useState(null);
-  const stripe = useStripe();
-  const elements = useElements();
   const history = useHistory();
   const [dateRange, setDateRange] = useState({
     startDate: new Date(moment().startOf("isoweek").utc()),
@@ -305,24 +302,35 @@ const CheckoutForm = () => {
   };
 
   // Handle form submission.
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   if (orderDetails.DeliverDate == null && orderDetails.PickUpDate == null) {
+  //     setError("You need to choose a Pick Up time or Delivery time");
+  //     return;
+  //   }
+  //   const card = elements.getElement(CardElement);
+  //   const result = await stripe.createToken(card);
+  //   if (result.error) {
+  //     // Inform the user if there was an error.
+  //     setError(result.error.message);
+  //     return;
+  //   } else {
+  //     setError(null);
+  //     // Send the token to your server.
+  //     const token = result.token;
+  //     setOrderDetails({ ...orderDetails, token: token.id });
+  //   }
+  // };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (orderDetails.DeliverDate == null && orderDetails.PickUpDate == null) {
       setError("You need to choose a Pick Up time or Delivery time");
       return;
     }
-    const card = elements.getElement(CardElement);
-    const result = await stripe.createToken(card);
-    if (result.error) {
-      // Inform the user if there was an error.
-      setError(result.error.message);
-      return;
-    } else {
-      setError(null);
-      // Send the token to your server.
-      const token = result.token;
-      setOrderDetails({ ...orderDetails, token: token.id });
-    }
+    checkout(orderDetails);
+
+    // }
   };
 
   const twoCalls = (e) => {
@@ -597,7 +605,7 @@ const CheckoutForm = () => {
                 </span>
               </label>
             </FormSection>
-            <CardPaymentContainer>
+            {/* <CardPaymentContainer>
               <FormControlLabel
                 control={
                   <Switch
@@ -631,7 +639,8 @@ const CheckoutForm = () => {
                   <CardPaymentButton type="submit">Pay Now</CardPaymentButton>
                 </CardButtonContainer>
               </Collapse>
-            </CardPaymentContainer>
+            </CardPaymentContainer> */}
+            <CardPaymentButton type="submit">Process Order</CardPaymentButton>
             <div className="card-errors" role="alert">
               {error}
             </div>

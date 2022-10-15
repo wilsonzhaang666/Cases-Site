@@ -1,83 +1,41 @@
 {
-  "prod": {
+  "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-casessitev01-prod-143127-authRole",
-      "UnauthRoleArn": "arn:aws:iam::406700237853:role/amplify-casessitev01-prod-143127-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::406700237853:role/amplify-casessitev01-prod-143127-authRole",
+      "AuthRoleName": "amplify-casessite01-dev-171842-authRole",
+      "UnauthRoleArn": "arn:aws:iam::588518141512:role/amplify-casessite01-dev-171842-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::588518141512:role/amplify-casessite01-dev-171842-authRole",
       "Region": "ap-southeast-2",
-      "DeploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
-      "UnauthRoleName": "amplify-casessitev01-prod-143127-unauthRole",
-      "StackName": "amplify-casessitev01-prod-143127",
-      "StackId": "arn:aws:cloudformation:ap-southeast-2:406700237853:stack/amplify-casessitev01-prod-143127/90275120-32e8-11ec-b8b5-0a49f891e1a0",
-      "AmplifyAppId": "d3rj62os1it8fc"
-    },
-    "categories": {
-      "auth": {
-        "casessitev01b4fd67c8": {}
-      },
-      "function": {
-        "CreateOrder": {
-          "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
-          "s3Key": "amplify-builds/CreateOrder-54594c6b717038553136-build.zip"
-        },
-        "ProcessOrderPayment": {
-          "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
-          "s3Key": "amplify-builds/ProcessOrderPayment-72356365316868785534-build.zip"
-        },
-        "SendEmailToUser": {
-          "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
-          "s3Key": "amplify-builds/SendEmailToUser-664838796c354e426a53-build.zip",
-          "sesEmail": "casessite01@gmail.com"
-        },
-        "SendEmailToAdmin": {
-          "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
-          "s3Key": "amplify-builds/SendEmailToAdmin-4770706c6d3656436539-build.zip"
-        },
-        "PaymentProcess": {
-          "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
-          "s3Key": "amplify-builds/PaymentProcess-306950516c724f743532-build.zip"
-        }
-      }
-    }
-  },
-  "feature": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-casessitev01-feature-181447-authRole",
-      "UnauthRoleArn": "arn:aws:iam::406700237853:role/amplify-casessitev01-feature-181447-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::406700237853:role/amplify-casessitev01-feature-181447-authRole",
-      "Region": "ap-southeast-2",
-      "DeploymentBucketName": "amplify-casessitev01-feature-181447-deployment",
-      "UnauthRoleName": "amplify-casessitev01-feature-181447-unauthRole",
-      "StackName": "amplify-casessitev01-feature-181447",
-      "StackId": "arn:aws:cloudformation:ap-southeast-2:406700237853:stack/amplify-casessitev01-feature-181447/9f5bcf30-9153-11ec-8f30-06f4d26a15ba",
-      "AmplifyAppId": "d3rj62os1it8fc"
+      "DeploymentBucketName": "amplify-casessite01-dev-171842-deployment",
+      "UnauthRoleName": "amplify-casessite01-dev-171842-unauthRole",
+      "StackName": "amplify-casessite01-dev-171842",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:588518141512:stack/amplify-casessite01-dev-171842/0f76b360-46d1-11ed-95e3-0a7ab08fe170",
+      "AmplifyAppId": "d2zxr1eikcxqir"
     },
     "categories": {
       "function": {
-        "CreateOrder": {
-          "deploymentBucketName": "amplify-casessitev01-feature-181447-deployment",
-          "s3Key": "amplify-builds/CreateOrder-41527876682f73506c55-build.zip"
-        },
         "ProcessOrderPayment": {
-          "deploymentBucketName": "amplify-casessitev01-feature-181447-deployment",
-          "s3Key": "amplify-builds/ProcessOrderPayment-44773532347344497179-build.zip"
+          "deploymentBucketName": "amplify-casessite01-dev-171842-deployment",
+          "s3Key": "amplify-builds/ProcessOrderPayment-73306c7a637a73694364-build.zip"
+        },
+        "CreateOrder": {
+          "deploymentBucketName": "amplify-casessite01-dev-171842-deployment",
+          "s3Key": "amplify-builds/CreateOrder-426f56414d714b337956-build.zip"
         },
         "SendEmailToUser": {
-          "deploymentBucketName": "amplify-casessitev01-feature-181447-deployment",
-          "s3Key": "amplify-builds/SendEmailToUser-664838796c354e426a53-build.zip",
-          "sesEmail": "casessite01@gmail.com"
+          "deploymentBucketName": "amplify-casessite01-dev-171842-deployment",
+          "s3Key": "amplify-builds/SendEmailToUser-6e57376f746e706d4f51-build.zip"
         },
         "SendEmailToAdmin": {
-          "deploymentBucketName": "amplify-casessitev01-feature-181447-deployment",
-          "s3Key": "amplify-builds/SendEmailToAdmin-4770706c6d3656436539-build.zip"
+          "deploymentBucketName": "amplify-casessite01-dev-171842-deployment",
+          "s3Key": "amplify-builds/SendEmailToAdmin-45714c4d5359326f6664-build.zip"
         },
-        "PaymentProcess": {
-          "deploymentBucketName": "amplify-casessitev01-prod-143127-deployment",
-          "s3Key": "amplify-builds/PaymentProcess-306950516c724f743532-build.zip"
+        "ChangeOrderStatus": {
+          "deploymentBucketName": "amplify-casessite01-dev-171842-deployment",
+          "s3Key": "amplify-builds/ChangeOrderStatus-346d5a386d57424b3930-build.zip"
         }
       },
       "auth": {
-        "casessitev01b4fd67c8": {}
+        "casessite014012831e": {}
       }
     }
   }

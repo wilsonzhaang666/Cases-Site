@@ -2,12 +2,12 @@ const { v4: uuidv4 } = require("uuid");
 const AWS = require("aws-sdk");
 const documentClient = new AWS.DynamoDB.DocumentClient();
 
-const ORDER_TABLE = "Order-hjfzxqw62rgpdb4jgpf27ueacu-prod";
+const ORDER_TABLE = "Order-ghiz4pdgjrc6df7e23drxyjgxq-dev";
 const ORDER_TYPE = "Order";
-const BOOK_ORDER_TABLE = "BookOrder-hjfzxqw62rgpdb4jgpf27ueacu-prod";
-const BOOK_ORDER_TYPE = "BookOrder";
-const BOOK_TABLE = "Book-hjfzxqw62rgpdb4jgpf27ueacu-prod";
-const ProductType_TABLE = "ProductType-hjfzxqw62rgpdb4jgpf27ueacu-prod";
+const BOOK_ORDER_TABLE = "ProductOrder-ghiz4pdgjrc6df7e23drxyjgxq-dev";
+const BOOK_ORDER_TYPE = "ProductOrder";
+// const BOOK_TABLE = "Book-hjfzxqw62rgpdb4jgpf27ueacu-prod";
+const ProductType_TABLE = "ProductType-ghiz4pdgjrc6df7e23drxyjgxq-dev";
 
 const createOrder = async (payload) => {
   const {
@@ -31,7 +31,7 @@ const createOrder = async (payload) => {
       id: id,
       __typename: ORDER_TYPE,
       customer: email,
-      PhoneNumber: phoneNum,
+      phoneNum: phoneNum,
       DeliverDate: DeliverDate,
       PickUpDate: PickUpDate,
       address: address,
@@ -41,6 +41,7 @@ const createOrder = async (payload) => {
       lastName: lastName,
       address2: address2,
       suburb: suburb,
+      status: "PENDING",
       postcode: postcode,
       updatedAt: new Date().toISOString(),
       createdAt: new Date().toISOString(),
@@ -59,7 +60,7 @@ const createBookOrder = async (payload) => {
         Item: {
           id: uuidv4(),
           __typename: BOOK_ORDER_TYPE,
-          book_id: cartItem.id,
+          product_id: cartItem.id,
           amount: cartItem.amount,
           order_id: payload.id,
           customer_email: payload.email,
@@ -91,7 +92,7 @@ const ChangeCasesStatus = async (payload) => {
           Item: {
             id: cartItem.ProdctTypeId,
             __typename: "ProductType",
-            book_id: cartItem.id,
+            product_id: cartItem.id,
 
             category: cartItem.category,
             quantity: cartItem.quantity - cartItem.amount,
@@ -133,17 +134,18 @@ exports.handler = async (event) => {
     await ChangeCasesStatus(payload);
     // Note - You may add another function to email the invoice to the user
 
-    return {
-      id,
-      cart,
-      total,
-      address,
-      phoneNum,
-      username,
-      DeliverDate,
-      email,
-      PickUpDate,
-    };
+    // return {
+    //   id,
+    //   cart,
+    //   total,
+    //   address,
+    //   phoneNum,
+    //   username,
+    //   DeliverDate,
+    //   email,
+    //   PickUpDate,
+    // };
+    return "SUCCESS";
   } catch (err) {
     console.log(err);
     return new Error(err);

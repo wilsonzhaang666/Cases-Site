@@ -15,9 +15,6 @@
     },
     "s3Key": {
       "Type": "String"
-    },
-    "sesEmail": {
-      "Type": "String"
     }
   },
   "Conditions": {
@@ -72,9 +69,6 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
-            },
-            "SES_EMAIL": {
-              "Ref": "sesEmail"
             }
           }
         },
@@ -95,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "casessitev01LambdaRolef7a67744",
+            "casessite01LambdaRolecc537251",
             {
               "Fn::Join": [
                 "",
                 [
-                  "casessitev01LambdaRolef7a67744",
+                  "casessite01LambdaRolecc537251",
                   "-",
                   {
                     "Ref": "env"

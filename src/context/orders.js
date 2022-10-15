@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { API, graphqlOperation,Auth } from "aws-amplify";
+import { API, graphqlOperation, Auth } from "aws-amplify";
 import { v4 as uuidv4 } from "uuid";
 import { listOrders } from "../api/queries";
 import { processOrder } from "../api/mutations";
@@ -15,16 +15,13 @@ const OrderProvider = ({ children }) => {
     fetchBooks();
   }, []);
 
-
-
-
   const fetchBooks = async () => {
     try {
       setLoading(true);
       // Switch authMode to API_KEY for public access
       const { data } = await API.graphql({
         query: listOrders,
-        authMode: 'AMAZON_COGNITO_USER_POOLS'
+        authMode: "API_KEY",
       });
       const orders = data.listOrders.items;
 

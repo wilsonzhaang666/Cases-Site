@@ -6,44 +6,24 @@ const sendgridMail = require("@sendgrid/mail");
 const API_KEY =
   "SG.6Qanvb8sTbyAnwO4_ppVUQ.xFBQ3VhV8CV1EaaNK0QQsasYS5zt65VnzAeQ7AK53_8";
 
-const getUserEmail = async (event) => {
-  const params = {
-    UserPoolId: USER_POOL_ID,
-    Username: event.identity.claims.username,
-  };
-  const user = await cognitoIdentityServiceProvider
-    .adminGetUser(params)
-    .promise();
-  const { Value: email } = user.UserAttributes.find((attr) => {
-    if (attr.Name === "email") {
-      return attr.Value;
-    }
-  });
-  return email;
-};
+c;
 const getUsername = async (event) => {
   const usernmae = event.identity.claims.username;
   return usernmae;
 };
 module.exports.run = async (event, context, cb) => {
-  const { id, cart, total, address, phoneNum, token, DeliverDate, PickUpDate } =
-    event.arguments.input;
+  const { customerId } = event.arguments.input;
 
   let mailResult;
   sendgridMail.setApiKey(API_KEY);
   const email = await getUserEmail(event);
   const username = await getUsername(event);
   const msg = {
-    to: email,
+    to: customerId,
     from: "casessite01@gmail.com",
-    templateId: "d-d26f08aeeba74e0fa4554b2dd147910b",
+    templateId: "d-fb886f13a8384bf5a429bcfc696ee2c3",
     dynamicTemplateData: {
-      subject: "Congratulations! Here is your Invoice",
-      name: username,
-      email: email,
-      id: id,
-      cart: cart,
-      status: "Pending",
+      subject: "We Are Now Processing Your Order",
     },
   };
 

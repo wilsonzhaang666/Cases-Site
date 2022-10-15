@@ -1,14 +1,16 @@
 {
-    "identityPoolName": "casessitev01b4fd67c8_identitypool_b4fd67c8",
+  "version": "1",
+  "cognitoConfig": {
+    "identityPoolName": "casessite014012831e_identitypool_4012831e",
     "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "casessb4fd67c8",
-    "userPoolName": "casessitev01b4fd67c8_userpool_b4fd67c8",
+    "resourceNameTruncated": "casess4012831e",
+    "userPoolName": "casessite014012831e_userpool_4012831e",
     "autoVerifiedAttributes": [
-        "email"
+      "email"
     ],
     "mfaConfiguration": "OFF",
     "mfaTypes": [
-        "SMS Text Message"
+      "SMS Text Message"
     ],
     "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
@@ -18,37 +20,40 @@
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
-        "email"
+      "email"
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [
-        "email"
+      "email"
     ],
     "userpoolClientReadAttributes": [
-        "email"
+      "email"
     ],
-    "userpoolClientLambdaRole": "casessb4fd67c8_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "casess4012831e_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "b4fd67c8",
-    "resourceName": "casessitev01b4fd67c8",
+    "sharedId": "4012831e",
+    "resourceName": "casessite014012831e",
     "authSelections": "identityPoolAndUserPool",
-    "authRoleArn": {
-        "Fn::GetAtt": [
-            "AuthRole",
-            "Arn"
-        ]
-    },
-    "unauthRoleArn": {
-        "Fn::GetAtt": [
-            "UnauthRole",
-            "Arn"
-        ]
-    },
     "useDefault": "default",
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
+    "useEnabledMfas": true,
+    "authRoleArn": {
+      "Fn::GetAtt": [
+        "AuthRole",
+        "Arn"
+      ]
+    },
+    "unauthRoleArn": {
+      "Fn::GetAtt": [
+        "UnauthRole",
+        "Arn"
+      ]
+    },
+    "breakCircularDependency": true,
     "dependsOn": []
+  }
 }

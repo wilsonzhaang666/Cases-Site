@@ -6,219 +6,14 @@ export const processOrder = /* GraphQL */ `
     processOrder(input: $input)
   }
 `;
+export const processOrderBackup = /* GraphQL */ `
+  mutation ProcessOrderBackup($input: ProcessOrderInput!) {
+    processOrderBackup(input: $input)
+  }
+`;
 export const emailChanges = /* GraphQL */ `
   mutation EmailChanges($input: ProcessOrderInput!) {
     EmailChanges(input: $input)
-  }
-`;
-export const createBook = /* GraphQL */ `
-  mutation CreateBook(
-    $input: CreateBookInput!
-    $condition: ModelBookConditionInput
-  ) {
-    createBook(input: $input, condition: $condition) {
-      id
-      title
-      category
-      image
-      quantity
-      featured
-      price
-      orders {
-        items {
-          id
-          book_id
-          order_id
-          createdAt
-          updatedAt
-          customer
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateBook = /* GraphQL */ `
-  mutation UpdateBook(
-    $input: UpdateBookInput!
-    $condition: ModelBookConditionInput
-  ) {
-    updateBook(input: $input, condition: $condition) {
-      id
-      title
-      category
-      image
-      quantity
-      featured
-      price
-      orders {
-        items {
-          id
-          book_id
-          order_id
-          createdAt
-          updatedAt
-          customer
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteBook = /* GraphQL */ `
-  mutation DeleteBook(
-    $input: DeleteBookInput!
-    $condition: ModelBookConditionInput
-  ) {
-    deleteBook(input: $input, condition: $condition) {
-      id
-      title
-      category
-      image
-      quantity
-      featured
-      price
-      orders {
-        items {
-          id
-          book_id
-          order_id
-          createdAt
-          updatedAt
-          customer
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createBookOrder = /* GraphQL */ `
-  mutation CreateBookOrder(
-    $input: CreateBookOrderInput!
-    $condition: ModelBookOrderConditionInput
-  ) {
-    createBookOrder(input: $input, condition: $condition) {
-      id
-      book_id
-      order_id
-      order {
-        id
-        user
-        date
-        total
-        products {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        customer
-      }
-      createdAt
-      updatedAt
-      book {
-        id
-        title
-        category
-        image
-        quantity
-        featured
-        price
-        orders {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      customer
-    }
-  }
-`;
-export const updateBookOrder = /* GraphQL */ `
-  mutation UpdateBookOrder(
-    $input: UpdateBookOrderInput!
-    $condition: ModelBookOrderConditionInput
-  ) {
-    updateBookOrder(input: $input, condition: $condition) {
-      id
-      book_id
-      order_id
-      order {
-        id
-        user
-        date
-        total
-        products {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        customer
-      }
-      createdAt
-      updatedAt
-      book {
-        id
-        title
-        category
-        image
-        quantity
-        featured
-        price
-        orders {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      customer
-    }
-  }
-`;
-export const deleteBookOrder = /* GraphQL */ `
-  mutation DeleteBookOrder(
-    $input: DeleteBookOrderInput!
-    $condition: ModelBookOrderConditionInput
-  ) {
-    deleteBookOrder(input: $input, condition: $condition) {
-      id
-      book_id
-      order_id
-      order {
-        id
-        user
-        date
-        total
-        products {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        customer
-      }
-      createdAt
-      updatedAt
-      book {
-        id
-        title
-        category
-        image
-        quantity
-        featured
-        price
-        orders {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      customer
-    }
   }
 `;
 export const createProduct = /* GraphQL */ `
@@ -234,18 +29,6 @@ export const createProduct = /* GraphQL */ `
       Thirdimage
       featured
       price
-      orders {
-        items {
-          id
-          product_id
-          order_id
-          category
-          createdAt
-          updatedAt
-          customer
-        }
-        nextToken
-      }
       createdAt
       updatedAt
       categories {
@@ -256,6 +39,18 @@ export const createProduct = /* GraphQL */ `
           quantity
           createdAt
           updatedAt
+        }
+        nextToken
+      }
+      orders {
+        items {
+          id
+          product_id
+          order_id
+          category
+          createdAt
+          updatedAt
+          customer
         }
         nextToken
       }
@@ -275,18 +70,6 @@ export const updateProduct = /* GraphQL */ `
       Thirdimage
       featured
       price
-      orders {
-        items {
-          id
-          product_id
-          order_id
-          category
-          createdAt
-          updatedAt
-          customer
-        }
-        nextToken
-      }
       createdAt
       updatedAt
       categories {
@@ -297,6 +80,18 @@ export const updateProduct = /* GraphQL */ `
           quantity
           createdAt
           updatedAt
+        }
+        nextToken
+      }
+      orders {
+        items {
+          id
+          product_id
+          order_id
+          category
+          createdAt
+          updatedAt
+          customer
         }
         nextToken
       }
@@ -316,18 +111,6 @@ export const deleteProduct = /* GraphQL */ `
       Thirdimage
       featured
       price
-      orders {
-        items {
-          id
-          product_id
-          order_id
-          category
-          createdAt
-          updatedAt
-          customer
-        }
-        nextToken
-      }
       createdAt
       updatedAt
       categories {
@@ -338,6 +121,18 @@ export const deleteProduct = /* GraphQL */ `
           quantity
           createdAt
           updatedAt
+        }
+        nextToken
+      }
+      orders {
+        items {
+          id
+          product_id
+          order_id
+          category
+          createdAt
+          updatedAt
+          customer
         }
         nextToken
       }
@@ -364,12 +159,12 @@ export const createProductType = /* GraphQL */ `
         Thirdimage
         featured
         price
-        orders {
-          nextToken
-        }
         createdAt
         updatedAt
         categories {
+          nextToken
+        }
+        orders {
           nextToken
         }
       }
@@ -396,12 +191,12 @@ export const updateProductType = /* GraphQL */ `
         Thirdimage
         featured
         price
-        orders {
-          nextToken
-        }
         createdAt
         updatedAt
         categories {
+          nextToken
+        }
+        orders {
           nextToken
         }
       }
@@ -428,12 +223,12 @@ export const deleteProductType = /* GraphQL */ `
         Thirdimage
         featured
         price
-        orders {
-          nextToken
-        }
         createdAt
         updatedAt
         categories {
+          nextToken
+        }
+        orders {
           nextToken
         }
       }
@@ -450,18 +245,6 @@ export const createProductOrder = /* GraphQL */ `
       product_id
       order_id
       category
-      order {
-        id
-        user
-        date
-        total
-        products {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        customer
-      }
       createdAt
       updatedAt
       product {
@@ -472,16 +255,38 @@ export const createProductOrder = /* GraphQL */ `
         Thirdimage
         featured
         price
-        orders {
-          nextToken
-        }
         createdAt
         updatedAt
         categories {
           nextToken
         }
+        orders {
+          nextToken
+        }
       }
       customer
+      order {
+        id
+        user
+        date
+        total
+        status
+        firstName
+        lastName
+        address
+        address2
+        suburb
+        postcode
+        phoneNum
+        customer
+        DeliverDate
+        PickUpDate
+        createdAt
+        updatedAt
+        products {
+          nextToken
+        }
+      }
     }
   }
 `;
@@ -495,18 +300,6 @@ export const updateProductOrder = /* GraphQL */ `
       product_id
       order_id
       category
-      order {
-        id
-        user
-        date
-        total
-        products {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        customer
-      }
       createdAt
       updatedAt
       product {
@@ -517,16 +310,38 @@ export const updateProductOrder = /* GraphQL */ `
         Thirdimage
         featured
         price
-        orders {
-          nextToken
-        }
         createdAt
         updatedAt
         categories {
           nextToken
         }
+        orders {
+          nextToken
+        }
       }
       customer
+      order {
+        id
+        user
+        date
+        total
+        status
+        firstName
+        lastName
+        address
+        address2
+        suburb
+        postcode
+        phoneNum
+        customer
+        DeliverDate
+        PickUpDate
+        createdAt
+        updatedAt
+        products {
+          nextToken
+        }
+      }
     }
   }
 `;
@@ -540,18 +355,6 @@ export const deleteProductOrder = /* GraphQL */ `
       product_id
       order_id
       category
-      order {
-        id
-        user
-        date
-        total
-        products {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        customer
-      }
       createdAt
       updatedAt
       product {
@@ -562,16 +365,38 @@ export const deleteProductOrder = /* GraphQL */ `
         Thirdimage
         featured
         price
-        orders {
-          nextToken
-        }
         createdAt
         updatedAt
         categories {
           nextToken
         }
+        orders {
+          nextToken
+        }
       }
       customer
+      order {
+        id
+        user
+        date
+        total
+        status
+        firstName
+        lastName
+        address
+        address2
+        suburb
+        postcode
+        phoneNum
+        customer
+        DeliverDate
+        PickUpDate
+        createdAt
+        updatedAt
+        products {
+          nextToken
+        }
+      }
     }
   }
 `;
@@ -585,6 +410,19 @@ export const createOrder = /* GraphQL */ `
       user
       date
       total
+      status
+      firstName
+      lastName
+      address
+      address2
+      suburb
+      postcode
+      phoneNum
+      customer
+      DeliverDate
+      PickUpDate
+      createdAt
+      updatedAt
       products {
         items {
           id
@@ -597,9 +435,6 @@ export const createOrder = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
-      customer
     }
   }
 `;
@@ -613,6 +448,19 @@ export const updateOrder = /* GraphQL */ `
       user
       date
       total
+      status
+      firstName
+      lastName
+      address
+      address2
+      suburb
+      postcode
+      phoneNum
+      customer
+      DeliverDate
+      PickUpDate
+      createdAt
+      updatedAt
       products {
         items {
           id
@@ -625,9 +473,6 @@ export const updateOrder = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
-      customer
     }
   }
 `;
@@ -641,6 +486,19 @@ export const deleteOrder = /* GraphQL */ `
       user
       date
       total
+      status
+      firstName
+      lastName
+      address
+      address2
+      suburb
+      postcode
+      phoneNum
+      customer
+      DeliverDate
+      PickUpDate
+      createdAt
+      updatedAt
       products {
         items {
           id
@@ -653,9 +511,6 @@ export const deleteOrder = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
-      customer
     }
   }
 `;

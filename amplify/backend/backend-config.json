@@ -1,14 +1,13 @@
 {
   "auth": {
-    "casessitev01b4fd67c8": {
+    "casessite014012831e": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
-        "loginMechanisms": [
-          "PREFERRED_USERNAME"
-        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
         "signupAttributes": [
           "EMAIL"
         ],
@@ -27,18 +26,19 @@
     }
   },
   "storage": {
-    "TheImages": {
+    "ProductImages": {
       "service": "S3",
-      "providerPlugin": "awscloudformation"
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
     }
   },
   "function": {
-    "CreateOrder": {
+    "ProcessOrderPayment": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "ProcessOrderPayment": {
+    "CreateOrder": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -52,10 +52,15 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "ChangeOrderStatus": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "api": {
-    "casessitev01": {
+    "casessite01": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -63,7 +68,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authcasessitev01b4fd67c8"
+              "userPoolId": "authcasessite014012831e"
             }
           },
           "additionalAuthenticationProviders": [
@@ -71,18 +76,16 @@
               "authenticationType": "API_KEY",
               "apiKeyConfig": {
                 "apiKeyExpirationDays": 365,
-                "description": "Guest user access"
+                "apiKeyExpirationDate": "2023-10-13T10:51:36.537Z",
+                "description": "Guest User Aceess to Products"
               }
+            },
+            {
+              "authenticationType": "AWS_IAM"
             }
           ]
         }
       }
-    }
-  },
-  "hosting": {
-    "S3AndCloudFront": {
-      "service": "S3AndCloudFront",
-      "providerPlugin": "awscloudformation"
     }
   }
 }
